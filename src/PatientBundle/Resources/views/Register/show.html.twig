@@ -1,0 +1,97 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Register:show{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Register:show page</h1>
+    {{ calendar.showCalendar }}
+    <div id="calendar" style="margin-left: 30%; margin-right: 30%">
+        <button><<</button>
+        <span style="font-size: 40px"><b>{{ calendar.getMonth }}</b></span>
+        <button style="margin-right: 20%">>></button>
+        <span  style="font-size: 40px"><b>{{ calendar.getYear }}</b></span>
+        {#{%  %}#}
+        <table id="calendarTable" style="border: solid 1px black">
+            <tr>
+                <th class="days">Pn</th>
+                <th class="days">Wt</th>
+                <th class="days">Śr</th>
+                <th class="days">Cz</th>
+                <th class="days">Pt</th>
+                <th class="days">Sb</th>
+                <th class="days">Nd</th>
+            </tr>
+            {% set day = 1 %}
+            {% for i in 1..calendar.getNumberOfWeeksInMonth %}
+                <tr>
+                    {% for j in 1..7 %}
+                        {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
+                            <td></td>
+                        {% elseif day < calendar.getDaysInMonth + 1 %}
+                            <td>{{ day }}</td>
+                            {% set day = day + 1 %}
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        {#<table id="calendarTable" style="border: solid 1px black">#}
+            {#<tr>#}
+                {#<th class="days">Pn</th>#}
+                {#<th class="days">Wt</th>#}
+                {#<th class="days">Śr</th>#}
+                {#<th class="days">Cz</th>#}
+                {#<th class="days">Pt</th>#}
+                {#<th class="days">Sb</th>#}
+                {#<th class="days">Nd</th>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<td>1</td>#}
+                {#<td>2</td>#}
+                {#<td>3</td>#}
+                {#<td>4</td>#}
+                {#<td>5</td>#}
+                {#<td>6</td>#}
+                {#<td>7</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<td>8</td>#}
+                {#<td>9</td>#}
+                {#<td>10</td>#}
+                {#<td>11</td>#}
+                {#<td>12</td>#}
+                {#<td>13</td>#}
+                {#<td>14</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<td>15</td>#}
+                {#<td>16</td>#}
+                {#<td>17</td>#}
+                {#<td>18</td>#}
+                {#<td>19</td>#}
+                {#<td>20</td>#}
+                {#<td>21</td>#}
+            {#</tr><tr>#}
+                {#<td>22</td>#}
+                {#<td>23</td>#}
+                {#<td>24</td>#}
+                {#<td>25</td>#}
+                {#<td>26</td>#}
+                {#<td>27</td>#}
+                {#<td>28</td>#}
+            {#</tr></tr><tr>#}
+                {#<td>29</td>#}
+                {#<td>30</td>#}
+                {#<td>31</td>#}
+                {#<td></td>#}
+                {#<td></td>#}
+                {#<td></td>#}
+                {#<td></td>#}
+            {#</tr>#}
+
+        {#</table>#}
+    </div>
+{% endblock %}

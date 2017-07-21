@@ -1,0 +1,4 @@
+patient:
+    resource: "@PatientBundle/Controller/"
+    type:     annotation
+    prefix:   /
