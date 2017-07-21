@@ -16,8 +16,8 @@ class RegisterController extends Controller
     {
         $calendar = new Calendar();
         var_dump($calendar);
-        $calendar->setMonth(11);
-        var_dump($calendar);
+//        $calendar->setMonth(11);
+//        var_dump($calendar);
         return $this->render('PatientBundle:Register:show.html.twig', array(
             'calendar' => $calendar
         ));

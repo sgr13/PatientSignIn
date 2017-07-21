@@ -151,7 +151,8 @@ class Calendar
     public function decreaseMonth()
     {
         if ($this->month != 01) {
-            $this->month = $this->month - 1;
+            $this->month = $this->month - 3;
+            var_dump($this->month);
         }
     }
 
