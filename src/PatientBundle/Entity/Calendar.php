@@ -122,19 +122,9 @@ class Calendar
     public function showCalendar()
     {
         $firstDay = mktime(0,0,0,$this->month, 1, $this->year);
-        $title = strftime('%B', $firstDay);
         $this->firstDayInMonth = date('N', $firstDay);
         $this->daysInMonth = cal_days_in_month(0, $this->month, $this->year);
         self::getNumberOfWeeks();
-
-        echo "Dzień: " . $this->day . "<br>";
-        echo "Miesiąc: " . $this->month . "<br>";
-        echo "Rok: " . $this->year . "<br>";
-        echo "Miesiąc: " . $title . "<br>";
-        echo "Piewrwszy dzień miesiąca: " . $this->firstDayInMonth . "<br>";
-        echo "Dni w miesiącu: " . $this->daysInMonth . "<br>";
-        echo "Tygodni w miesiącu: " . $this->numberOfWeeksInMonth . "<br>";
-
     }
 
     public function getNumberOfWeeks()
@@ -151,7 +141,7 @@ class Calendar
     public function decreaseMonth()
     {
         if ($this->month != 01) {
-            $this->month = $this->month - 3;
+            $this->month = $this->month - 1;
             var_dump($this->month);
         }
     }

@@ -4,12 +4,30 @@
 
 {% block body %}
 <h1>Welcome to the Register:show page</h1>
+    <h2 style="text-align: center">Krok 1: Wybierz dzień wizyty:</h2>
     {{ calendar.showCalendar }}
-    <div id="calendar" style="margin-left: 30%; margin-right: 30%">
-        <button><<</button>
-        <span style="font-size: 40px"><b>{{ calendar.getMonth }}</b></span>
-        <button style="margin-right: 20%">>></button>
-        <span  style="font-size: 40px"><b>{{ calendar.getYear }}</b></span>
+    <div id="calendar" style="margin-left: 30%; margin-right: 30%; border: solid">
+        <form action="{{ asset('selectDay') }}" method="post">
+            <select style="margin-right: 59%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
+                <option value="01" id="jan" >Styczeń</option>
+                <option value="02" id="feb" >Luty</option>
+                <option value="03" id="mar" >Marzec</option>
+                <option value="04" id="apr" >Kwiecień</option>
+                <option value="05" id="may" >Maj</option>
+                <option value="06" id="jun" >Czerwiec</option>
+                <option value="07" id="jul" >Lipiec</option>
+                <option value="08" id="aug" >Sierpień</option>
+                <option value="09" id="sep" >Wrzesień</option>
+                <option value="10" id="oct" >Październik</option>
+                <option value="11" id="nov" >Listopad</option>
+                <option value="12" id="dec" >Grudzień</option>
+            </select>
+            <select name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ calendar.getYear }}">
+                <option value="2017" id="2017">2017</option>
+                <option value="2018" id="2018">2018</option>
+            </select>
+        </form>
+        {#<a href="{{ asset('show') }}"><button><<</button></a>#}
         <table id="calendarTable" style="border: solid 1px black">
             <tr>
                 <th class="days">Pn</th>
@@ -27,7 +45,11 @@
                         {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
                             <td></td>
                         {% elseif day < calendar.getDaysInMonth + 1 %}
-                            <td>{{ day }}</td>
+                            {% if j == 2 or j == 5 %}
+                                <td><a href="">{{ day }}</a></td>
+                            {% else %}
+                                <td>{{ day }}</td>
+                            {% endif %}
                             {% set day = day + 1 %}
                         {% else %}
                             <td></td>
@@ -36,61 +58,5 @@
                 </tr>
             {% endfor %}
         </table>
-
-        {#<table id="calendarTable" style="border: solid 1px black">#}
-            {#<tr>#}
-                {#<th class="days">Pn</th>#}
-                {#<th class="days">Wt</th>#}
-                {#<th class="days">Śr</th>#}
-                {#<th class="days">Cz</th>#}
-                {#<th class="days">Pt</th>#}
-                {#<th class="days">Sb</th>#}
-                {#<th class="days">Nd</th>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<td>1</td>#}
-                {#<td>2</td>#}
-                {#<td>3</td>#}
-                {#<td>4</td>#}
-                {#<td>5</td>#}
-                {#<td>6</td>#}
-                {#<td>7</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<td>8</td>#}
-                {#<td>9</td>#}
-                {#<td>10</td>#}
-                {#<td>11</td>#}
-                {#<td>12</td>#}
-                {#<td>13</td>#}
-                {#<td>14</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<td>15</td>#}
-                {#<td>16</td>#}
-                {#<td>17</td>#}
-                {#<td>18</td>#}
-                {#<td>19</td>#}
-                {#<td>20</td>#}
-                {#<td>21</td>#}
-            {#</tr><tr>#}
-                {#<td>22</td>#}
-                {#<td>23</td>#}
-                {#<td>24</td>#}
-                {#<td>25</td>#}
-                {#<td>26</td>#}
-                {#<td>27</td>#}
-                {#<td>28</td>#}
-            {#</tr></tr><tr>#}
-                {#<td>29</td>#}
-                {#<td>30</td>#}
-                {#<td>31</td>#}
-                {#<td></td>#}
-                {#<td></td>#}
-                {#<td></td>#}
-                {#<td></td>#}
-            {#</tr>#}
-
-        {#</table>#}
     </div>
 {% endblock %}

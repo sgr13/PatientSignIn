@@ -3,9 +3,8 @@ body {
 }
 
 .days {
-    border-right: solid 1px #000000;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .days:last-child {
@@ -15,4 +14,6 @@ body {
 #calendarTable td {
     text-align: center;
     border: 1px black dotted;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
