@@ -57,13 +57,14 @@ class RegisterController extends Controller
     }
 
     /**
-     * @Route("/selectHour/{year}/{month}/{day}", name="selectHour")
+     * @Route("/selectHour/{year}/{month}/{day}/{noDay}", name="selectHour")
      */
-    public function selectHourAction(Request $request, $year, $month, $day)
+    public function selectHourAction(Request $request, $year, $month, $day, $noDay)
     {
-        var_dump($year);
-        var_dump($month);
-        var_dump($day);
+//        var_dump($year);
+//        var_dump($month);
+//        var_dump($day);
+//        var_dump($noDay);
 
         $month = str_split($month);
         if ($month[0] == 0) {
@@ -73,7 +74,6 @@ class RegisterController extends Controller
 
         $calendarRepository = $this->getDoctrine()->getRepository('PatientBundle:Appointment');
         $visits = $calendarRepository->findAll();
-        var_dump($visits);
 
         if (!$visits) {
             throw new NotFoundHttpException('Błąd połączenia z baza danych');
@@ -81,10 +81,27 @@ class RegisterController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day);
-        var_dump($daySchedule);
+
+        $diabArray = [];
+        $dietArray = [];
+
+        foreach($daySchedule as $value) {
+            if ($value->getVisitType() == 'diab') {
+                $diabArray[] = $value->getHour();
+            } else {
+                $dietArray[] = $value->getHour();
+            }
+
+        }
+        $session = $request->getSession();
+        $visitType = $session->get('visitType');
 
         return $this->render('PatientBundle:Register:selectHour.html.twig', array(
-            // ...
+            'daySchedule' => $daySchedule,
+            'noDay' => $noDay,
+            'visitType' => $visitType,
+            'diabArray' => $diabArray,
+            'dietArray' => $dietArray
         ));
     }
 

@@ -70,6 +70,20 @@ class Appointment
      */
     private $surname;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visitType", type="string", length=100)
+     */
+    private $visitType;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="dayOfWeek", type="integer")
+     */
+    private $dayOfWeek;
+
 
     /**
      * Get id
@@ -241,4 +255,38 @@ class Appointment
     {
         return $this->surname;
     }
+
+    /**
+     * @return string
+     */
+    public function getVisitType()
+    {
+        return $this->visitType;
+    }
+
+    /**
+     * @param string $visitType
+     */
+    public function setVisitType($visitType)
+    {
+        $this->visitType = $visitType;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDayOfWeek()
+    {
+        return $this->dayOfWeek;
+    }
+
+    /**
+     * @param int $dayOfWeek
+     */
+    public function setDayOfWeek($dayOfWeek)
+    {
+        $this->dayOfWeek = $dayOfWeek;
+    }
+
+
 }

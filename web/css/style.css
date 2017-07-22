@@ -49,3 +49,42 @@ td a:hover {
 #diet {
     display: none;
 }
+
+ul li {
+    padding-top: 20px;
+}
+
+.day {
+    padding: 12px;
+    border: solid 1px #000000;
+    margin: 5px;
+}
+
+/*.day:hover {*/
+    /*background-color: #000000;*/
+    /*color: white;*/
+    /*cursor: pointer;*/
+/*}*/
+
+.reserved {
+    background-color: red;
+}
+
+.reserved:hover {
+
+}
+
+.free {
+    background-color: lightgreen;
+}
+
+.free:hover {
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
