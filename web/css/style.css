@@ -13,7 +13,7 @@ body {
 
 #calendarTable td {
     text-align: center;
-    border: 1px black dotted;
+    border: 1px black solid;
     padding-bottom: 10px;
     padding-top: 10px;
 }

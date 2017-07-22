@@ -6,9 +6,9 @@
 <h1>Welcome to the Register:show page</h1>
     <h2 style="text-align: center">Krok 1: Wybierz dzień wizyty:</h2>
     {{ calendar.showCalendar }}
-    <div id="calendar" style="margin-left: 30%; margin-right: 30%; border: solid">
+    <div id="calendar" style="margin-left: 25%; margin-right: 25%;">
         <form action="{{ asset('selectDay') }}" method="post">
-            <select style="margin-right: 59%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
+            <select style="margin-right: 53%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
                 <option value="01" id="jan" >Styczeń</option>
                 <option value="02" id="feb" >Luty</option>
                 <option value="03" id="mar" >Marzec</option>
@@ -27,9 +27,8 @@
                 <option value="2018" id="2018">2018</option>
             </select>
         </form>
-        {#<a href="{{ asset('show') }}"><button><<</button></a>#}
         <table id="calendarTable" style="border: solid 1px black">
-            <tr>
+            <tr style="background-color: yellowgreen; font-size: 130%">
                 <th class="days">Pn</th>
                 <th class="days">Wt</th>
                 <th class="days">Śr</th>
@@ -40,13 +39,21 @@
             </tr>
             {% set day = 1 %}
             {% for i in 1..calendar.getNumberOfWeeksInMonth %}
-                <tr>
+                {% if i % 2 == 0 %}
+                    <tr style="background-color: aquamarine">
+                {% else %}
+                    <tr style="background-color: #aacd4e">
+                {% endif %}
                     {% for j in 1..7 %}
                         {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
                             <td></td>
                         {% elseif day < calendar.getDaysInMonth + 1 %}
                             {% if j == 2 or j == 5 %}
-                                <td><a href="">{{ day }}</a></td>
+                                <td style="font-size: 120%">
+                                    <a href="{{ path('selectVisitType', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day}) }}" style="text-decoration: none">
+                                        <b>{{ day }}</b>
+                                    </a>
+                                </td>
                             {% else %}
                                 <td>{{ day }}</td>
                             {% endif %}
@@ -60,3 +67,6 @@
         </table>
     </div>
 {% endblock %}
+
+
+{#href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}">#}

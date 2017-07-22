@@ -55,16 +55,17 @@ class RegisterController extends Controller
         ));
     }
 
-//    /**
-//     * @Route("/ajax", name="_recherche_ajax")
-//     */
-//    public function ajaxAction(Request $request)
-//    {
-//        if ($request->isXMLHttpRequest()) {
-//            return new JsonResponse(array('data' => 'this is a json response'));
-//        }
-//
-//        return new Response('This is not ajax!', 400);
-//    }
+    /**
+     * @Route("/selectVisitType/{year}/{month}/{day}", name="selectVisitType")
+     */
+    public function selectVisitTypeAction(Request $request, $year, $month, $day)
+    {
+        var_dump($year);
+        var_dump($month);
+        var_dump($day);
+        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(
+            // ...
+        ));
+    }
 
 }
