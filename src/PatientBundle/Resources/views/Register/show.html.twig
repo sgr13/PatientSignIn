@@ -27,7 +27,7 @@
                 <option value="2018" id="2018">2018</option>
             </select>
         </form>
-        <table id="calendarTable" style="border: solid 1px black">
+        <table id="calendarTable">
             <tr style="background-color: yellowgreen; font-size: 130%">
                 <th class="days">Pn</th>
                 <th class="days">Wt</th>
@@ -39,11 +39,7 @@
             </tr>
             {% set day = 1 %}
             {% for i in 1..calendar.getNumberOfWeeksInMonth %}
-                {% if i % 2 == 0 %}
-                    <tr style="background-color: aquamarine">
-                {% else %}
-                    <tr style="background-color: #aacd4e">
-                {% endif %}
+                    <tr>
                     {% for j in 1..7 %}
                         {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
                             <td></td>
