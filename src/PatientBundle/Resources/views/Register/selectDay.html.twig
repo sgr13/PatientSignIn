@@ -3,7 +3,7 @@
 {% block title %}PatientBundle:Register:show{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Register:show page</h1>
+    <h1>Welcome to the Register:show page</h1>
     {{ calendar.showCalendar }}
     <div id="calendar" style="margin-left: 25%; margin-right: 25%;">
         <form action="{{ asset('selectDay') }}" method="post">
@@ -39,14 +39,14 @@
             </tr>
             {% set day = 1 %}
             {% for i in 1..calendar.getNumberOfWeeksInMonth %}
-                    <tr>
+                <tr>
                     {% for j in 1..7 %}
                         {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
                             <td></td>
                         {% elseif day < calendar.getDaysInMonth + 1 %}
                             {% if j == 2 or j == 5 %}
                                 <td style="font-size: 120%">
-                                    <a href="{{ path('selectVisitType', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day}) }}" style="text-decoration: none">
+                                    <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day}) }}" style="text-decoration: none">
                                         <b>{{ day }}</b>
                                     </a>
                                 </td>

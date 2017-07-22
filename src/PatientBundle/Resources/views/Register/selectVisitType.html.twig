@@ -3,5 +3,35 @@
 {% block title %}PatientBundle:Register:SelectVisitType{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Register:VisitType</h1>
+
+    <div style="margin-left: 30%; margin-right: 30%; margin-top: 50px">
+        <h2 style="text-align: center">Krok 1: Wybierz rodzaj wizyty:</h2>
+        <form action="{{ asset('selectVisitType') }}" method="post">
+            <input  id="radioButtonDiab" type="radio" name="visitType" value="diab" checked><span style="margin-right: 50px">Wizyta diabetologiczna</span>
+            <input  id="radioButtonDiet" type="radio" name="visitType" value="diet"> Wizyta dietetyczna<br><br>
+            <div id="diab" class="visitTypeSelection">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <p>
+                    Czas wizyty: 20 - 25 minut
+                </p>
+                <p>
+                    Koszt wizyty: 100 zł.
+                </p>
+            </div>
+            <div id="diet" class="visitTypeSelection">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <p>
+                    Czas wizyty: 40 - 50 minut
+                </p>
+                <p>
+                    Koszt wizyty: 150 zł.
+                </p>
+            </div>
+            <input type="submit" value="Zatwierdź" style="margin-left: 40%">
+        </form>
+    </div>
 {% endblock %}

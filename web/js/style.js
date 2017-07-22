@@ -35,4 +35,17 @@ $(document).ready(function () {
         $('#2018').attr('selected', 'selected');
     }
 
+    $("#radioButtonDiet").click(function() {
+        console.log("działa");
+        $('#diab').css('display', 'none');
+        $('#diet').css('display', 'inline');
+    });
+
+    $("#radioButtonDiab").click(function() {
+        console.log("działa2");
+        $('#diet').css('display', 'none');
+        $('#diab').css('display', 'inline');
+
+    });
+
 });

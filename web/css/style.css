@@ -41,3 +41,11 @@ td a:hover {
     color: white;
 
 }
+
+#diab {
+    display: inline;
+}
+
+#diet {
+    display: none;
+}

@@ -31,7 +31,7 @@ class RegisterController extends Controller
         }
         $calendar->setMonth($selectedMonth);
         $calendar->setYear($selectedYear);
-        return $this->render('PatientBundle:Register:show.html.twig', array(
+        return $this->render('PatientBundle:Register:selectDay.html.twig', array(
             'calendar' => $calendar
         ));
     }
@@ -57,9 +57,9 @@ class RegisterController extends Controller
     }
 
     /**
-     * @Route("/selectVisitType/{year}/{month}/{day}", name="selectVisitType")
+     * @Route("/selectHour/{year}/{month}/{day}", name="selectHour")
      */
-    public function selectVisitTypeAction(Request $request, $year, $month, $day)
+    public function selectHourAction(Request $request, $year, $month, $day)
     {
         var_dump($year);
         var_dump($month);
@@ -80,8 +80,25 @@ class RegisterController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, 7, $day);
+        $daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day);
         var_dump($daySchedule);
+
+        return $this->render('PatientBundle:Register:selectHour.html.twig', array(
+            // ...
+        ));
+    }
+
+    /**
+     * @Route("/selectVisitType")
+     */
+    public function selectVisitTypeAction(Request $request)
+    {
+        if ($request->request->get('visitType')) {
+            $visitType = $request->request->get('visitType');
+            $session = $request->getSession();
+            $session->set('visitType', $visitType);
+            return $this->redirect('selectDay');
+        }
 
         return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(
             // ...
