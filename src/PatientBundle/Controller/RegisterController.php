@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RegisterController extends Controller
 {
@@ -63,6 +64,25 @@ class RegisterController extends Controller
         var_dump($year);
         var_dump($month);
         var_dump($day);
+
+        $month = str_split($month);
+        if ($month[0] == 0) {
+            $month[0] = '';
+        }
+        $month = implode('', $month);
+
+        $calendarRepository = $this->getDoctrine()->getRepository('PatientBundle:Appointment');
+        $visits = $calendarRepository->findAll();
+        var_dump($visits);
+
+        if (!$visits) {
+            throw new NotFoundHttpException('Błąd połączenia z baza danych');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, 7, $day);
+        var_dump($daySchedule);
+
         return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(
             // ...
         ));

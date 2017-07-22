@@ -8,7 +8,7 @@
     {{ calendar.showCalendar }}
     <div id="calendar" style="margin-left: 25%; margin-right: 25%;">
         <form action="{{ asset('selectDay') }}" method="post">
-            <select style="margin-right: 53%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
+            <select style="margin-right: 41%; font-size: 150%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
                 <option value="01" id="jan" >Styczeń</option>
                 <option value="02" id="feb" >Luty</option>
                 <option value="03" id="mar" >Marzec</option>
@@ -22,7 +22,7 @@
                 <option value="11" id="nov" >Listopad</option>
                 <option value="12" id="dec" >Grudzień</option>
             </select>
-            <select name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ calendar.getYear }}">
+            <select style="font-size: 150%" name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ calendar.getYear }}">
                 <option value="2017" id="2017">2017</option>
                 <option value="2018" id="2018">2018</option>
             </select>
