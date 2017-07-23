@@ -6,6 +6,7 @@ namespace PatientBundle\Controller;
 use PatientBundle\Entity\Calendar;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,8 +42,7 @@ class RegisterController extends Controller
      */
     public function addAction()
     {
-        return $this->render('PatientBundle:Register:add.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:Register:add.html.twig', array(// ...
         ));
     }
 
@@ -51,8 +51,7 @@ class RegisterController extends Controller
      */
     public function removeAction()
     {
-        return $this->render('PatientBundle:Register:remove.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:Register:remove.html.twig', array(// ...
         ));
     }
 
@@ -89,7 +88,7 @@ class RegisterController extends Controller
         $diabArray = [];
         $dietArray = [];
 
-        foreach($daySchedule as $value) {
+        foreach ($daySchedule as $value) {
             if ($value->getVisitType() == 'diab') {
                 $diabArray[] = $value->getHour();
             } else {
@@ -124,8 +123,7 @@ class RegisterController extends Controller
             return $this->redirect('selectDay');
         }
 
-        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(// ...
         ));
     }
 
@@ -137,8 +135,7 @@ class RegisterController extends Controller
         $session = $request->getSession();
         $session->set('hour', $hour);
 
-        return $this->render('PatientBundle:Register:patientData.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:Register:patientData.html.twig', array(// ...
         ));
     }
 
@@ -147,9 +144,17 @@ class RegisterController extends Controller
      */
     public function patientDataConfirmationAction(Request $request)
     {
-        if ($request->request->get('name')) {
-            var_dump($request->get('name'));
+        if (!$request->request->get('name') || !$request->request->get('surname') || !$request->request->get('phone')) {
+            throw new InvalidArgumentException("Nie podano wszystkich danych lub podane dane są niewłaściwe!");
         }
+
+        $session = $request->getSession();
+        $session->set('name', $request->request->get('name'));
+        $session->set('surname', $request->request->get('surname'));
+        $session->set('phone', $request->request->get('phone'));
+
+        $phone = $request->request->get('phone');
+        var_dump($_SESSION);
     }
 
 }
