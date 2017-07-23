@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Register:confirm{% endblock %}
+
+{% block body %}
+    <div>
+        <h2 style="text-align: center">Krok 4: Wpisz kod otrzymany w wiadomości SMS:</h2>
+        <form action="{{ asset('saveVisit') }}" method="post">
+            <input type="number" name="code">
+            <input type="submit" value="Wyślij">
+        </form>
+    </div>
+{% endblock %}

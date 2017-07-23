@@ -152,9 +152,37 @@ class RegisterController extends Controller
         $session->set('name', $request->request->get('name'));
         $session->set('surname', $request->request->get('surname'));
         $session->set('phone', $request->request->get('phone'));
-
         $phone = $request->request->get('phone');
-        var_dump($_SESSION);
+        $randomNumber = mt_rand(100000, 999999);
+        var_dump($randomNumber);
+        $session->set('code', $randomNumber);
+
+        mail(
+            '+48' . $phone . '@text.plusgsm.pl',
+            '',
+            'Kod: ' . $randomNumber,
+            "From: dr Manuela Drozd-Sypien"
+        );
+
+        return $this->render('PatientBundle:Register:phoneConfirmation.html.twig', array(// ...
+        ));
+    }
+
+    /**
+     * @Route("/saveVisit")
+     */
+    public function saveVisitAction(Request $request)
+    {
+        $code = $request->request->get('code');
+        $session = $request->getSession();
+        var_dump($code);
+        var_dump($session->get('code'));
+
+        if ($code == $session->get('code')) {
+            return new Response("YEAHHHHHHHHHHH");
+        } else {
+            return new Response("NOOOOOOOOOOOOO");
+        }
     }
 
 }
