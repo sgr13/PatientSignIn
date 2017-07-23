@@ -45,7 +45,7 @@
                             <td></td>
                         {% elseif day < calendar.getDaysInMonth + 1 %}
                             {% if j == 2 or j == 5 %}
-                                <td style="font-size: 120%">
+                                <td style="font-size: 120%; color: red">
                                     <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none">
                                         <b>{{ day }}</b>
                                     </a>

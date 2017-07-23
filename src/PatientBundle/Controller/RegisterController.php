@@ -101,7 +101,10 @@ class RegisterController extends Controller
             'noDay' => $noDay,
             'visitType' => $visitType,
             'diabArray' => $diabArray,
-            'dietArray' => $dietArray
+            'dietArray' => $dietArray,
+            'day' => $day,
+            'month' => $month,
+            'year' => $year
         ));
     }
 
