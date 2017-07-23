@@ -61,16 +61,20 @@ class RegisterController extends Controller
      */
     public function selectHourAction(Request $request, $year, $month, $day, $noDay)
     {
-//        var_dump($year);
-//        var_dump($month);
-//        var_dump($day);
-//        var_dump($noDay);
+
 
         $month = str_split($month);
         if ($month[0] == 0) {
             $month[0] = '';
         }
         $month = implode('', $month);
+
+        $session = $request->getSession();
+        $session->set('year', $year);
+        $session->set('month', $month);
+        $session->set('day', $day);
+        $session->set('noDay', $noDay);
+        var_dump($_SESSION);
 
         $calendarRepository = $this->getDoctrine()->getRepository('PatientBundle:Appointment');
         $visits = $calendarRepository->findAll();
@@ -93,7 +97,7 @@ class RegisterController extends Controller
             }
 
         }
-        $session = $request->getSession();
+
         $visitType = $session->get('visitType');
 
         return $this->render('PatientBundle:Register:selectHour.html.twig', array(
@@ -123,6 +127,29 @@ class RegisterController extends Controller
         return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(
             // ...
         ));
+    }
+
+    /**
+     * @Route("patientData/{hour}", name="patientData")
+     */
+    public function patientDataAction(Request $request, $hour)
+    {
+        $session = $request->getSession();
+        $session->set('hour', $hour);
+
+        return $this->render('PatientBundle:Register:patientData.html.twig', array(
+            // ...
+        ));
+    }
+
+    /**
+     * @Route("/patientDataConfirmation")
+     */
+    public function patientDataConfirmationAction(Request $request)
+    {
+        if ($request->request->get('name')) {
+            var_dump($request->get('name'));
+        }
     }
 
 }

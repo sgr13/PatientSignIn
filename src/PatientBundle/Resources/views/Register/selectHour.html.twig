@@ -13,55 +13,55 @@
                         {% if '14:00' in diabArray or '14:00' in dietArray %}
                             <div class="day reserved">14:00</div>
                         {% else %}
-                            <a href="#"><div class="day free">14:00</div></a>
+                            <a href="{{ path('patientData', {'hour': '14:00'}) }}"><div class="day free">14:00</div></a>
                         {% endif %}
                     {% elseif loop.index == 2 %}
                         {% if '14:30' in diabArray or '14:30' in dietArray or '14:00' in dietArray %}
                             <div class="day reserved">14:30</div>
                         {% else %}
-                            <a href="#"><div class="day free">14:30</div></a>
+                            <a href="{{ path('patientData', {'hour': '14:30'}) }}"><div class="day free">14:30</div></a>
                         {% endif %}
                     {% elseif loop.index == 3 %}
                         {% if '15:00' in diabArray or '15:00' in dietArray or '14:30' in dietArray %}
                             <div class="day reserved">15:00</div>
                         {% else %}
-                            <a href="#"><div class="day free">15:00</div></a>
+                            <a href="{{ path('patientData', {'hour': '15:00'}) }}"><div class="day free">15:00</div></a>
                         {% endif %}
                     {% elseif loop.index == 4 %}
                         {% if '15:30' in diabArray or '15:30' in dietArray or '15:00' in dietArray %}
                             <div class="day reserved">15:30</div>
                         {% else %}
-                            <a href="#"><div class="day free">15:30</div></a>
+                            <a href="{{ path('patientData', {'hour': '15:30'}) }}"><div class="day free">15:30</div></a>
                         {% endif %}
                     {% elseif loop.index == 5 %}
                         {% if '16:00' in diabArray or '16:00' in dietArray or '15:30' in dietArray %}
                             <div class="day reserved">16:00</div>
                         {% else %}
-                            <a href="#"><div class="day free">16:00</div></a>
+                            <a href="{{ path('patientData', {'hour': '16:00'}) }}"><div class="day free">16:00</div></a>
                         {% endif %}
                     {% elseif loop.index == 6 %}
                         {% if '16:30' in diabArray or '16:30' in dietArray or '16:00' in dietArray %}
                             <div class="day reserved">16:30</div>
                         {% else %}
-                            <a href="#"><div class="day free">16:30</div></a>
+                            <a href="{{ path('patientData', {'hour': '16:30'}) }}"><div class="day free">16:30</div></a>
                         {% endif %}
                     {% elseif loop.index == 7 %}
                         {% if '17:00' in diabArray or '17:00' in dietArray or '16:30' in dietArray %}
                             <div class="day reserved">17:00</div>
                         {% else %}
-                            <a href="#"><div class="day free">17:00</div></a>
+                            <a href="{{ path('patientData', {'hour': '17:00'}) }}"><div class="day free">17:00</div></a>
                         {% endif %}
                     {% elseif loop.index == 8 %}
                         {% if '17:30' in diabArray or '17:30' in dietArray or '17:00' in dietArray %}
                             <div class="day reserved">17:30</div>
                         {% else %}
-                            <a href="#"><div class="day free">17:30</div></a>
+                            <a href="{{ path('patientData', {'hour': '17:30'}) }}"><div class="day free">17:30</div></a>
                         {% endif %}
                     {% elseif loop.index == 9 %}
                         {% if '17:30' in diabArray or '17:30' in dietArray or '17:00' in dietArray %}
                             <div class="day reserved">18:00</div>
                         {% else %}
-                            <a href="#"><div class="day free">18:00</div></a>
+                            <a href="{{ path('patientData', {'hour': '18:00'}) }}"><div class="day free">18:00</div></a>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -75,49 +75,49 @@
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 2 %}
-                        {% if '14:30' in diabArray or '15:00' in diabArray or '14:30' in dietArray or '15:00' in dietArray %}
+                        {% if '14:30' in diabArray or '15:00' in diabArray or '14:00' in dietArray or '14:30' in dietArray or '15:00' in dietArray %}
                             <div class="day reserved">14:30</div>
                         {% else %}
                             <div class="day free">14:30</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 3 %}
-                        {% if '15:00' in diabArray or '15:30' in diabArray or '15:00' in dietArray or '15:30' in dietArray %}
+                        {% if '15:00' in diabArray or '15:30' in diabArray or '14:30' in dietArray or '15:00' in dietArray or '15:30' in dietArray %}
                             <div class="day reserved">15:00</div>
                         {% else %}
                             <div class="day free">15:00</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 4 %}
-                        {% if '15:30' in diabArray or '16:00' in diabArray or '15:30' in dietArray or '16:00' in dietArray %}
+                        {% if '15:30' in diabArray or '16:00' in diabArray or '15:00' in dietArray or '15:30' in dietArray or '16:00' in dietArray %}
                             <div class="day reserved">15:30</div>
                         {% else %}
                             <div class="day free">15:30</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 5 %}
-                        {% if '16:00' in diabArray or '16:30' in diabArray or '16:00' in dietArray or '16:30' in dietArray %}
+                        {% if '16:00' in diabArray or '16:30' in diabArray or '15:30' in dietArray or '16:00' in dietArray or '16:30' in dietArray %}
                             <div class="day reserved">16:00</div>
                         {% else %}
                             <div class="day free">16:00</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 6 %}
-                        {% if '16:30' in diabArray or '17:00' in diabArray or '16:30' in dietArray or '17:00' in diabArray %}
+                        {% if '16:30' in diabArray or '17:00' in diabArray or '16:00' in dietArray or '16:30' in dietArray or '17:00' in diabArray %}
                             <div class="day reserved">16:30</div>
                         {% else %}
                             <div class="day free">16:30</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 7 %}
-                        {% if '17:00' in diabArray or '17:30' in diabArray or '17:00' in dietArray or '17:30' in dietArray %}
+                        {% if '17:00' in diabArray or '17:30' in diabArray or '16:30' in dietArray or '17:00' in dietArray or '17:30' in dietArray %}
                             <div class="day reserved">17:00</div>
                         {% else %}
                             <div class="day free">17:00</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 8 %}
-                        {% if '17:30' in diabArray or '18:00' in diabArray or '17:30' in dietArray %}
+                        {% if '17:30' in diabArray or '18:00' in diabArray or '17:00' in dietArray or '17:30' in dietArray %}
                             <div class="day reserved">17:30</div>
                         {% else %}
                             <div class="day free">17:30</div>
@@ -184,35 +184,35 @@
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 2 %}
-                        {% if '10:30' in diabArray or '11:00' in diabArray or '10:30' in dietArray or '11:00' in dietArray %}
+                        {% if '10:30' in diabArray or '11:00' in diabArray or '10:00' in dietArray or '10:30' in dietArray or '11:00' in dietArray %}
                             <div class="day reserved">10:30</div>
                         {% else %}
                             <div class="day free">10:30</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 3 %}
-                        {% if '11:00' in diabArray or '11:30' in diabArray or '11:00' in dietArray or '11:30' in dietArray %}
+                        {% if '11:00' in diabArray or '11:30' in diabArray or '10:30' in dietArray or '11:00' in dietArray or '11:30' in dietArray %}
                             <div class="day reserved">11:00</div>
                         {% else %}
                             <div class="day free">11:00</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 4 %}
-                        {% if '11:30' in diabArray or '12:00' in diabArray or '11:30' in dietArray or '12:00' in dietArray %}
+                        {% if '11:30' in diabArray or '12:00' in diabArray or '11:00' in dietArray or '11:30' in dietArray or '12:00' in dietArray %}
                             <div class="day reserved">11:30</div>
                         {% else %}
                             <div class="day free">11:30</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 5 %}
-                        {% if '12:00' in diabArray or '12:30' in diabArray or '12:00' in dietArray or '12:30' in dietArray %}
+                        {% if '12:00' in diabArray or '12:30' in diabArray or '11:30' in dietArray or '12:00' in dietArray or '12:30' in dietArray %}
                             <div class="day reserved">12:00</div>
                         {% else %}
                             <div class="day free">12:00</div>
                         {% endif %}
                     {% endif %}
                     {% if loop.index == 6 %}
-                        {% if '12:30' in diabArray or '13:00' in diabArray or '12:30' in dietArray %}
+                        {% if '12:30' in diabArray or '13:00' in diabArray or '12:00' in dietArray or '12:30' in dietArray %}
                             <div class="day reserved">12:30</div>
                         {% else %}
                             <div class="day free">12:30</div>
