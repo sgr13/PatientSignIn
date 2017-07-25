@@ -3,7 +3,9 @@
 namespace PatientBundle\Controller;
 
 
+use PatientBundle\Entity\Appointment;
 use PatientBundle\Entity\Calendar;
+use PatientBundle\Entity\Visit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -11,6 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Validator\Exception\ValidatorException;
 
 class RegisterController extends Controller
 {
@@ -60,8 +63,6 @@ class RegisterController extends Controller
      */
     public function selectHourAction(Request $request, $year, $month, $day, $noDay)
     {
-
-
         $month = str_split($month);
         if ($month[0] == 0) {
             $month[0] = '';
@@ -73,7 +74,6 @@ class RegisterController extends Controller
         $session->set('month', $month);
         $session->set('day', $day);
         $session->set('noDay', $noDay);
-        var_dump($_SESSION);
 
         $calendarRepository = $this->getDoctrine()->getRepository('PatientBundle:Appointment');
         $visits = $calendarRepository->findAll();
@@ -98,7 +98,6 @@ class RegisterController extends Controller
         }
 
         $visitType = $session->get('visitType');
-
         return $this->render('PatientBundle:Register:selectHour.html.twig', array(
             'daySchedule' => $daySchedule,
             'noDay' => $noDay,
@@ -112,10 +111,33 @@ class RegisterController extends Controller
     }
 
     /**
-     * @Route("/selectVisitType")
+     * @Route("/selectVisitType", name="selectVisitType")
      */
     public function selectVisitTypeAction(Request $request)
     {
+//        function hourFilter($hour)
+//        {
+//            if ($hour[2] == 5) {
+//                $hour[2] = 3;
+//            }
+//            $result = [];
+//            $j = 0;
+//            for ($i = 0; $i != 5; $i ++) {
+//                if ($i == 2) {
+//                    $result[$i] = ':';
+//                } else {
+//                    $result[$i] = $hour[$j];
+//                    $j++;
+//                }
+//            }
+//            $result = implode('', $result);
+//            return $result;
+//        }
+//        $y = '1630';
+//        $x = hourFilter($y);
+//        var_dump($x); die();
+
+
         if ($request->request->get('visitType')) {
             $visitType = $request->request->get('visitType');
             $session = $request->getSession();
@@ -154,15 +176,15 @@ class RegisterController extends Controller
         $session->set('phone', $request->request->get('phone'));
         $phone = $request->request->get('phone');
         $randomNumber = mt_rand(100000, 999999);
-        var_dump($randomNumber);
         $session->set('code', $randomNumber);
+        var_dump($randomNumber);
 
-        mail(
-            '+48' . $phone . '@text.plusgsm.pl',
-            '',
-            'Kod: ' . $randomNumber,
-            "From: dr Manuela Drozd-Sypien"
-        );
+//        mail(
+//            '+48' . $phone . '@text.plusgsm.pl',
+//            '',
+//            'Kod: ' . $randomNumber,
+//            "From: drManuelaDrozd-Sypien"
+//        );
 
         return $this->render('PatientBundle:Register:phoneConfirmation.html.twig', array(// ...
         ));
@@ -175,13 +197,29 @@ class RegisterController extends Controller
     {
         $code = $request->request->get('code');
         $session = $request->getSession();
-        var_dump($code);
-        var_dump($session->get('code'));
 
         if ($code == $session->get('code')) {
-            return new Response("YEAHHHHHHHHHHH");
+            $appointment = new Appointment();
+            $appointment->setPhone($session->get('phone'));
+            $appointment->setYear($session->get('year'));
+            $appointment->setMonth($session->get('month'));
+            $appointment->setDay($session->get('day'));
+            $appointment->setDayOfWeek($session->get('noDay'));
+            $appointment->setHour($session->get('hour'));
+            $appointment->setName($session->get('name'));
+            $appointment->setSurname($session->get('surname'));
+            $appointment->setVisitType($session->get('visitType'));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($appointment);
+            $em->flush();
+
+            return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
+            'appointment' => $appointment
+            ));
+
         } else {
-            return new Response("NOOOOOOOOOOOOO");
+            throw new ValidatorException("Podano niewłaściwy kod.");
         }
     }
 

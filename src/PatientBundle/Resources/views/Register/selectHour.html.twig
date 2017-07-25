@@ -7,64 +7,77 @@
         <h2 style="text-align: center">Krok 3: Wybierz godzinę wizyty:</h2>
         {% if noDay == 2 %}
             <h2>Wtorek {{ day }}.{{ month }}.{{ year }}</h2>
+            {% set k = 1400 %}
             {% if visitType == 'diab' %}
-                {% for i in 1..10 %}
-                    {% if loop.index == 1 %}
-                        {% if '14:00' in diabArray or '14:00' in dietArray %}
-                            <div class="day reserved">14:00</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '14:00'}) }}"><div class="day free">14:00</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 2 %}
-                        {% if '14:30' in diabArray or '14:30' in dietArray or '14:00' in dietArray %}
-                            <div class="day reserved">14:30</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '14:30'}) }}"><div class="day free">14:30</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 3 %}
-                        {% if '15:00' in diabArray or '15:00' in dietArray or '14:30' in dietArray %}
-                            <div class="day reserved">15:00</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '15:00'}) }}"><div class="day free">15:00</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 4 %}
-                        {% if '15:30' in diabArray or '15:30' in dietArray or '15:00' in dietArray %}
-                            <div class="day reserved">15:30</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '15:30'}) }}"><div class="day free">15:30</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 5 %}
-                        {% if '16:00' in diabArray or '16:00' in dietArray or '15:30' in dietArray %}
-                            <div class="day reserved">16:00</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '16:00'}) }}"><div class="day free">16:00</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 6 %}
-                        {% if '16:30' in diabArray or '16:30' in dietArray or '16:00' in dietArray %}
-                            <div class="day reserved">16:30</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '16:30'}) }}"><div class="day free">16:30</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 7 %}
-                        {% if '17:00' in diabArray or '17:00' in dietArray or '16:30' in dietArray %}
-                            <div class="day reserved">17:00</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '17:00'}) }}"><div class="day free">17:00</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 8 %}
-                        {% if '17:30' in diabArray or '17:30' in dietArray or '17:00' in dietArray %}
-                            <div class="day reserved">17:30</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '17:30'}) }}"><div class="day free">17:30</div></a>
-                        {% endif %}
-                    {% elseif loop.index == 9 %}
-                        {% if '17:30' in diabArray or '17:30' in dietArray or '17:00' in dietArray %}
-                            <div class="day reserved">18:00</div>
-                        {% else %}
-                            <a href="{{ path('patientData', {'hour': '18:00'}) }}"><div class="day free">18:00</div></a>
-                        {% endif %}
+                {% for i in 1..9 %}
+                    {% set dietVisit = k - 50 %}
+                    {% if  k|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray %}
+                        <div class="day reserved">{{ k|baseConvert }}</div>
+                    {% else %}
+                        <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
                     {% endif %}
+                    {% set k = k + 50 %}
                 {% endfor %}
+
+
+
+                {#{% for i in 1..10 %}#}
+                    {#{% if loop.index == 1 %}#}
+                        {#{% if '14:00' in diabArray or '14:00' in dietArray %}#}
+                            {#<div class="day reserved">14:00</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '14:00'}) }}"><div class="day free">14:00</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 2 %}#}
+                        {#{% if '14:30' in diabArray or '14:30' in dietArray or '14:00' in dietArray %}#}
+                            {#<div class="day reserved">14:30</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '14:30'}) }}"><div class="day free">14:30</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 3 %}#}
+                        {#{% if '15:00' in diabArray or '15:00' in dietArray or '14:30' in dietArray %}#}
+                            {#<div class="day reserved">15:00</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '15:00'}) }}"><div class="day free">15:00</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 4 %}#}
+                        {#{% if '15:30' in diabArray or '15:30' in dietArray or '15:00' in dietArray %}#}
+                            {#<div class="day reserved">15:30</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '15:30'}) }}"><div class="day free">15:30</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 5 %}#}
+                        {#{% if '16:00' in diabArray or '16:00' in dietArray or '15:30' in dietArray %}#}
+                            {#<div class="day reserved">16:00</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '16:00'}) }}"><div class="day free">16:00</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 6 %}#}
+                        {#{% if '16:30' in diabArray or '16:30' in dietArray or '16:00' in dietArray %}#}
+                            {#<div class="day reserved">16:30</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '16:30'}) }}"><div class="day free">16:30</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 7 %}#}
+                        {#{% if '17:00' in diabArray or '17:00' in dietArray or '16:30' in dietArray %}#}
+                            {#<div class="day reserved">17:00</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '17:00'}) }}"><div class="day free">17:00</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 8 %}#}
+                        {#{% if '17:30' in diabArray or '17:30' in dietArray or '17:00' in dietArray %}#}
+                            {#<div class="day reserved">17:30</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '17:30'}) }}"><div class="day free">17:30</div></a>#}
+                        {#{% endif %}#}
+                    {#{% elseif loop.index == 9 %}#}
+                        {#{% if '17:30' in diabArray or '17:30' in dietArray or '17:00' in dietArray %}#}
+                            {#<div class="day reserved">18:00</div>#}
+                        {#{% else %}#}
+                            {#<a href="{{ path('patientData', {'hour': '18:00'}) }}"><div class="day free">18:00</div></a>#}
+                        {#{% endif %}#}
+                    {#{% endif %}#}
+                {#{% endfor %}#}
             {% else %}
                 {% for i in 1..8 %}
                     {% if loop.index == 1 %}

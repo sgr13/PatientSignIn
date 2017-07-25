@@ -1,4 +1,8 @@
 services:
+    app.twig.app_extension:
+        class: PatientBundle\Twig\AppExtension
+        tags:
+            - { name: twig.extension }
 #    patient.example:
 #        class: PatientBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Register:Podsumowanie{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Podsumowanie wizyty:</h1>
+        <p>Imię: {{ appointment.getName }}</p>
+        <p>Nazwisko: {{ appointment.getSurname }}</p>
+        <p>Rodzaj wizyty:
+            {% if appointment.getVisitType == 'diab' %}
+                Diabetologiczna
+            {% else %}
+                Dietetyczna
+            {% endif %}
+        </p>
+        <p>Data Wizyty: {{ appointment.getDay }}.{{ appointment.getMonth }}.{{ appointment.getYear }} r.</p>
+        <p>Godzina: {{ appointment.getHour }}</p>
+        <p>W razie potrzeby odwołania wizyty prosimy o skorzystanie z opcji "Odwołaj wizytę" na stronie głównej.</p>
+    </div>
+    <div>
+        <a href="{{ path('selectVisitType') }}">Powrót</a>
+    </div>
+
+{% endblock %}
