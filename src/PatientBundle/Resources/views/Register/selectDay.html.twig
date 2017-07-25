@@ -44,7 +44,7 @@
                         {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
                             <td></td>
                         {% elseif day < calendar.getDaysInMonth + 1 %}
-                            {% if j == 2 or j == 5 %}
+                            {% if j == 2 or j == 4 %}
                                 <td style="font-size: 120%; color: red">
                                     <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none">
                                         <b>{{ day }}</b>
@@ -63,6 +63,3 @@
         </table>
     </div>
 {% endblock %}
-
-
-{#href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}">#}

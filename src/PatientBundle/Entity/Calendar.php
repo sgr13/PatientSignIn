@@ -137,13 +137,4 @@ class Calendar
             $this->numberOfWeeksInMonth = 5;
         }
     }
-
-    public function decreaseMonth()
-    {
-        if ($this->month != 01) {
-            $this->month = $this->month - 1;
-            var_dump($this->month);
-        }
-    }
-
 }
