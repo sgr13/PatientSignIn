@@ -25,6 +25,9 @@ class RegisterController extends Controller
         $calendar = new Calendar();
         $selectedMonth = $calendar->getMonth();
         $selectedYear = $calendar->getYear();
+//        $currentYear = ;
+//        $currentMonth = ;
+//        $currentDay = ;
 
         if ($request->request->get('selectMonth')) {
             $selectedMonth = $request->request->get('selectMonth');
@@ -115,29 +118,6 @@ class RegisterController extends Controller
      */
     public function selectVisitTypeAction(Request $request)
     {
-//        function hourFilter($hour)
-//        {
-//            if ($hour[2] == 5) {
-//                $hour[2] = 3;
-//            }
-//            $result = [];
-//            $j = 0;
-//            for ($i = 0; $i != 5; $i ++) {
-//                if ($i == 2) {
-//                    $result[$i] = ':';
-//                } else {
-//                    $result[$i] = $hour[$j];
-//                    $j++;
-//                }
-//            }
-//            $result = implode('', $result);
-//            return $result;
-//        }
-//        $y = '1630';
-//        $x = hourFilter($y);
-//        var_dump($x); die();
-
-
         if ($request->request->get('visitType')) {
             $visitType = $request->request->get('visitType');
             $session = $request->getSession();

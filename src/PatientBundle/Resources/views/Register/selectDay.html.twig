@@ -37,6 +37,9 @@
                 <th class="days">Sb</th>
                 <th class="days">Nd</th>
             </tr>
+            {{ "now"|date("Y") }} - {{ calendar.getYear }}
+            {{ "now"|date("n") }} - {{ calendar.getMonth }}
+            {{ "now"|date("j") }} - {{ calendar.getDay }}
             {% set day = 1 %}
             {% for i in 1..calendar.getNumberOfWeeksInMonth %}
                 <tr>
@@ -44,16 +47,27 @@
                         {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
                             <td></td>
                         {% elseif day < calendar.getDaysInMonth + 1 %}
-                            {% if j == 2 or j == 4 %}
-                                <td style="font-size: 120%; color: red">
-                                    <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none">
-                                        <b>{{ day }}</b>
-                                    </a>
-                                </td>
+                            {% if ((calendar.getYear ==  "now"|date("Y") and calendar.getMonth == "now"|date("n") and day >= "now"|date("j")) or (calendar.getYear > "now"|date("Y")) or (calendar.getYear == "now"|date("Y") and calendar.getMonth > "now"|date("n"))) %}
+                                {% if j == 2 or j == 4 %}
+                                    <td style="font-size: 120%; color: red">
+                                        <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none">
+                                            <b>{{ day }}</b>
+                                        </a>
+                                    </td>
+                                {% else %}
+                                    <td>{{ day }}</td>
+                                {% endif %}
+                                {% set day = day + 1 %}
                             {% else %}
-                                <td>{{ day }}</td>
+                                {% if j == 2 or j == 4 %}
+                                    <td style="font-size: 120%; background-color: gray; opacity: 0.7">
+                                            <b>{{ day }}</b>
+                                    </td>
+                                {% else %}
+                                    <td style="background-color: gray; opacity: 0.7 ">{{ day }}</td>
+                                {% endif %}
+                                {% set day = day + 1 %}
                             {% endif %}
-                            {% set day = day + 1 %}
                         {% else %}
                             <td></td>
                         {% endif %}
