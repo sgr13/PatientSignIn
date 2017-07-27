@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:AdminPanel:showAll{% endblock %}
+
+{% block body %}
+<h1>Welcome to the AdminPanel:showAll page</h1>
+    <form method="post" action="{{ asset('showAll') }}">
+        <select style="font-size: 150%" name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ visitYear }}">
+            <option value="2017" id="2017">2017</option>
+            <option value="2018" id="2018">2018</option>
+        </select>
+        <select style="font-size: 150%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ visitMonth }}">
+            <option value="1" id="jan" >Styczeń</option>
+            <option value="2" id="feb" >Luty</option>
+            <option value="3" id="mar" >Marzec</option>
+            <option value="4" id="apr" >Kwiecień</option>
+            <option value="5" id="may" >Maj</option>
+            <option value="6" id="jun" >Czerwiec</option>
+            <option value="7" id="jul" >Lipiec</option>
+            <option value="8" id="aug" >Sierpień</option>
+            <option value="9" id="sep" >Wrzesień</option>
+            <option value="10" id="oct" >Październik</option>
+            <option value="11" id="nov" >Listopad</option>
+            <option value="12" id="dec" >Grudzień</option>
+        </select>
+        <select style="font-size: 150%" name="selectDay" onchange="form.submit()" id="daySelection" year="{{ visitYear }}">
+            {% for i in 1..31 %}
+                <option>{{ loop.index }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    {% for visit in visits %}
+        <p>Data wizyty: {{ visit.day }}.{{ visit.month }}.{{ visit.year }} r.</p>
+        <p>Godzina wizyty: {{ visit.hour }}</p>
+        <p>Dane pacjenta: {{ visit.surname }} {{ visit.name }} | {{ visit.phone }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}

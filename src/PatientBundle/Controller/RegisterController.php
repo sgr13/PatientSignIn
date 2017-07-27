@@ -25,9 +25,6 @@ class RegisterController extends Controller
         $calendar = new Calendar();
         $selectedMonth = $calendar->getMonth();
         $selectedYear = $calendar->getYear();
-//        $currentYear = ;
-//        $currentMonth = ;
-//        $currentDay = ;
 
         if ($request->request->get('selectMonth')) {
             $selectedMonth = $request->request->get('selectMonth');

@@ -14,13 +14,6 @@ class AppointmentRepository extends EntityRepository
 {
     public function findDay($year, $month, $day)
     {
-//        $dino = $this->getEntityManager()->createQuery(
-//            'SELECT p from DinoCompareBundle:DinoData p WHERE p.name LIKE :text')
-//            ->setParameter('text', '%' . $text . '%')
-//            ->getResult();
-//
-//        return $dino;
-
         $daySchedule = $this->getEntityManager()->createQuery(
             'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day')
             ->setParameter('year', $year)
@@ -29,5 +22,17 @@ class AppointmentRepository extends EntityRepository
             ->getResult();
 
         return $daySchedule;
+    }
+
+    public function findVisitsByMonth($year, $month, $day)
+    {
+        $visits = $this->getEntityManager()->createQuery(
+            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day ORDER BY p.hour')
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->setParameter('day', $day)
+            ->getResult();
+
+        return $visits;
     }
 }
