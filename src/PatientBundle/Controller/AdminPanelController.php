@@ -14,17 +14,22 @@ class AdminPanelController extends Controller
     public function showAllAction(Request $request)
     {
         $visitYear = 2017;
-        $visitMonth = 1;
-        $visitDay = 1;
+        $visitMonth = date('n');
+        $visitDay = date('j');
         $em = $this->getDoctrine()->getManager();
-        $visits = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
-
-
-        if ($request->request->get('selectMonth') || $request->request->get('selectYear')) {
+        $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
+        $days = [];
+        foreach($visits as $visit) {
+            if (!in_array($visit->getDay(), $days)) {
+                $days[] = $visit->getDay();
+            }
+        }
+        sort($days);
+        if ($request->request->get('selectMonth') || $request->request->get('selectYear') || $request->request->get('selectDay')) {
             $visitMonth = $request->request->get('selectMonth');
             $visitYear = $request->request->get('selectYear');
             $visitDay = $request->request->get('selectDay');
-            $visit = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
+            $visita = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
             $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
             $days = [];
             foreach($visits as $visit) {
@@ -33,7 +38,15 @@ class AdminPanelController extends Controller
                 }
             }
             sort($days);
-            var_dump($days);
+
+            return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
+                'visitMonth' => $visitMonth,
+                'visits' => $visits,
+                'days' =>$days,
+                'visit' => $visita,
+                'visitYear' => $visitYear,
+                'visitDay' => $visitDay
+            ));
         }
         return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
             'visitMonth' => $visitMonth,

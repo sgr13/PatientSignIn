@@ -88,3 +88,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+#patientVisit, th, tr, td {
+    border: solid 1px black;
+}
