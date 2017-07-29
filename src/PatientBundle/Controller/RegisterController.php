@@ -17,6 +17,25 @@ use Symfony\Component\Validator\Exception\ValidatorException;
 
 class RegisterController extends Controller
 {
+    //1. Pacjent wybiera rodzaj wizyty, jeżeli wybór został poprawnie dokonany
+    // zostaje przekierowany do wyboru dnia wizyty.
+    /**
+     * @Route("/selectVisitType", name="selectVisitType")
+     */
+    public function selectVisitTypeAction(Request $request)
+    {
+        if ($request->request->get('visitType')) {
+            $visitType = $request->request->get('visitType');
+            $session = $request->getSession();
+            $session->set('visitType', $visitType);
+            return $this->redirect('selectDay');
+        }
+        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(// ...
+        ));
+    }
+
+    //2. Pacjent wybiera dzień wizyty - z pomocą przychodzi klasa Calendar
+    // tworząca graficzną prezentację.
     /**
      * @Route("/selectDay")
      */
@@ -26,10 +45,12 @@ class RegisterController extends Controller
         $selectedMonth = $calendar->getMonth();
         $selectedYear = $calendar->getYear();
 
+        // 2a. Jeżeli dokonano zmiany miesiąca, dane zostają zaktualizowane
         if ($request->request->get('selectMonth')) {
             $selectedMonth = $request->request->get('selectMonth');
         }
 
+        // 2b. Jeżeli dokonano zmiany roku, dane zostają zaktualizowane
         if ($request->request->get('selectYear')) {
             $selectedYear = $request->request->get('selectYear');
         }
@@ -40,55 +61,38 @@ class RegisterController extends Controller
         ));
     }
 
-    /**
-     * @Route("/add")
-     */
-    public function addAction()
-    {
-        return $this->render('PatientBundle:Register:add.html.twig', array(// ...
-        ));
-    }
-
-    /**
-     * @Route("/remove")
-     */
-    public function removeAction()
-    {
-        return $this->render('PatientBundle:Register:remove.html.twig', array(// ...
-        ));
-    }
-
+    // 3.Pacjent wybiera godzinę wizyty. Należy wziąć pod uwagę fakt, iż wizyta dietetyczna trwa 60 minut
+    // natomiast diabetologiczna 30 minut.
     /**
      * @Route("/selectHour/{year}/{month}/{day}/{noDay}", name="selectHour")
      */
     public function selectHourAction(Request $request, $year, $month, $day, $noDay)
     {
         $em = $this->getDoctrine()->getManager();
+        // 3a. Zamieniamy zapis miesiąca z postaci np. 07 na 7
         $month = str_split($month);
         if ($month[0] == 0) {
             $month[0] = '';
         }
         $month = implode('', $month);
 
+        //3b. Jeżeli dany dzień został zablokowany przez administartora i znajduje się
+        // w bazie danych BlockDay, pacjent zostaje poinformowany o braku możliwości rejestracji.
         if ($em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day)) {
             return $this->render('PatientBundle:Register:changeVisitDay.html.twig', array(// ...
             ));
         }
 
+        // 3c. Zapisujemy otrzymane dane do sesji
         $session = $request->getSession();
         $session->set('year', $year);
         $session->set('month', $month);
         $session->set('day', $day);
         $session->set('noDay', $noDay);
 
-        $calendarRepository = $this->getDoctrine()->getRepository('PatientBundle:Appointment');
-        $visits = $calendarRepository->findAll();
-
-        if (!$visits) {
-            throw new NotFoundHttpException('Błąd połączenia z baza danych');
-        }
+        //3d. Odnajdujemy wszystkie wizyty w danym dniu a anstępnie tworzymy dwie tablice,
+        // odpowiednio dla wizyt diabetologicznych i dietetycznych.
         $daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day);
-
         $diabArray = [];
         $dietArray = [];
 
@@ -98,7 +102,6 @@ class RegisterController extends Controller
             } else {
                 $dietArray[] = $value->getHour();
             }
-
         }
 
         $visitType = $session->get('visitType');
@@ -114,22 +117,7 @@ class RegisterController extends Controller
         ));
     }
 
-    /**
-     * @Route("/selectVisitType", name="selectVisitType")
-     */
-    public function selectVisitTypeAction(Request $request)
-    {
-        if ($request->request->get('visitType')) {
-            $visitType = $request->request->get('visitType');
-            $session = $request->getSession();
-            $session->set('visitType', $visitType);
-            return $this->redirect('selectDay');
-        }
-
-        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(// ...
-        ));
-    }
-
+    //4. Zapisujemy w sesji wybraną przez pacjenta godzinę.
     /**
      * @Route("patientData/{hour}", name="patientData")
      */
@@ -142,6 +130,8 @@ class RegisterController extends Controller
         ));
     }
 
+    //5. Potwierdzamy dane pacjenta wysyłając sms-a na podany numer telefonu(tylko PLUS w tej formie).
+    // W tresci sms-a przekazujemy losowo wybraną liczbę.
     /**
      * @Route("/patientDataConfirmation")
      */
@@ -150,7 +140,6 @@ class RegisterController extends Controller
         if (!$request->request->get('name') || !$request->request->get('surname') || !$request->request->get('phone')) {
             throw new InvalidArgumentException("Nie podano wszystkich danych lub podane dane są niewłaściwe!");
         }
-
         $session = $request->getSession();
         $session->set('name', $request->request->get('name'));
         $session->set('surname', $request->request->get('surname'));
@@ -171,6 +160,8 @@ class RegisterController extends Controller
         ));
     }
 
+    //6. Zapisujemy wszystkie dane do bazy danych jeżeli wprowadzony kod zgadza się z kodem wysłanym
+    // w sms-ie.
     /**
      * @Route("/saveVisit")
      */
@@ -195,7 +186,6 @@ class RegisterController extends Controller
             $em->persist($appointment);
             $em->flush();
 
-
             return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
             'appointment' => $appointment
             ));
@@ -204,5 +194,4 @@ class RegisterController extends Controller
             throw new ValidatorException("Podano niewłaściwy kod.");
         }
     }
-
 }
