@@ -60,11 +60,16 @@ class AdminPanelController extends Controller
     }
 
     /**
-     * @Route("/cancelVisit")
+     * @Route("/cancelVisit/{hour}/{day}/{month}/{year}", name="cancelVisit")
      */
-    public function cancelVisitAction()
+    public function cancelVisitAction(Request $request, $hour, $day, $month, $year)
     {
-        return $this->render('PatientBundle:AdminPanel:cancel_visit.html.twig', array(// ...
+        $em = $this->getDoctrine()->getManager();
+        $visit = $em->getRepository('PatientBundle:Appointment')->findVisitByHour($year, $month, $day, $hour);
+        $em->remove($visit[0]);
+        $em->flush();
+        return $this->render('PatientBundle:AdminPanel:cancel_visit.html.twig', array(
+            'visit' => $visit[0]
         ));
     }
 

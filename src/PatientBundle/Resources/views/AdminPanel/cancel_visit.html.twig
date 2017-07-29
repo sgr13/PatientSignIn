@@ -3,5 +3,15 @@
 {% block title %}PatientBundle:AdminPanel:cancelVisit{% endblock %}
 
 {% block body %}
-<h1>Welcome to the AdminPanel:cancelVisit page</h1>
+    <div style="text-align: center">
+        <h1>Odwołano wizytę:</h1>
+        <ul>
+            <li>{{ visit.day }}/{{ visit.month }}/{{ visit.year }} r.</li>
+            <li>{{ visit.hour }}</li>
+            <li>{{ visit.surname }} , {{ visit.name }}</li>
+            <li>{{ visit.phone }}</li>
+        </ul>
+        <a href="{{ asset('admin') }}"><button>OK</button></a>
+    </div>
+
 {% endblock %}

@@ -28,8 +28,8 @@
       <file leaf-file-name="AdminPanelController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/AdminPanelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7326733" vertical-offset="1716" max-vertical-offset="2646">
-              <caret line="120" column="103" selection-start-line="120" selection-start-column="103" selection-end-line="120" selection-end-column="103" />
+            <state vertical-scroll-proportion="0.4669967" vertical-offset="887" max-vertical-offset="2736">
+              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
               <folding>
                 <element signature="e#44#78#0#PHP" expanded="true" />
               </folding>
@@ -37,56 +37,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/admin.html.twig">
+      <file leaf-file-name="show_all.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/show_all.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="306">
-              <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+            <state vertical-scroll-proportion="-15.592592" vertical-offset="515" max-vertical-offset="1152">
+              <caret line="52" column="135" selection-start-line="52" selection-start-column="135" selection-end-line="52" selection-end-column="135" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="block_visit.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/block_visit.html.twig">
+      <file leaf-file-name="selectHour.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6666667" vertical-offset="126" max-vertical-offset="1476">
-              <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+            <state vertical-scroll-proportion="-2.0" vertical-offset="432" max-vertical-offset="1188">
+              <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blockedDay.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig">
+      <file leaf-file-name="cancel_visit.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/cancel_visit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="378">
-              <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlockDayRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/BlockDayRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.111111" vertical-offset="114" max-vertical-offset="828">
-              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="414">
+              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
               <folding>
-                <marker date="1501365817159" expanded="true" signature="394:500" placeholder="Select p fro..PatientBundle..." />
-                <marker date="1501365817159" expanded="true" signature="827:931" placeholder="Delete from ..." />
-                <marker date="1501365817159" expanded="true" signature="833:931" placeholder="Select p fro..PatientBundle..." />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="selectDay.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectDay.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.0" vertical-offset="216" max-vertical-offset="1476">
-              <caret line="18" column="53" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -94,36 +72,13 @@
       <file leaf-file-name="AppointmentRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="990">
-              <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+            <state vertical-scroll-proportion="-9.777778" vertical-offset="618" max-vertical-offset="1224">
+              <caret line="49" column="35" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="35" />
               <folding>
-                <marker date="1501317812892" expanded="true" signature="400:509" placeholder="Select p fro..PatientBundle..." />
-                <marker date="1501317812892" expanded="true" signature="838:963" placeholder="Select p fro..PatientBundle..." />
-                <marker date="1501317812892" expanded="true" signature="1274:1363" placeholder="Select p fro..PatientBundle..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.740741" vertical-offset="952" max-vertical-offset="3852">
-              <caret line="72" column="85" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="85" />
-              <folding>
-                <element signature="e#45#82#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changeVisitDay.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/changeVisitDay.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="288">
-              <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-              <folding>
-                <element signature="e#130#156#0#HTML" expanded="true" />
+                <marker date="1501367176983" expanded="true" signature="400:509" placeholder="Select p fro..PatientBundle..." />
+                <marker date="1501367176983" expanded="true" signature="838:963" placeholder="Select p fro..PatientBundle..." />
+                <marker date="1501367176983" expanded="true" signature="1274:1363" placeholder="Select p fro..PatientBundle..." />
+                <marker date="1501367176983" expanded="true" signature="1651:1782" placeholder="Select p fro..PatientBundle..." />
               </folding>
             </state>
           </provider>
@@ -151,8 +106,6 @@
         <option value="$PROJECT_DIR$/src/PatientBundle/Twig/AppExtension.php" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Entity/Calendar.php" />
-        <option value="$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php" />
-        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/show_all.html.twig" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/admin.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectDay.html.twig" />
@@ -162,6 +115,9 @@
         <option value="$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Repository/BlockDayRepository.php" />
+        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/show_all.html.twig" />
+        <option value="$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php" />
+        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/cancel_visit.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Controller/AdminPanelController.php" />
       </list>
     </option>
@@ -486,8 +442,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/web/css" />
       <recent name="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel" />
+      <recent name="$PROJECT_DIR$/web/css" />
       <recent name="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register" />
       <recent name="$PROJECT_DIR$/src/PatientBundle/Controller" />
       <recent name="$PROJECT_DIR$/web/js" />
@@ -835,14 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/show_all.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7092084" vertical-offset="443" max-vertical-offset="1152">
-          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8885449" vertical-offset="1370" max-vertical-offset="2070">
@@ -855,14 +803,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41584158" vertical-offset="0" max-vertical-offset="756">
           <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0" vertical-offset="0" max-vertical-offset="1188">
-          <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
           <folding />
         </state>
       </provider>
@@ -893,32 +833,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/cancel_visit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="234">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.740741" vertical-offset="952" max-vertical-offset="3852">
           <caret line="72" column="85" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="85" />
           <folding>
             <element signature="e#45#82#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="990">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-          <folding>
-            <marker date="1501317812892" expanded="true" signature="400:509" placeholder="Select p fro..PatientBundle..." />
-            <marker date="1501317812892" expanded="true" signature="838:963" placeholder="Select p fro..PatientBundle..." />
-            <marker date="1501317812892" expanded="true" signature="1274:1363" placeholder="Select p fro..PatientBundle..." />
           </folding>
         </state>
       </provider>
@@ -952,17 +872,56 @@
         <state vertical-scroll-proportion="-15.111111" vertical-offset="114" max-vertical-offset="828">
           <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
           <folding>
-            <marker date="1501365817159" expanded="true" signature="394:500" placeholder="Select p fro..PatientBundle..." />
-            <marker date="1501365817159" expanded="true" signature="827:931" placeholder="Delete from ..." />
-            <marker date="1501365817159" expanded="true" signature="833:931" placeholder="Select p fro..PatientBundle..." />
+            <marker date="1501365817159" expanded="true" signature="-1:-1" placeholder="Select p fro..PatientBundle..." />
+            <marker date="1501365817159" expanded="true" signature="-1:-1" placeholder="Delete from ..." />
+            <marker date="1501365817159" expanded="true" signature="-1:-1" placeholder="Select p fro..PatientBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0" vertical-offset="432" max-vertical-offset="1188">
+          <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/show_all.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.592592" vertical-offset="515" max-vertical-offset="1152">
+          <caret line="52" column="135" selection-start-line="52" selection-start-column="135" selection-end-line="52" selection-end-column="135" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.777778" vertical-offset="618" max-vertical-offset="1224">
+          <caret line="49" column="35" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="35" />
+          <folding>
+            <marker date="1501367176983" expanded="true" signature="400:509" placeholder="Select p fro..PatientBundle..." />
+            <marker date="1501367176983" expanded="true" signature="838:963" placeholder="Select p fro..PatientBundle..." />
+            <marker date="1501367176983" expanded="true" signature="1274:1363" placeholder="Select p fro..PatientBundle..." />
+            <marker date="1501367176983" expanded="true" signature="1651:1782" placeholder="Select p fro..PatientBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/cancel_visit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="414">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/AdminPanelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7326733" vertical-offset="1716" max-vertical-offset="2646">
-          <caret line="120" column="103" selection-start-line="120" selection-start-column="103" selection-end-line="120" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.4669967" vertical-offset="887" max-vertical-offset="2736">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
             <element signature="e#44#78#0#PHP" expanded="true" />
           </folding>

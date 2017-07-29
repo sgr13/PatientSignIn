@@ -50,7 +50,7 @@
                     <td>{{ visit.visitType }}</td>
                     <td>{{ visit.surname }} {{ visit.name }}</td>
                     <td>{{ visit.phone }}</td>
-                    <td><a href="#">Odwołaj</a></td>
+                    <td><a href="{{ path('cancelVisit', {'hour': visit.hour, 'day': visit.day, 'month': visit.month, 'year': visit.year}) }}">Odwołaj</a></td>
                 </tr>
             {% endfor %}
         </table>
