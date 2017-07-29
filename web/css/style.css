@@ -92,3 +92,19 @@ a {
 #patientVisit, th, tr, td {
     border: solid 1px black;
 }
+
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    background-color: red;
+    border: solid 1px black;
+    float: left;
+    text-align: center;
+}
+
+.box span {
+    font-size: 120%;
+    display: block;
+    padding-top: 80px;
+}

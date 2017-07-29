@@ -84,4 +84,14 @@ class AdminPanelController extends Controller
         ));
     }
 
+    /**
+     * @Route("/admin")
+     */
+    public function adminAction()
+    {
+        return $this->render('PatientBundle:AdminPanel:admin.html.twig', array(
+        // ...
+        ));
+    }
+
 }
