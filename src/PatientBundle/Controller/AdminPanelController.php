@@ -16,19 +16,29 @@ class AdminPanelController extends Controller
         $visitYear = 2017;
         $visitMonth = 1;
         $visitDay = 1;
+        $em = $this->getDoctrine()->getManager();
+        $visits = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
 
-        if ($request->request->get('selectMonth') || $request->request->get('selectYear') || $request->request->get('selectDay')) {
+
+        if ($request->request->get('selectMonth') || $request->request->get('selectYear')) {
             $visitMonth = $request->request->get('selectMonth');
             $visitYear = $request->request->get('selectYear');
             $visitDay = $request->request->get('selectDay');
-            $em = $this->getDoctrine()->getManager();
-            $visits = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
+            $visit = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
+            $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
+            $days = [];
+            foreach($visits as $visit) {
+                if (!in_array($visit->getDay(), $days)) {
+                    $days[] = $visit->getDay();
+                }
+            }
+            sort($days);
+            var_dump($days);
         }
-
-
         return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
             'visitMonth' => $visitMonth,
             'visits' => $visits,
+            'days' =>$days,
             'visitYear' => $visitYear,
             'visitDay' => $visitDay
         ));
@@ -39,8 +49,7 @@ class AdminPanelController extends Controller
      */
     public function addVisitAction()
     {
-        return $this->render('PatientBundle:AdminPanel:add_visit.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:AdminPanel:add_visit.html.twig', array(// ...
         ));
     }
 
@@ -49,8 +58,7 @@ class AdminPanelController extends Controller
      */
     public function cancelVisitAction()
     {
-        return $this->render('PatientBundle:AdminPanel:cancel_visit.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:AdminPanel:cancel_visit.html.twig', array(// ...
         ));
     }
 
@@ -59,8 +67,7 @@ class AdminPanelController extends Controller
      */
     public function deleteOldVisitsAction()
     {
-        return $this->render('PatientBundle:AdminPanel:delete_old_visits.html.twig', array(
-            // ...
+        return $this->render('PatientBundle:AdminPanel:delete_old_visits.html.twig', array(// ...
         ));
     }
 

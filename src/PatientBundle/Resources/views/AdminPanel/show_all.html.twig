@@ -24,16 +24,17 @@
             <option value="12" id="dec" >Grudzień</option>
         </select>
         <select style="font-size: 150%" name="selectDay" onchange="form.submit()" id="daySelection" year="{{ visitYear }}">
-            {% for i in 1..31 %}
-                <option>{{ loop.index }}</option>
+            {% for day in days %}
+                <option>{{ day }}</option>
             {% endfor %}
         </select>
     </form>
-
-    {% for visit in visits %}
-        <p>Data wizyty: {{ visit.day }}.{{ visit.month }}.{{ visit.year }} r.</p>
-        <p>Godzina wizyty: {{ visit.hour }}</p>
-        <p>Dane pacjenta: {{ visit.surname }} {{ visit.name }} | {{ visit.phone }}</p>
-        <hr>
-    {% endfor %}
+    {% if visits is defined %}
+        {% for visit in visits %}
+            <p>Data wizyty: {{ visit.day }}.{{ visit.month }}.{{ visit.year }} r.</p>
+            <p>Godzina wizyty: {{ visit.hour }}</p>
+            <p>Dane pacjenta: {{ visit.surname }} {{ visit.name }} | {{ visit.phone }}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

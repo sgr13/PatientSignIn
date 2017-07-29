@@ -35,4 +35,15 @@ class AppointmentRepository extends EntityRepository
 
         return $visits;
     }
+
+    public function findVisits($year, $month)
+    {
+        $visits = $this->getEntityManager()->createQuery(
+            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month')
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->getResult();
+
+        return $visits;
+    }
 }
