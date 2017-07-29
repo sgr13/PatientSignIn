@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Register:changeVisitDay{% endblock %}
+
+{% block body %}
+    <div style="text-align: center">
+        <p>W wybranym terminie gabinet lekarski jest nieczynny</p>
+        <p>Prosze o wybranie innego terminu</p>
+        <a href="{{ asset('selectDay') }}"><button>OK</button></a>
+    </div>
+{% endblock %}

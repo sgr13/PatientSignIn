@@ -94,8 +94,8 @@ a {
 }
 
 .box {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin: 30px;
     background-color: red;
     border: solid 1px black;
@@ -104,7 +104,7 @@ a {
 }
 
 .box span {
-    font-size: 120%;
+    font-size: 180%;
     display: block;
-    padding-top: 80px;
+    padding-top: 100px;
 }

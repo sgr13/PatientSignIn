@@ -63,11 +63,17 @@ class RegisterController extends Controller
      */
     public function selectHourAction(Request $request, $year, $month, $day, $noDay)
     {
+        $em = $this->getDoctrine()->getManager();
         $month = str_split($month);
         if ($month[0] == 0) {
             $month[0] = '';
         }
         $month = implode('', $month);
+
+        if ($em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day)) {
+            return $this->render('PatientBundle:Register:changeVisitDay.html.twig', array(// ...
+            ));
+        }
 
         $session = $request->getSession();
         $session->set('year', $year);
@@ -81,8 +87,6 @@ class RegisterController extends Controller
         if (!$visits) {
             throw new NotFoundHttpException('Błąd połączenia z baza danych');
         }
-
-        $em = $this->getDoctrine()->getManager();
         $daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day);
 
         $diabArray = [];
@@ -190,6 +194,7 @@ class RegisterController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($appointment);
             $em->flush();
+
 
             return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
             'appointment' => $appointment

@@ -38,6 +38,7 @@
             <tr>
                 <th>Data Wizyty:</th>
                 <th>Godzina wizyty:</th>
+                <th>Rodzaj wizyty</th>
                 <th>Godność:</th>
                 <th>Telefon:</th>
                 <th>Odwołaj:</th>
@@ -46,6 +47,7 @@
                 <tr>
                     <td>{{ visit.day }}.{{ visit.month }}.{{ visit.year }} r.</td>
                     <td>{{ visit.hour }}</td>
+                    <td>{{ visit.visitType }}</td>
                     <td>{{ visit.surname }} {{ visit.name }}</td>
                     <td>{{ visit.phone }}</td>
                     <td><a href="#">Odwołaj</a></td>

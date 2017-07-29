@@ -4,10 +4,9 @@
 
 {% block body %}
     <h1 style="text-align: center">Witaj w panelu administracyjnym</h1>
-    <div style="margin-left: 80px">
-        <a href="#"><div class="box"><span>Pokaż wizyty</span></div></a>
-        <a href="#"><div class="box"><span>Dodaj wizytę</span></div></a>
-        <a href="#"><div class="box"><span>Usuń stare wizyty</span></div></a>
-        <a href="#"><div class="box"><span>???</span></div></a>
+    <div style="margin-left: 120px">
+        <a href="{{ asset('showAll') }}"><div class="box"><span>Pokaż wizyty</span></div></a>
+        <a href="{{ asset('selectVisitType') }}"><div class="box"><span>Dodaj wizytę</span></div></a>
+        <a href="{{ asset('blockVisit') }}"><div class="box"><span>Zablokuj wizyty</span></div></a>
     </div>
 {% endblock %}

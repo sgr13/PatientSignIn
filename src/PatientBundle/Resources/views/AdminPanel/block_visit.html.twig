@@ -6,7 +6,7 @@
     <h1>Welcome to the Register:show page</h1>
     {{ calendar.showCalendar }}
     <div id="calendar" style="margin-left: 25%; margin-right: 25%;">
-        <form action="{{ asset('selectDay') }}" method="post">
+        <form action="{{ asset('blockVisit') }}" method="post">
             <h2 style="text-align: center">Krok 2: Wybierz dzień wizyty:</h2>
             <select style="margin-right: 41%; font-size: 150%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
                 <option value="01" id="jan" >Styczeń</option>
@@ -47,7 +47,7 @@
                             {% if ((calendar.getYear ==  "now"|date("Y") and calendar.getMonth == "now"|date("n") and day >= "now"|date("j")) or (calendar.getYear > "now"|date("Y")) or (calendar.getYear == "now"|date("Y") and calendar.getMonth > "now"|date("n"))) %}
                                 {% if j == 2 or j == 4 %}
                                     <td style="font-size: 120%; color: red">
-                                        <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none">
+                                        <a href="{{ path('blockDay', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none">
                                             <b>{{ day }}</b>
                                         </a>
                                     </td>
@@ -58,7 +58,7 @@
                             {% else %}
                                 {% if j == 2 or j == 4 %}
                                     <td style="font-size: 120%; background-color: gray; opacity: 0.7">
-                                            <b>{{ day }}</b>
+                                        <b>{{ day }}</b>
                                     </td>
                                 {% else %}
                                     <td style="background-color: gray; opacity: 0.7 ">{{ day }}</td>

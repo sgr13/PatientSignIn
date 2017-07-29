@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:AdminPanel:blockedDay{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Dzień {{ day.day }}/{{ day.month }}/{{ day.year }}r. został zablokowany!</h1>
+        <a href="{{ asset('admin') }}"><button>OK</button></a>
+    </div>
+
+{% endblock %}
