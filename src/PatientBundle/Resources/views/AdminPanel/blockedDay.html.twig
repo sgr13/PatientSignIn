@@ -4,8 +4,13 @@
 
 {% block body %}
     <div>
-        <h1>Dzień {{ day.day }}/{{ day.month }}/{{ day.year }}r. został zablokowany!</h1>
-        <a href="{{ asset('admin') }}"><button>OK</button></a>
+        {% if day is defined %}
+            <h1>Dzień {{ day.day }}/{{ day.month }}/{{ day.year }}r. został zablokowany!</h1>
+            <a href="{{ asset('admin') }}"><button>OK</button></a>
+        {% else %}
+            <h1>Dzień {{ dayToUnblock.day }}/{{ dayToUnblock.month }}/{{ dayToUnblock.year }} r. został odblokowany</h1>
+            <a href="{{ asset('admin') }}"><button>OK</button></a>
+        {% endif %}
     </div>
 
 {% endblock %}

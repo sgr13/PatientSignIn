@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AdminPanelController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminPanelController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/AdminPanelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.333333" vertical-offset="1026" max-vertical-offset="2412">
-              <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.7326733" vertical-offset="1716" max-vertical-offset="2646">
+              <caret line="120" column="103" selection-start-line="120" selection-start-column="103" selection-end-line="120" selection-end-column="103" />
               <folding>
                 <element signature="e#44#78#0#PHP" expanded="true" />
               </folding>
@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blockedDay.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blockedDay.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2907916" vertical-offset="0" max-vertical-offset="619">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="378">
+              <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -70,10 +70,12 @@
       <file leaf-file-name="BlockDayRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/BlockDayRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="576">
-              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state vertical-scroll-proportion="-15.111111" vertical-offset="114" max-vertical-offset="828">
+              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
               <folding>
-                <marker date="1501364107268" expanded="true" signature="394:500" placeholder="Select p fro..PatientBundle..." />
+                <marker date="1501365817159" expanded="true" signature="394:500" placeholder="Select p fro..PatientBundle..." />
+                <marker date="1501365817159" expanded="true" signature="827:931" placeholder="Delete from ..." />
+                <marker date="1501365817159" expanded="true" signature="833:931" placeholder="Select p fro..PatientBundle..." />
               </folding>
             </state>
           </provider>
@@ -106,8 +108,8 @@
       <file leaf-file-name="RegisterController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="77.55556" vertical-offset="3246" max-vertical-offset="3852">
-              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+            <state vertical-scroll-proportion="-12.740741" vertical-offset="952" max-vertical-offset="3852">
+              <caret line="72" column="85" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="85" />
               <folding>
                 <element signature="e#45#82#0#PHP" expanded="true" />
               </folding>
@@ -158,9 +160,9 @@
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/changeVisitDay.html.twig.html" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/changeVisitDay.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php" />
+        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Repository/BlockDayRepository.php" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Controller/AdminPanelController.php" />
-        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig" />
       </list>
     </option>
   </component>
@@ -891,6 +893,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/cancel_visit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.740741" vertical-offset="952" max-vertical-offset="3852">
+          <caret line="72" column="85" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="85" />
+          <folding>
+            <element signature="e#45#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="990">
@@ -903,20 +923,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/BlockDayRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="576">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <marker date="1501364107268" expanded="true" signature="394:500" placeholder="Select p fro..PatientBundle..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/cancel_visit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="234">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="14" />
+        <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="378">
+          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -937,31 +947,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php">
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Repository/BlockDayRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="77.55556" vertical-offset="3246" max-vertical-offset="3852">
-          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        <state vertical-scroll-proportion="-15.111111" vertical-offset="114" max-vertical-offset="828">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
           <folding>
-            <element signature="e#45#82#0#PHP" expanded="true" />
+            <marker date="1501365817159" expanded="true" signature="394:500" placeholder="Select p fro..PatientBundle..." />
+            <marker date="1501365817159" expanded="true" signature="827:931" placeholder="Delete from ..." />
+            <marker date="1501365817159" expanded="true" signature="833:931" placeholder="Select p fro..PatientBundle..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Controller/AdminPanelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.333333" vertical-offset="1026" max-vertical-offset="2412">
-          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.7326733" vertical-offset="1716" max-vertical-offset="2646">
+          <caret line="120" column="103" selection-start-line="120" selection-start-column="103" selection-end-line="120" selection-end-column="103" />
           <folding>
             <element signature="e#44#78#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel/blockedDay.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2907916" vertical-offset="0" max-vertical-offset="619">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>

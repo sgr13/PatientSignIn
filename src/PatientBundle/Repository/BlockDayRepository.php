@@ -23,4 +23,18 @@ class BlockDayRepository extends EntityRepository
 
         return $daySchedule;
     }
+
+    public function unblockDay($year, $month, $day)
+    {
+        $daySchedule = $this->getEntityManager()->createQuery(
+            'Delete from PatientBundle:BlockDay p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day')
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->setParameter('day', $day)
+            ->getResult();
+
+        return $daySchedule;
+    }
+
+
 }

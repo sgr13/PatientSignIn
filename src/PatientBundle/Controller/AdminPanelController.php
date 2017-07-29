@@ -106,18 +106,31 @@ class AdminPanelController extends Controller
      */
     public function blockDayAction(Request $request, $year, $month, $day)
     {
+        $em = $this->getDoctrine()->getManager();
         $month = str_split($month);
         if ($month[0] == 0) {
             $month[0] = '';
         }
         $month = implode('', $month);
 
+        if ($daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day)) {
+            die("Nie można zablokowac dnia ze względu na zaplanowane wizyty! Usuń wszystkie wizyty z tego dnia");
+        }
+
+        if ($em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day)) {
+            $dayToUnblock = $em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day);
+            $em->remove($dayToUnblock[0]);
+            $em->flush();
+            return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array(
+                'dayToUnblock' => $dayToUnblock[0]
+            ));
+        }
+
         $dayBlocked = new BlockDay();
         $dayBlocked->setYear($year);
         $dayBlocked->setMonth($month);
         $dayBlocked->setDay($day);
 
-        $em = $this->getDoctrine()->getManager();
         $em->persist($dayBlocked);
         $em->flush();
 
