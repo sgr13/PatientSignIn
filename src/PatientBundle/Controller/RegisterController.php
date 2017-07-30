@@ -194,4 +194,44 @@ class RegisterController extends Controller
             throw new ValidatorException("Podano niewłaściwy kod.");
         }
     }
+
+    /**
+     * @Route("cancelVisit")
+     */
+    public function cancelVisitAction(Request $request)
+    {
+        $randomNumber = null;
+
+        if ($request->request->get('phone')) {
+            $session = $request->getSession();
+            $session->set('phone', $request->request->get('phone'));
+            $randomNumber = mt_rand(100000, 999999);
+            $session->set('code', $randomNumber);
+            var_dump($randomNumber);
+        }
+
+        return $this->render('PatientBundle:Register:cancelVisit.html.twig', array(
+            'randomNumber' => $randomNumber
+        ));
+    }
+
+    /**
+     * @Route("cancelVisitConfirm")
+     */
+    public function cancelVisitConfirmAction(Request $request)
+    {
+        $session = $request->getSession();
+        $code = $session->get('code');
+        if ($code != $request->request->get('code')) {
+            die ("Podano niewłaściwy kod");
+        }
+        $phone = $session->get('phone');
+        $em = $this->getDoctrine()->getManager();
+        var_dump($phone);
+        $visits = $em->getRepository('PatientBundle:Appointment')->findVisitByPhone($phone);
+        var_dump($visits);
+        return $this->render('PatientBundle:Register:cancelVisitConfirm.html.twig', array(
+            'visits' => $visits
+        ));
+    }
 }

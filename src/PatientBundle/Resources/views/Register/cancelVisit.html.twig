@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Register:cancelVisit{% endblock %}
+
+{% block body %}
+    <div style="text-align: center">
+        {% if randomNumber != null %}
+            <form action="{{ asset('cancelVisitConfirm') }}" method="post">
+                <input type="number" name="code">
+                <input type="submit" value="Wyślij">
+            </form>
+        {% else %}
+            <h1>Odwołaj wizytę:</h1>
+            <h3>W celu odwołania wizyty wpisz swój nr telefonu:</h3>
+            <form style="margin-left: 30%; margin-right: 30%" action="{{ asset('cancelVisit') }}" method="post">
+                nr tel:<br><input type="text" name="phone"><br>
+                <input type="submit" value="Wyslij">
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

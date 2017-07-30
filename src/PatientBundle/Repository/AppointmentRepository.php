@@ -59,4 +59,14 @@ class AppointmentRepository extends EntityRepository
 
         return $visit;
     }
+
+    public function findVisitByPhone($phone)
+    {
+        $visits = $this->getEntityManager()->createQuery(
+            'Select p from PatientBundle:Appointment p WHERE p.phone LIKE :phone')
+            ->setParameter('phone', $phone)
+            ->getResult();
+
+        return $visits;
+    }
 }

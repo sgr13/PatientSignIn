@@ -52,7 +52,7 @@ class Appointment
     /**
      * @var int
      *
-     * @ORM\Column(name="phone", type="integer", unique=true)
+     * @ORM\Column(name="phone", type="integer")
      */
     private $phone;
 
