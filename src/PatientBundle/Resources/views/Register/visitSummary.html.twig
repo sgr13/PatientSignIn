@@ -3,16 +3,20 @@
 {% block title %}PatientBundle:Register:Podsumowanie{% endblock %}
 
 {% block body %}
+    {% block topMenu %}
+        <a href="#"><button>Strona główna</button></a>
+        <a href="{{ path('selectVisitType') }}"><button>Umów kolejną wizytę</button></a>
+    {% endblock %}
     <div id="visitSummary">
         <h2>Podsumowanie wizyty:</h2>
-        <div class="left" style="float: left">
+        <div class="leftSideVisitSummary" style="float: left">
             <p>Imię:</p>
             <p>Nazwisko:</p>
             <p>Rodzaj wizyty:</p>
             <p>Data Wizyty:</p>
             <p>Godzina:</p>
         </div>
-        <div class="right" style="float: left; margin-left: 50px">
+        <div id="rightSideVisitSummary" style="">
             <p>{{ appointment.getName }}</p>
             <p>{{ appointment.getSurname }}</p>
             <p>{% if appointment.getVisitType == 'diab' %}
@@ -26,3 +30,4 @@
         </div>
     </div>
 {% endblock %}
+

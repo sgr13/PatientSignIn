@@ -164,22 +164,18 @@ a {
 }
 
 #visitSummary {
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 button {
     cursor: pointer;
 }
 
-.leftSideVisitSummary {
-    display: block;
+#leftSideVisitSummary {
     float: left;
 }
 
-.rightSideVisitSummary {
-    display: block;
-    float: left;
-    margin-left: 80px;
-    font-weight: 600
+#rightSideVisitSummary {
+    float: left; margin-left: 120px
 }

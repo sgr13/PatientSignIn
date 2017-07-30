@@ -3,9 +3,12 @@
 {% block title %}PatientBundle:Register:add{% endblock %}
 
 {% block body %}
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
     <div id="patientData">
-        <h2 style="text-align: center">Krok 3: Wprowadź dane:</h2>
-        <form style="" action="{{ asset('patientDataConfirmation') }}" method="post">
+        <h2>Krok 3: Wprowadź dane:</h2>
+        <form action="{{ asset('patientDataConfirmation') }}" method="post">
             Imię:<br><input type="text" name="name"><br>
             Nazwisko:<br><input type="text" name="surname"><br>
             nr tel:<br><input type="text" name="phone"><br>
