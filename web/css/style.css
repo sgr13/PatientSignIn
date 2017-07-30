@@ -60,12 +60,6 @@ ul li {
     margin: 5px;
 }
 
-/*.day:hover {*/
-    /*background-color: #000000;*/
-    /*color: white;*/
-    /*cursor: pointer;*/
-/*}*/
-
 .reserved {
     background-color: red;
 }
@@ -107,4 +101,85 @@ a {
     font-size: 180%;
     display: block;
     padding-top: 100px;
+}
+
+#mainContainer {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+}
+
+#mainContainer h2, #calendar h2, #hourSelectMain h2, #patientData h2, #dataConfirm h2, #visitSummary h2 {
+    text-align: center;
+}
+
+#radioButtonDiet {
+    margin-left: 50px;
+}
+
+#mainContainer input:last-child {
+    margin-left: 40%;
+}
+
+#calendar {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 3%;
+}
+
+#calendar select:first-child {
+    margin-right: 43%;
+    font-size: 150%
+}
+
+#calendar select:last-child {
+    font-size: 150%;
+}
+
+#calendarTable tr {
+    background-color: yellowgreen;
+    font-size: 130%;
+}
+
+#hourSelectMain {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 1%
+}
+
+#patientData {
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%
+}
+
+#patientData form {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#dataConfirm form {
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+#visitSummary {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+button {
+    cursor: pointer;
+}
+
+.leftSideVisitSummary {
+    display: block;
+    float: left;
+}
+
+.rightSideVisitSummary {
+    display: block;
+    float: left;
+    margin-left: 80px;
+    font-weight: 600
 }

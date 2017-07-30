@@ -3,23 +3,26 @@
 {% block title %}PatientBundle:Register:Podsumowanie{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>Podsumowanie wizyty:</h1>
-        <p>Imię: {{ appointment.getName }}</p>
-        <p>Nazwisko: {{ appointment.getSurname }}</p>
-        <p>Rodzaj wizyty:
-            {% if appointment.getVisitType == 'diab' %}
-                Diabetologiczna
-            {% else %}
-                Dietetyczna
-            {% endif %}
-        </p>
-        <p>Data Wizyty: {{ appointment.getDay }}.{{ appointment.getMonth }}.{{ appointment.getYear }} r.</p>
-        <p>Godzina: {{ appointment.getHour }}</p>
-        <p>W razie potrzeby odwołania wizyty prosimy o skorzystanie z opcji "Odwołaj wizytę" na stronie głównej.</p>
+    <div id="visitSummary">
+        <h2>Podsumowanie wizyty:</h2>
+        <div class="left" style="float: left">
+            <p>Imię:</p>
+            <p>Nazwisko:</p>
+            <p>Rodzaj wizyty:</p>
+            <p>Data Wizyty:</p>
+            <p>Godzina:</p>
+        </div>
+        <div class="right" style="float: left; margin-left: 50px">
+            <p>{{ appointment.getName }}</p>
+            <p>{{ appointment.getSurname }}</p>
+            <p>{% if appointment.getVisitType == 'diab' %}
+                    Diabetologiczna
+                {% else %}
+                    Dietetyczna
+                {% endif %}
+            </p>
+            <p> {{ appointment.getDay }}/{{ appointment.getMonth }}/{{ appointment.getYear }} r.</p>
+            <p>{{ appointment.getHour }}</p>
+        </div>
     </div>
-    <div>
-        <a href="{{ path('selectVisitType') }}">Powrót</a>
-    </div>
-
 {% endblock %}

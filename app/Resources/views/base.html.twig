@@ -11,10 +11,12 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block topMenu %}
+                <a href="#"><button>Strona główna</button></a><a><button onClick="history.back();" ><<</button></a><a><button onClick="history.forward();"  >>></button></a>
+            {% endblock %}
+        {% endblock %}
         {% block javascripts %}
-            {#<script src="{{ asset('js/jquery.js') }}"></script>#}
-            {#<script src="{{ asset('js/style.js') }}"></script>#}
         {% endblock %}
     </body>
 </html>

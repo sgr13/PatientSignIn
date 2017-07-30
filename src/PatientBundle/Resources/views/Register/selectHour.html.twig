@@ -3,10 +3,13 @@
 {% block title %}PatientBundle:Register:selectHour{% endblock %}
 
 {% block body %}
-    <div style="margin-left: 30%; margin-right: 30%; margin-top: 5%">
-        <h2 style="text-align: center">Krok 3: Wybierz godzinę wizyty:</h2>
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
+    <div id="hourSelectMain" style="">
+        <h2>Krok 3: Wybierz godzinę wizyty:</h2>
         {% if noDay == 2 %}
-            <h2>Wtorek {{ day }}.{{ month }}.{{ year }}</h2>
+            <h2>Wtorek {{ day }}/{{ month }}/{{ year }} r.</h2>
             {% set k = 1400 %}
             {% if visitType == 'diab' %}
                 {% for i in 1..9 %}

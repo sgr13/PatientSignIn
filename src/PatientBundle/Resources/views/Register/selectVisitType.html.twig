@@ -3,12 +3,16 @@
 {% block title %}PatientBundle:Register:SelectVisitType{% endblock %}
 
 {% block body %}
-
-    <div style="margin-left: 30%; margin-right: 30%; margin-top: 50px">
-        <h2 style="text-align: center">Krok 1: Wybierz rodzaj wizyty:</h2>
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
+    <div id="mainContainer">
+        <h2>Krok 1: Wybierz rodzaj wizyty:</h2>
         <form action="{{ asset('selectVisitType') }}" method="post">
-            <input  id="radioButtonDiab" type="radio" name="visitType" value="diab" checked><span style="margin-right: 50px">Wizyta diabetologiczna</span>
-            <input  id="radioButtonDiet" type="radio" name="visitType" value="diet"> Wizyta dietetyczna<br><br>
+            <input id="radioButtonDiab" type="radio" name="visitType" value="diab" checked>
+            <span>Wizyta diabetologiczna</span>
+            <input id="radioButtonDiet" type="radio" name="visitType" value="diet">
+            <span>Wizyta dietetyczna</span><br><br>
             <div id="diab" class="visitTypeSelection">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -31,7 +35,7 @@
                     Koszt wizyty: 150 zł.
                 </p>
             </div>
-            <input type="submit" value="Zatwierdź" style="margin-left: 40%">
+            <input type="submit" value="Zatwierdź" style="">
         </form>
     </div>
 {% endblock %}

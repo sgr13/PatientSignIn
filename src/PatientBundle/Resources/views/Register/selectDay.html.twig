@@ -1,14 +1,16 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}PatientBundle:Register:show{% endblock %}
+{% block title %}PatientBundle:Register:selectDay{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Register:show page</h1>
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
     {{ calendar.showCalendar }}
-    <div id="calendar" style="margin-left: 25%; margin-right: 25%;">
+    <div id="calendar">
+        <h2>Krok 2: Wybierz dzień wizyty:</h2>
         <form action="{{ asset('selectDay') }}" method="post">
-            <h2 style="text-align: center">Krok 2: Wybierz dzień wizyty:</h2>
-            <select style="margin-right: 41%; font-size: 150%" name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
+            <select name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
                 <option value="01" id="jan" >Styczeń</option>
                 <option value="02" id="feb" >Luty</option>
                 <option value="03" id="mar" >Marzec</option>
@@ -22,13 +24,13 @@
                 <option value="11" id="nov" >Listopad</option>
                 <option value="12" id="dec" >Grudzień</option>
             </select>
-            <select style="font-size: 150%" name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ calendar.getYear }}">
+            <select name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ calendar.getYear }}">
                 <option value="2017" id="2017">2017</option>
                 <option value="2018" id="2018">2018</option>
             </select>
         </form>
         <table id="calendarTable">
-            <tr style="background-color: yellowgreen; font-size: 130%">
+            <tr>
                 <th class="days">Pn</th>
                 <th class="days">Wt</th>
                 <th class="days">Śr</th>
