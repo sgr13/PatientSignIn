@@ -5,11 +5,12 @@
 {% block body %}
     <div style="text-align: center">
         <h1>Wybierz wizytę, którą chcesz odwołać:</h1>
-        <form>
+        <ul>
             {% for visit in visits %}
-                <input type="radio">{{ visit.day }}/{{ visit.month }}/{{ visit.year }}r. godz. {{ visit.hour }} <br>
+                <li>
+                    {{ visit.day }}/{{ visit.month }}/{{ visit.year }}r. godz. {{ visit.hour }}
+                    <a href="{{ path('cancelVisitFinal', {'id': visit.id}) }}"><button>Odwołaj</button></a><br>
             {% endfor %}
-            <input type="submit" value="Zatwierdź">
-        </form>
+        </ul>
     </div>
 {% endblock %}

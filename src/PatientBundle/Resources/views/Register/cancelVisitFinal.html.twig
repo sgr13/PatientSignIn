@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Register:changeVisitDay{% endblock %}
+
+{% block body %}
+    <div style="text-align: center">
+        <h1>Wizyta z dnia: {{ visit.day }}/{{ visit.month }}/{{ visit.year }} r. o godzinie: {{ visit.hour }} została odwołana!</h1>
+        <a href="#"><button>OK</button></a>
+    </div>
+{% endblock %}

@@ -195,6 +195,8 @@ class RegisterController extends Controller
         }
     }
 
+    //7. W przypadku odowłania wizyty tworzymy formularz w którym wpisujemy nr telefonu a nastepnie
+    // na wskazany nr wysyłany jest kod losowo wygenerowany
     /**
      * @Route("cancelVisit")
      */
@@ -215,6 +217,7 @@ class RegisterController extends Controller
         ));
     }
 
+    //8. Po wprowadzeniu kodu i jego weryfikacji wyświetlamy listę wizyt, które pacjent umówił
     /**
      * @Route("cancelVisitConfirm")
      */
@@ -227,11 +230,25 @@ class RegisterController extends Controller
         }
         $phone = $session->get('phone');
         $em = $this->getDoctrine()->getManager();
-        var_dump($phone);
         $visits = $em->getRepository('PatientBundle:Appointment')->findVisitByPhone($phone);
-        var_dump($visits);
         return $this->render('PatientBundle:Register:cancelVisitConfirm.html.twig', array(
             'visits' => $visits
+        ));
+    }
+
+    //9. Po wybraniu jednej z wizyt, usuwamy ją z bazy danych
+    /**
+     * @Route("/cancelVisitFinal/{id}", name="cancelVisitFinal")
+     */
+    public function cancelVisitFinalAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $visit = $em->getRepository('PatientBundle:Appointment')->find($id);
+        $em->remove($visit);
+        $em->flush();
+
+        return $this->render('PatientBundle:Register:cancelVisitFinal.html.twig', array(
+            'visit' => $visit
         ));
     }
 }
