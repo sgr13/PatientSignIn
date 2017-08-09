@@ -13,7 +13,7 @@
     <body>
         {% block body %}
             {% block topMenu %}
-                <a href="#"><button>Strona główna</button></a><a><button onClick="history.back();" ><<</button></a><a><button onClick="history.forward();"  >>></button></a>
+                <a href="{{ asset('main') }}"><button>Strona główna</button></a><a><button onClick="history.back();" ><<</button></a><a><button onClick="history.forward();"  >>></button></a>
             {% endblock %}
         {% endblock %}
         {% block javascripts %}

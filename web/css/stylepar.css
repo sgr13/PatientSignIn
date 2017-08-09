@@ -1,0 +1,47 @@
+.bgnd {
+    background-attachment: fixed;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 74vh;
+    max-height: 1200px;
+    min-height: 200px;
+}
+
+/*załadowanie zdjęć do każdego z elementów*/
+.bgnd-1 {
+    background-image: url(../photos/mansuper1.png);
+}
+.bgnd-1-2 {
+    background-image: url(../photos/man2ready.png);
+}
+.bgnd-1-3 {
+    background-image: url(../photos/manman1.png);
+}
+
+.bgnd-2 {
+    background-image: url(../photos/diabetes.jpg);
+}
+
+.bgnd-3 {
+    background-image: url(../photos/food2.jpg);
+}
+
+.bgnd-4 {
+    background-image: url(../photos/car.jpg);
+}
+
+.bgnd-5 {
+    background-image: url(../photos/calendar.jpg);
+    height: 54vh;
+}
+
+.bgnd-6 {
+    background-image: url(../photos/bielsko.jpg);
+    height: 54vh;
+}
+
+/*Powiększenie pierwszego okna ze zdjęciem*/
+header + .bgnd {
+    height: 90vh;
+}

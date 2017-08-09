@@ -1,0 +1,253 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PatientBundle:Main:main{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/style2.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/stylepar.css') }}" media="screen" />
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/style.js') }}"></script>
+{% endblock %}
+{% block body %}
+    <div>
+    <div id="sideMenuContainer">
+        <nav class="navbar navbar-inverse sidebar" role="navigation" id="sideMenu">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                            <img class="iconImage" src="photos/start.png" id="iconStart">
+                        </span>Witam:)
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#start">Start
+                                <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                                    <img class="iconImage" src="photos/home.png" id="iconHome">
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#diab">Leczenie cukrzycy
+                                <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                                    <img class="iconImage" src="photos/health.png" id="iconHealth">
+                                </span>
+                            </a>
+                        </li>
+                        <li><a href="#diet">Leczenie dietą
+                                <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                                    <img class="iconImage" src="photos/apple.png" id="iconApple">
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('selectVisitType') }}">Rejestracja
+                                <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                                    <img class="iconImage" src="photos/Calendar.png" id="iconCalendar">
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">O mnie
+                                <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                                    <img class="iconImage" src="photos/female.png" id="iconPerson">
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact">Kontakt
+                                <span style="font-size:16px;" class="pull-right hidden-xs showopacity">
+                                    <img class="iconImage" src="photos/envelope.png" id="iconEnvelope">
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<header>
+    <div class="container clearfix" id="start" style="padding-bottom: 10px; padding-top: 10px">
+        <div style="float: left; width: 495px; padding-right: 50px; border-right: solid 1px black">
+            <h1 style=" font-size: 150%; text-align: center">Lekarz Diabetolog<br> Manuela Drozd-Sypień</h1>
+        </div>
+        <div style="float: left;width: 495px; padding-left: 50px">
+            <h1 style="text-align: center">tel. +48 502 653 150</h1>
+        </div>
+
+    </div>
+</header>
+<section class="bgnd bgnd-1 js-parallax-bg" id="firstPicture">
+    <div class="va-wrapper">
+        <div class="va-container">
+            <div class="container text-center">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container" style="padding-left: 130px">
+        <h1 style="text-align: center">Manuela Drozd-Sypień</h1>
+        <div style="float: left; width: 495px; padding-right: 50px; border-right: solid 1px black; font-size: 130%">
+            <p>Jestem lekarzem z 14 - letnim stażem pracy zawodowej, specjalistą w zakresie chorób wewnętrznych i diabetologii.</p>
+            <p>Z zamiłowania jestem dietetykiem klinicznym oraz wielbicielką zdrowego, świadomego stylu życia. </p>
+            <p>W kręgu moich zainteresowań zawodowych szczególne miejsce zawsze zajmowało żywienie i jego wpływ na nasze zdrowie, a właściwie lecznicza moc pełnowartościowej diety.</p>
+            <!--<p> Zajmuję się w swojej pracy i w swoim gabinecie diabetologią oraz dietetyką w nowoczesnym wydaniu.</p>-->
+
+        </div>
+        <div style="float: left;width: 495px; padding-left: 50px; font-size: 130%">
+            <p>Zajmuje się w swojej pracy kompleksowo cukrzycą i innymi zaburzeniami gospodarki węglowodanowej, łącząc swoja wiedzę medyczną, dietetyczną z doświadczeniem i pasją.</p>
+            <p>Nieustannie poszerzam zakres swoich kwalifikacji zawodowych zdobywając wiedzę i umiejętności na konferencjach, sympozjach, kursach, webinariach, warsztatach i szkoleniach z dziedziny diabetologii, dietetyki i endokrynologii.</p>
+        </div>
+    </div>
+</section>
+<section class="bgnd bgnd-2 js-parallax-bg" id="diab">
+    <div class="va-wrapper">
+        <div class="va-container">
+            <div class="container text-center">
+                <h1 class="shadowText">Cukrzyca jest chorobą dwudziestego pierwszego wieku.</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <h1 style="text-align: center">Diabetolog</h1>
+
+        <h4 style="text-align: center; padding-bottom: 20px">Swoim pacjentom proponuje nastepujący zakres usług:</h4>
+        <div style="float: left; width: 495px; padding-right: 50px; border-right: solid 1px black">
+
+            <ul style="font-size: 130%">
+                <li>leczenie cukrzycy typu 1,2 u dorosłych</li>
+                <li>leczenie cukrzycy uwarunkowanej genetycznie</li>
+                <li>leczenie cukrzycy wtórnej</li>
+                <li>terapia dietą i farmakologicznie opornej otyłości i nadwagi</li>
+                <li>leczenie otyłości skojarzonej z insulinoopornością</li>
+                <li>leczenie hipoglikemii reaktywnej</li>
+            </ul>
+
+        </div>
+        <div style="float: left;width: 495px; padding-left: 50px; margin-bottom: 30px">
+            <ul style="font-size: 130%">
+                <li>leczenie stanu hiperinsulinemii, insulinooporności i niepłodności</li>
+                <li>leczenie cukrzycy ciążowej, przygotowanie chorej z cukrzycą do ciąży</li>
+                <li>leczenie stanów przedcukrzycowych w tym zespołu policystycznych jajników</li>
+                <li>konsultacje zywieniowe w różnych stanach chorobowych</li>
+            </ul>
+        </div>
+        <div style="text-align: center">
+            <span style="border-top: solid 1px black; font-size: 140%; padding-top: 20px">Wizyta diabetologiczna - terapia lekami - 100 zł.</span>
+        </div>
+    </div>
+</section>
+<section class="bgnd bgnd-3 js-parallax-bg" id="diet">
+    <div class="va-wrapper">
+        <div class="va-container">
+            <div class="container text-center">
+                <h1 style="font-size: 280%" class="shadowText"><b>"Właściwe odżywianie będzie medycyną jutra"</b></h1>
+
+                <h2 class="shadowText">L.L.Pauling</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div style="float: left; width: 330px; padding-right: 50px; border-right: solid 1px black">
+            <h1 style=" font-size: 200%; text-align: center">Pierwsza wizyta</h1>
+
+            <p>Przeprowadzimy dokładny wywiad żywieniowo-zdrowotny</p>
+
+            <p>Zmierzymy obwód ciała (talia, brzuch, biodra)</p>
+
+            <p>Przeprowadzimy badanie składu ciała metodą bioimpedancji elektrycznej (BIA) - Sprawdź jak przygotować się
+                do badania BIA</p>
+
+            <p>Przeanalizujemy dotychczasowy sposób żywienia na podstawie 3-dniowego dzienniczka żywieniowego
+                (uzupełnionego przed pierwszą wizytą u dietetyka)</p>
+
+            <p>Otrzymasz indywidualne wskazówki żywieniowe</p>
+        </div>
+        <div style="float: left;width: 330px; padding-left: 50px; border-right: solid 1px black; padding-right: 50px">
+            <h1 style="text-align: center; font-size: 200%">Szybkie efekty</h1>
+
+            <p>Analizujemy zmiany żywieniowe oraz monitorujemy Twoje postępy na podstawie dzienniczka 3-dniowego
+                spożycia (uzupełnionego przed drugą wizytą u dietetyka)</p>
+
+            <p>Badamy skład ciała metodą bioimpedancji elektrycznej (BIA)</p>
+
+            <p>Otrzymasz materiały informacyjne niezbędne do prawidłowego stosowania diety, samodzielnego komponowania
+                zestawów dietetycznych oraz przyrządzania posiłków</p>
+        </div>
+        <div style="float: left; width: 330px; padding-left: 50px; ">
+            <h1 style=" font-size: 200%; text-align: center">Zadowolony Pacjent</h1>
+
+            <p>Na pierwszej wizycie przeprowadzę z Tobą wywiad żywieniowy oraz wykonam analizę składu ciała. Szczegółowy
+                opis pierwszej wizyty znajdziesz tutaj.</p>
+
+            <p> Ocenię efekty stosowania jadłospisu oraz dokonam ponownej analizy składu ciała. Na wizytę kontrolną
+                również przygotuj dzienniczek żywieniowy.</p>
+
+            <p> Wypełnisz wywiad żywieniowy, a w ciągu 10 dni otrzymasz indywidualny jadłospis 7/14/28-dniowy oraz
+                zalecenia żywieniowe.</p>
+        </div>
+    </div>
+</section>
+<section class="bgnd bgnd-5 js-parallax-bg" id="register">
+    <div class="va-wrapper">
+        <div class="va-container">
+            <div class="container text-center">
+                <h1 class="shadowText"><b>Szybka rejestracja.<br>
+                    Najważniejsze dobro pacjenta.</b></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container" style="padding-left: 130px">
+        <div>
+            <h1 style="text-align: center">nr tel. +48 502 653 150</h1>
+            <br>
+            <h1 style="text-align: center">Godziny przyjęć:</h1>
+        </div>
+        <div style="float: left; margin-left: 120px; border-right: solid 1px black; padding-right: 200px">
+            <h2>WTOREK</h2>
+            <h3>15:00 - 18:00</h3>
+        </div>
+        <div style="float: left; margin-left: 220px">
+            <h2>CZWARTEK</h2>
+            <h3>15:00 - 18:00</h3>
+        </div>
+    </div>
+</section>
+<section class="bgnd bgnd-6 js-parallax-bg" id="contact">
+    <div class="va-wrapper">
+        <div class="va-container">
+            <div class="container text-center">
+                <h1 class="shadowText" style="color: #ffffff"><b>Bielsko-Biala<br>
+                    Moj dom - moja praktyka</b></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container" style="padding-left: 130px">
+        <div style="float: left; width: 397px; padding-right: 50px; padding-top: 40px">
+            <h1 style="line-height: 130%">Gabinet Lekarski<br>
+                ul. Piastowska 67a<br>
+                43-300 Bielsko-Biała<br>
+                tel. +48 667 589 995</h1>
+        </div>
+        <div style="float: left; width: 397px; padding-left: 120px;  border-left: solid 1px black;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.049418293482!2d19.023267115482362!3d49.822736379393625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716a1c5c34116ab%3A0x70e3d42aaa2a40c!2sPiastowska+67%2C+Bielsko-Bia%C5%82a!5e0!3m2!1spl!2spl!4v1496262019492"
+                    width="500" height="360" frameborder="1" style="border:1" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}

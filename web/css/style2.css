@@ -1,0 +1,117 @@
+/*Usunięcie zaokrąglonych krawędzi bocznego menu*/
+nav.sidebar.navbar {
+    border-radius: 0px;
+}
+
+/*Wyśrodkuje przycisk menu*/
+nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+    text-align: center;
+    width: 100%;
+    margin-left: 0px;
+}
+
+/*dodaje górną linie do pierwszego elementu bocznego menu */
+nav.sidebar .navbar-nav > li:first-child{
+    border-top: 1px #e5e5e5 solid;
+}
+
+/*dodaje dolne linie do elementów bocznego menu */
+nav.sidebar .navbar-nav > li{
+    border-bottom: 1px #e5e5e5 solid;
+}
+
+/*pozwala na wykorzystanie 100% szerokości elementu bocznego menu*/
+.navbar-collapse, nav.sidebar .container-fluid{
+    padding: 0 0px 0 0px;
+}
+
+/*nadanie bocznego menu wysokosci  i szerokości*/
+nav.sidebar{
+    width: 200px;
+    height: 100%;
+    float: left;
+    z-index: 8000;
+    margin-bottom: 0px;
+}
+
+/*nadanie lementom bocznego menu  100% szerokości; !!! */
+nav.sidebar li {
+    width: 100%;
+}
+
+nav:hover .forAnimate{
+    opacity: 1;
+}
+
+#sideMenu {
+    position: relative;
+    background-color: darkgreen;
+    min-height: 1800px;
+}
+
+#sideMenuContainer {
+    position: fixed;
+}
+
+.container {
+    border-top: solid #000000 2px;
+    padding-left: 130px;
+    text-align: justify;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.diabList {
+    text-decoration: underline;
+    padding-top: 8px;
+}
+
+.shadowText {
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+.iconImage {
+    position: relative;
+    bottom: 2px;
+}
+
+#iconStart {
+    left: 19px;
+    width: 25px;
+}
+
+#iconHome {
+    left: 7px;
+    width: 32px;
+}
+
+#iconHealth {
+    left: 3px;
+    width: 22px;
+}
+
+#iconApple {
+    left: 4px;
+    width: 25px;
+}
+
+#iconCar {
+    left: 5px;
+    width: 30px;
+}
+
+#iconCalendar {
+    left: 5px;
+    width: 30px;
+}
+
+#iconPerson {
+    left: 2px;
+    width: 25px;
+}
+
+#iconEnvelope {
+    left: 3px;
+    width: 27px;
+}
