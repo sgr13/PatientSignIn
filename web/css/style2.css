@@ -69,6 +69,8 @@ nav:hover .forAnimate{
 
 .shadowText {
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    font-size: 280%;
+
 }
 
 .iconImage {
@@ -147,10 +149,110 @@ nav:hover .forAnimate{
     text-align: center;
 }
 
-#doctorFirst {
+#doctorDescription div:first-of-type {
     float: left;
     width: 495px;
     padding-right: 50px;
     border-right: solid 1px black;
     font-size: 130%;
+}
+
+#doctorDescription div:first-of-type + div {
+    float: left;
+    width: 495px;
+    padding-left: 50px;
+    font-size: 130%
+}
+
+#diabDescription h4 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#diabDescription div:first-of-type {
+    float: left;
+    width: 495px;
+    padding-right: 50px;
+    border-right: solid 1px black;
+}
+
+#diabDescription div:first-of-type +div {
+    float: left;
+    width: 495px;
+    padding-left: 50px;
+    margin-bottom: 30px;
+}
+
+#diabDescription ul {
+    font-size: 130%;
+}
+
+#diabDescription span {
+    border-top: solid 1px black;
+    font-size: 140%;
+    padding-top: 20px;
+}
+
+#diabDescription div:last-child {
+    text-align: center;
+}
+
+#dietDescription div:first-of-type {
+    float: left;
+    width: 330px;
+    padding-right: 50px;
+    border-right: solid 1px black;
+}
+
+#dietDescription h1 {
+    font-size: 200%;
+    text-align: center;
+}
+
+#dietDescription div:first-of-type + div {
+    float: left;
+    width: 330px;
+    padding-left: 50px;
+    border-right: solid 1px black;
+    padding-right: 50px;
+}
+
+#dietDescription div:last-child {
+    float: left;
+    width: 330px;
+    padding-left: 50px;
+}
+
+#registerTime h1 {
+    text-align: center
+}
+
+#registerTime div:first-of-type + div {
+    float: left;
+    margin-left: 120px;
+    border-right: solid 1px black;
+    padding-right: 200px;
+}
+
+#registerTime div:last-child {
+   float: left;
+    margin-left: 220px;
+}
+
+#contact div:first-child {
+    float: left;
+    width: 397px;
+    padding-right: 50px;
+    padding-top: 40px;
+}
+
+#contact h1 {
+    line-height: 130%;
+}
+
+#contact div:last-child {
+    float: left;
+    width: 397px;
+    padding-left: 120px;
+    border-left: solid 1px black;
 }
