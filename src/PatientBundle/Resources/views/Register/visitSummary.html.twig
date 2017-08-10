@@ -4,7 +4,7 @@
 
 {% block body %}
     {% block topMenu %}
-        <a href="#"><button>Strona główna</button></a>
+        <a href="{{ asset('main') }}"><button>Strona główna</button></a>
         <a href="{{ path('selectVisitType') }}"><button>Umów kolejną wizytę</button></a>
     {% endblock %}
     <div id="visitSummary">

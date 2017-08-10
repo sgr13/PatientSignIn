@@ -115,3 +115,42 @@ nav:hover .forAnimate{
     left: 3px;
     width: 27px;
 }
+
+#start {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#start div:first-child {
+    float: left;
+    width: 495px;
+    padding-right: 50px;
+    border-right: solid 1px black;
+}
+
+#start div:first-child h1 {
+    font-size: 180%;
+    text-align: center;
+}
+
+#start div:last-child {
+    float: left;
+    width: 495px;
+    padding-left: 50px;
+}
+
+#start div:last-child h1 {
+    text-align: center;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+#doctorFirst {
+    float: left;
+    width: 495px;
+    padding-right: 50px;
+    border-right: solid 1px black;
+    font-size: 130%;
+}
