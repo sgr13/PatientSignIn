@@ -6,36 +6,60 @@
     {% block topMenu %}
         {{ parent() }}
     {% endblock %}
-    <div id="mainContainer">
-        <h2>Krok 1: Wybierz rodzaj wizyty:</h2>
-        <form action="{{ asset('selectVisitType') }}" method="post">
-            <input id="radioButtonDiab" type="radio" name="visitType" value="diab" checked>
-            <span>Wizyta diabetologiczna</span>
-            <input id="radioButtonDiet" type="radio" name="visitType" value="diet">
-            <span>Wizyta dietetyczna</span><br><br>
-            <div id="diab" class="visitTypeSelection">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                <p>
-                    Czas wizyty: 20 - 25 minut
-                </p>
-                <p>
-                    Koszt wizyty: 100 zł.
-                </p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
+                <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
             </div>
-            <div id="diet" class="visitTypeSelection">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                <p>
-                    Czas wizyty: 40 - 50 minut
-                </p>
-                <p>
-                    Koszt wizyty: 150 zł.
-                </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h3 style="text-align: center">Krok 1: Wybierz rodzaj wizyty:</h3>
             </div>
-            <input type="submit" value="Zatwierdź" style="">
-        </form>
+        </div>
+        <div class="row" id="selectVisitType">
+            <div class="col col-xs-12 col-sm-12 col-md-12">
+                <form action="{{ asset('selectVisitType') }}" method="post">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3" style="text-align: center; font-size: large">
+                            <div class="radio-inline">
+                                <label>
+                                    <input id="radioButtonDiab" type="radio" name="visitType" value="diab" checked>
+                                    &nbsp;&nbsp;Wizyta diabetologiczna
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="text-align: center; font-size: large">
+                            <div class="radio-inline">
+                                <label>
+                                    <input id="radioButtonDiet" type="radio" name="visitType" value="diet">
+                                    &nbsp;&nbsp;Wizyta dietetyczna
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8 visitTypeSelection" id="diab" style="font-size: 130%; text-align: center">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                                Czas wizyty: <b>20 - 25 </b>minut <br>
+                                Koszt wizyty: <b>100 zł</b>.<br><br>
+                            <input type="submit" value="Zatwierdź" style="">
+                        </div>
+                        <div class="col-md-8 visitTypeSelection" id="diet" style="font-size: 130%; text-align: center">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                                Czas wizyty: <b>40 - 50 </b>minut<br>
+                                Koszt wizyty: <b>150 zł.</b><br><br>
+                            <input type="submit" value="Zatwierdź">
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}

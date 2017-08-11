@@ -6,6 +6,7 @@
         {% block stylesheets %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
             <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" media="screen" />
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/style.js') }}"></script>
         {% endblock %}
@@ -13,7 +14,11 @@
     <body>
         {% block body %}
             {% block topMenu %}
-                <a href="{{ asset('main') }}"><button>Strona główna</button></a><a><button onClick="history.back();" ><<</button></a><a><button onClick="history.forward();"  >>></button></a>
+                <a href="{{ asset('main') }}">
+                    <button type="button" class="btn btn-primary">Strona główna</button>
+                </a>
+                <a><button type="button" class="btn btn-primary" onClick="history.back();" ><<</button></a>
+                <a><button type="button" class="btn btn-primary" onClick="history.forward();"  >>></button></a>
             {% endblock %}
         {% endblock %}
         {% block javascripts %}

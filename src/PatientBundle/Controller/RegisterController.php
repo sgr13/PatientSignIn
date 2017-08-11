@@ -244,6 +244,19 @@ class RegisterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $visit = $em->getRepository('PatientBundle:Appointment')->find($id);
+        $date = $visit->getDay() . '/' . $visit->getMonth() . '/' . $visit->getYear();
+        $hour = $visit->getHour();
+        $patient = $visit->getSurname() . ' ' . $visit->getName();
+        $phone = $visit->getPhone();
+        $visitType = $visit->getVisitType();
+        mail('s.g.jarzabek@gmail.com',
+            'Odwołana wizyta!!!',
+            'Data:' . $date . ' | ' .
+            'Godzina: ' . $hour . ' | ' .
+            'Pacjent: ' . $patient . ' | ' .
+            'Telefon: ' . $phone . ' | ' .
+            'Wizyta: ' . $visitType
+            );
         $em->remove($visit);
         $em->flush();
 
