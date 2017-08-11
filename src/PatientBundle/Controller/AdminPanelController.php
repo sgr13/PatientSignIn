@@ -119,7 +119,8 @@ class AdminPanelController extends Controller
         $month = implode('', $month);
 
         if ($daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day)) {
-            die("Nie można zablokowac dnia ze względu na zaplanowane wizyty! Usuń wszystkie wizyty z tego dnia");
+            return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array(
+            ));
         }
 
         if ($em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day)) {

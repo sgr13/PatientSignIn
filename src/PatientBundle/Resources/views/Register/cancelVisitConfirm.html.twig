@@ -3,14 +3,26 @@
 {% block title %}PatientBundle:Register:cancelVisit{% endblock %}
 
 {% block body %}
-    <div style="text-align: center">
-        <h1>Wybierz wizytę, którą chcesz odwołać:</h1>
-        <ul>
-            {% for visit in visits %}
-                <li>
-                    {{ visit.day }}/{{ visit.month }}/{{ visit.year }}r. godz. {{ visit.hour }}
-                    <a href="{{ path('cancelVisitFinal', {'id': visit.id}) }}"><button>Odwołaj</button></a><br>
-            {% endfor %}
-        </ul>
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
+                <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="text-align: center; font-size: large">
+                <h3>Wybierz wizytę, którą chcesz odwołać: </h3>
+                <ul>
+                    {% for visit in visits %}
+                    <li>
+                        {{ visit.day }}/{{ visit.month }}/{{ visit.year }}r. godz. {{ visit.hour }}
+                        <a href="{{ path('cancelVisitFinal', {'id': visit.id}) }}"><button>Odwołaj</button></a><br>
+                        {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}

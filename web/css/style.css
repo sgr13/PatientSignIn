@@ -83,22 +83,36 @@ a {
 
 #patientVisit, th, tr, td {
     border: solid 1px black;
+    font-size: large;
+}
+
+#patientVisit th, #patientVisit td {
+    padding: 12px;
 }
 
 .box {
-    width: 250px;
-    height: 250px;
-    margin: 30px;
-    background-color: red;
+    width: 15em;
+    height: 15em;
+    background-color: lightseagreen;
     border: solid 1px black;
-    float: left;
     text-align: center;
+    float: left;
+    margin: 20px;
 }
 
 .box span {
     font-size: 180%;
     display: block;
-    padding-top: 100px;
+    padding-top: 80px;
+    color: #000000;
+}
+
+#x a {
+    text-decoration: none;
+}
+
+.box span:hover {
+    color: red;
 }
 
 #mainContainer {
@@ -180,14 +194,6 @@ button {
 
 #col2 {
     background-color: lightseagreen;
-}
-
-#col3 {
-    background-color: darkkhaki;
-}
-
-#col4 {
-    background-color: darkblue;
 }
 
 #selectVisitType {

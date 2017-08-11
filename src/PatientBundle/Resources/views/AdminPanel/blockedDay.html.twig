@@ -3,14 +3,31 @@
 {% block title %}PatientBundle:AdminPanel:blockedDay{% endblock %}
 
 {% block body %}
-    <div>
-        {% if day is defined %}
-            <h1>Dzień {{ day.day }}/{{ day.month }}/{{ day.year }}r. został zablokowany!</h1>
-            <a href="{{ asset('admin') }}"><button>OK</button></a>
-        {% else %}
-            <h1>Dzień {{ dayToUnblock.day }}/{{ dayToUnblock.month }}/{{ dayToUnblock.year }} r. został odblokowany</h1>
-            <a href="{{ asset('admin') }}"><button>OK</button></a>
-        {% endif %}
-    </div>
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" id="col2">
+                <h1 style="text-align: center; font-size: 3em;">Panel Administracyjny</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                {% if day is not defined and dayToUnblock is not defined %}
+                    <h1>Nie można zablokować dnia, ponieważ w terminarzu znajdują się umówione wizyty!</h1>
+                    <a href="{{ asset('admin') }}"><button>Ok</button></a>
+                {% elseif day is defined %}
+                    <h1>Dzień {{ day.day }}/{{ day.month }}/{{ day.year }}r. został zablokowany!</h1>
+                    <a href="{{ asset('admin') }}"><button>OK</button></a>
+                {% else %}
+                    <h1>Dzień {{ dayToUnblock.day }}/{{ dayToUnblock.month }}/{{ dayToUnblock.year }} r. został odblokowany</h1>
+                    <a href="{{ asset('admin') }}"><button>OK</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,15 +3,26 @@
 {% block title %}PatientBundle:AdminPanel:cancelVisit{% endblock %}
 
 {% block body %}
-    <div style="text-align: center">
-        <h1>Odwołano wizytę:</h1>
-        <ul>
-            <li>{{ visit.day }}/{{ visit.month }}/{{ visit.year }} r.</li>
-            <li>{{ visit.hour }}</li>
-            <li>{{ visit.surname }} , {{ visit.name }}</li>
-            <li>{{ visit.phone }}</li>
-        </ul>
-        <a href="{{ asset('admin') }}"><button>OK</button></a>
+    {% block topMenu %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" id="col2">
+                <h1 style="text-align: center; font-size: 3em;">Panel Administracyjny</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <h1>Odwołano wizytę:</h1>
+                <ul style="margin-left: auto; margin-right: auto">
+                    <li>{{ visit.day }}/{{ visit.month }}/{{ visit.year }} r.</li>
+                    <li>{{ visit.hour }}</li>
+                    <li>{{ visit.surname }} , {{ visit.name }}</li>
+                    <li>{{ visit.phone }}</li>
+                </ul>
+                <a href="{{ asset('admin') }}"><button>OK</button></a>
+            </div>
+        </div>
     </div>
-
 {% endblock %}
