@@ -14,18 +14,17 @@ body {
 #calendarTable {
     padding: 0;
     margin: 0;
-    color: #616B76;
+    color: black;
     text-align: center;
-    background-color: #fff;
 }
 
 #calendarTable td {
-    border-right: 1px solid #A2ADBC;
-    border-bottom: 1px solid #A2ADBC;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
     width: 20px;
     height: 20px;
     text-align: center;
-    background-color: lightgrey;
+    background-color: #5eb5e0;
     padding-bottom: 20px;
     padding-top: 20px;
 }

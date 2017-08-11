@@ -25,42 +25,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="selectVisitType.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectVisitType.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1260">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="18" selection-end-column="14" />
-              <folding>
-                <element signature="e#334#377#0#HTML" expanded="true" />
-                <element signature="e#547#573#0#HTML" expanded="true" />
-                <element signature="e#990#1034#0#HTML" expanded="true" />
-                <element signature="e#1471#1515#0#HTML" expanded="true" />
-                <element signature="e#2165#2208#0#HTML" expanded="true" />
-                <element signature="e#2626#2669#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="selectDay.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectDay.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6435643" vertical-offset="1140" max-vertical-offset="1746">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="31" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h3#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.096775" vertical-offset="2962" max-vertical-offset="3618">
-              <caret line="194" column="30" selection-start-line="194" selection-start-column="30" selection-end-line="194" selection-end-column="30" />
+            <state vertical-scroll-proportion="-12.774194" vertical-offset="0" max-vertical-offset="3600">
+              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="selectHour.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.666667" vertical-offset="0" max-vertical-offset="1512">
+              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="20" selection-end-column="14" />
+              <folding>
+                <element signature="e#367#410#0#HTML" expanded="true" />
+                <element signature="e#603#629#0#HTML" expanded="true" />
+                <element signature="e#838#864#0#HTML" expanded="true" />
+                <element signature="e#2629#2655#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="patientData.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/patientData.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6138614" vertical-offset="114" max-vertical-offset="756">
+              <caret line="27" column="82" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="82" />
+              <folding>
+                <element signature="e#451#494#0#HTML" expanded="true" />
+                <element signature="e#687#713#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,9 +91,7 @@
         <option value="$PROJECT_DIR$/src/PatientBundle/Entity/Appointment.php" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/cancelVisitConfirm.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Repository/AppointmentRepository.php" />
-        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/phoneConfirmation.html.twig" />
-        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/patientData.html.twig" />
         <option value="$PROJECT_DIR$/web/js/style.js" />
         <option value="$PROJECT_DIR$/web/css/style 2.css" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Controller/MainController.php" />
@@ -105,9 +101,11 @@
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/cancelVisitFinal.html.twig" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Controller/RegisterController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectVisitType.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectDay.html.twig" />
+        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig" />
+        <option value="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/patientData.html.twig" />
       </list>
     </option>
   </component>
@@ -332,9 +330,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register" />
       <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/web/css" />
-      <recent name="$PROJECT_DIR$/src/PatientBundle/Resources/views/Register" />
       <recent name="$PROJECT_DIR$/src/PatientBundle/Resources/views/AdminPanel" />
       <recent name="$PROJECT_DIR$/src/PatientBundle/Controller" />
     </key>
@@ -604,24 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32673267" vertical-offset="0" max-vertical-offset="1242">
-          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/phoneConfirmation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20355412" vertical-offset="0" max-vertical-offset="619">
           <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/patientData.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2907916" vertical-offset="0" max-vertical-offset="619">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -768,14 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.096775" vertical-offset="2962" max-vertical-offset="3618">
-          <caret line="194" column="30" selection-start-line="194" selection-start-column="30" selection-end-line="194" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Main/main.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3333334" vertical-offset="108" max-vertical-offset="4644">
@@ -794,26 +770,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectVisitType.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1260">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="18" selection-end-column="14" />
+        <state vertical-scroll-proportion="-17.333334" vertical-offset="216" max-vertical-offset="1152">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
           <folding>
             <element signature="e#334#377#0#HTML" expanded="true" />
             <element signature="e#547#573#0#HTML" expanded="true" />
-            <element signature="e#990#1034#0#HTML" expanded="true" />
-            <element signature="e#1471#1515#0#HTML" expanded="true" />
-            <element signature="e#2165#2208#0#HTML" expanded="true" />
-            <element signature="e#2626#2669#0#HTML" expanded="true" />
+            <element signature="e#928#972#0#HTML" expanded="true" />
+            <element signature="e#1409#1453#0#HTML" expanded="true" />
+            <element signature="e#1988#2031#0#HTML" expanded="true" />
+            <element signature="e#2465#2508#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.774194" vertical-offset="0" max-vertical-offset="3600">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectDay.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6435643" vertical-offset="1140" max-vertical-offset="1746">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="31" />
+        <state vertical-scroll-proportion="-12.740741" vertical-offset="1186" max-vertical-offset="3078">
+          <caret line="85" column="81" selection-start-line="83" selection-start-column="8" selection-end-line="85" selection-end-column="81" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h3#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/selectHour.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.666667" vertical-offset="0" max-vertical-offset="1512">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="e#367#410#0#HTML" expanded="true" />
+            <element signature="e#603#629#0#HTML" expanded="true" />
+            <element signature="e#838#864#0#HTML" expanded="true" />
+            <element signature="e#2629#2655#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PatientBundle/Resources/views/Register/patientData.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6138614" vertical-offset="114" max-vertical-offset="756">
+          <caret line="27" column="82" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="82" />
+          <folding>
+            <element signature="e#451#494#0#HTML" expanded="true" />
+            <element signature="e#687#713#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

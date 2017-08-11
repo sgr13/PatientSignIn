@@ -21,9 +21,7 @@
             <div class="col col-xs-12 col-sm-12 col-md-12">
                 <form action="{{ asset('selectVisitType') }}" method="post">
                     <div class="row">
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-3" style="text-align: center; font-size: large">
+                        <div class="col-md-3 col-md-offset-3" style="text-align: center; font-size: large">
                             <div class="radio-inline">
                                 <label>
                                     <input id="radioButtonDiab" type="radio" name="visitType" value="diab" checked>
@@ -39,24 +37,20 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8 visitTypeSelection" id="diab" style="font-size: 130%; text-align: center">
+                        <div class="col-md-8 col-md-offset-2 visitTypeSelection" id="diab" style="font-size: 130%; text-align: center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
                                 Czas wizyty: <b>20 - 25 </b>minut <br>
                                 Koszt wizyty: <b>100 zł</b>.<br><br>
                             <input type="submit" value="Zatwierdź" style="">
                         </div>
-                        <div class="col-md-8 visitTypeSelection" id="diet" style="font-size: 130%; text-align: center">
+                        <div class="col-md-8 col-md-offset-2 visitTypeSelection" id="diet" style="font-size: 130%; text-align: center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
                                 Czas wizyty: <b>40 - 50 </b>minut<br>
                                 Koszt wizyty: <b>150 zł.</b><br><br>
                             <input type="submit" value="Zatwierdź">
                         </div>
-                        <div class="col-md-2"></div>
                     </div>
                 </form>
             </div>

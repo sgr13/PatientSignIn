@@ -6,59 +6,74 @@
     {% block topMenu %}
         {{ parent() }}
     {% endblock %}
-    <div id="hourSelectMain" style="">
-        <h2>Krok 3: Wybierz godzinę wizyty:</h2>
-        {% if noDay == 2 %}
-            <h2>Wtorek {{ day }}/{{ month }}/{{ year }} r.</h2>
-            {% set k = 1400 %}
-            {% if visitType == 'diab' %}
-                {% for i in 1..9 %}
-                    {% set dietVisit = k - 50 %}
-                    {% if  k|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray %}
-                        <div class="day reserved">{{ k|baseConvert }}</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
+                    <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h3 style="text-align: center">Krok 3: Wybierz godzinę wizyty:</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                {% if noDay == 2 %}
+                    <h4 style="text-align: center">Wtorek {{ day }}/{{ month }}/{{ year }} r.</h4>
+                    {% set k = 1400 %}
+                    {% if visitType == 'diab' %}
+                        {% for i in 1..9 %}
+                            {% set dietVisit = k - 50 %}
+                            {% if  k|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray %}
+                                <div class="day reserved">{{ k|baseConvert }}</div>
+                            {% else %}
+                                <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
+                            {% endif %}
+                            {% set k = k + 50 %}
+                        {% endfor %}
                     {% else %}
-                        <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
+                        {% for i in 1..8 %}
+                            {% set dietVisit = k - 50 %}
+                            {% set dietVisit2 = k + 50 %}
+                            {% if  k|baseConvert in diabArray or dietVisit2|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray or dietVisit2|baseConvert in dietArray %}
+                                <div class="day reserved">{{ k|baseConvert }}</div>
+                            {% else %}
+                                <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
+                            {% endif %}
+                            {% set k = k + 50 %}
+                        {% endfor %}
                     {% endif %}
-                    {% set k = k + 50 %}
-                {% endfor %}
-            {% else %}
-                {% for i in 1..8 %}
-                    {% set dietVisit = k - 50 %}
-                    {% set dietVisit2 = k + 50 %}
-                    {% if  k|baseConvert in diabArray or dietVisit2|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray or dietVisit2|baseConvert in dietArray %}
-                        <div class="day reserved">{{ k|baseConvert }}</div>
+                    {#---------------------------------------------------------------------------------------------#}
+                {% else %}
+                    <h4 style="text-align: center">Czwartek {{ day }}/{{ month }}/{{ year }}</h4>
+                    {% set k = 1400 %}
+                    {% if visitType == 'diab' %}
+                        {% for i in 1..9 %}
+                            {% set dietVisit = k - 50 %}
+                            {% if  k|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray %}
+                                <div class="day reserved">{{ k|baseConvert }}</div>
+                            {% else %}
+                                <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
+                            {% endif %}
+                            {% set k = k + 50 %}
+                        {% endfor %}
                     {% else %}
-                        <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
+                        {% for i in 1..8 %}
+                            {% set dietVisit = k - 50 %}
+                            {% set dietVisit2 = k + 50 %}
+                            {% if  k|baseConvert in diabArray or dietVisit2|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray or dietVisit2|baseConvert in dietArray %}
+                                <div class="day reserved">{{ k|baseConvert }}</div>
+                            {% else %}
+                                <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
+                            {% endif %}
+                            {% set k = k + 50 %}
+                        {% endfor %}
                     {% endif %}
-                    {% set k = k + 50 %}
-                {% endfor %}
-            {% endif %}
-{#---------------------------------------------------------------------------------------------#}
-        {% else %}
-            <h2>Czwartek {{ day }}.{{ month }}.{{ year }}</h2>
-            {% set k = 1400 %}
-            {% if visitType == 'diab' %}
-                {% for i in 1..9 %}
-                    {% set dietVisit = k - 50 %}
-                    {% if  k|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray %}
-                        <div class="day reserved">{{ k|baseConvert }}</div>
-                    {% else %}
-                        <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
-                    {% endif %}
-                    {% set k = k + 50 %}
-                {% endfor %}
-            {% else %}
-                {% for i in 1..8 %}
-                    {% set dietVisit = k - 50 %}
-                    {% set dietVisit2 = k + 50 %}
-                    {% if  k|baseConvert in diabArray or dietVisit2|baseConvert in diabArray or  k|baseConvert  in dietArray or dietVisit|baseConvert in dietArray or dietVisit2|baseConvert in dietArray %}
-                        <div class="day reserved">{{ k|baseConvert }}</div>
-                    {% else %}
-                        <a href="{{ path('patientData', {'hour': k|baseConvert}) }}"><div class="day free">{{ k|baseConvert }}</div></a>
-                    {% endif %}
-                    {% set k = k + 50 %}
-                {% endfor %}
-            {% endif %}
-        {% endif %}
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}

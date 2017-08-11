@@ -6,13 +6,32 @@
     {% block topMenu %}
         {{ parent() }}
     {% endblock %}
-    <div id="patientData">
-        <h2>Krok 3: Wprowadź dane:</h2>
-        <form action="{{ asset('patientDataConfirmation') }}" method="post">
-            Imię:<br><input type="text" name="name"><br>
-            Nazwisko:<br><input type="text" name="surname"><br>
-            nr tel:<br><input type="text" name="phone"><br>
-            <input type="submit" value="Wyslij">
-        </form>
+    {#<div id="patientData">#}
+        {#<h2>Krok 3: Wprowadź dane:</h2>#}
+
+    {#</div>#}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
+                    <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h3 style="text-align: center">Krok 4: Wprowadź dane w celu weryfikacji:</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-4">
+                <form action="{{ asset('patientDataConfirmation') }}" method="post">
+                    Imię:<br><input type="text" name="name"><br>
+                    Nazwisko:<br><input type="text" name="surname"><br>
+                    nr tel:<br><input type="text" name="phone"><br>
+                    <input type="submit" value="Wyslij">
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}

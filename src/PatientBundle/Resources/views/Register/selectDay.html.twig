@@ -84,8 +84,82 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h3 style="text-align: center">Krok 2: Wybierz dzień wizyty:</h3>
+                <div class="col-sm-12" style="text-align: center">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3" >
+                            <form action="{{ asset('selectDay') }}" method="post">
+                                <select name="selectMonth" onchange="form.submit()" id="monthSelection" month="{{ calendar.getMonth }}">
+                                    <option value="01" id="jan" >Styczeń</option>
+                                    <option value="02" id="feb" >Luty</option>
+                                    <option value="03" id="mar" >Marzec</option>
+                                    <option value="04" id="apr" >Kwiecień</option>
+                                    <option value="05" id="may" >Maj</option>
+                                    <option value="06" id="jun" >Czerwiec</option>
+                                    <option value="07" id="jul" >Lipiec</option>
+                                    <option value="08" id="aug" >Sierpień</option>
+                                    <option value="09" id="sep" >Wrzesień</option>
+                                    <option value="10" id="oct" >Październik</option>
+                                    <option value="11" id="nov" >Listopad</option>
+                                    <option value="12" id="dec" >Grudzień</option>
+                                </select>
+                                <select name="selectYear" onchange="form.submit()" id="yearSelection" year="{{ calendar.getYear }}">
+                                    <option value="2017" id="2017">2017</option>
+                                    <option value="2018" id="2018">2018</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <table id="calendarTable" style="margin-left: auto; margin-right: auto">
+                                <tr>
+                                    <th class="days">Pn</th>
+                                    <th class="days">Wt</th>
+                                    <th class="days">Śr</th>
+                                    <th class="days">Cz</th>
+                                    <th class="days">Pt</th>
+                                    <th class="days">Sb</th>
+                                    <th class="days">Nd</th>
+                                </tr>
+                                {% set day = 1 %}
+                                {% for i in 1..calendar.getNumberOfWeeksInMonth %}
+                                    <tr>
+                                        {% for j in 1..7 %}
+                                            {% if (j < calendar.getFirstDayInMonth and i == 1)  or (j > calendar.getDaysInMonth and i == 1) %}
+                                                <td></td>
+                                            {% elseif day < calendar.getDaysInMonth + 1 %}
+                                                {% if ((calendar.getYear ==  "now"|date("Y") and calendar.getMonth == "now"|date("n") and day >= "now"|date("j")) or (calendar.getYear > "now"|date("Y")) or (calendar.getYear == "now"|date("Y") and calendar.getMonth > "now"|date("n"))) %}
+                                                    {% if j == 2 or j == 4 %}
+                                                        <td style="font-size: 120%;">
+                                                            <a href="{{ path('selectHour', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}" style="text-decoration: none; color: red">
+                                                                <b>{{ day }}</b>
+                                                            </a>
+                                                        </td>
+                                                    {% else %}
+                                                        <td>{{ day }}</td>
+                                                    {% endif %}
+                                                    {% set day = day + 1 %}
+                                                {% else %}
+                                                    {% if j == 2 or j == 4 %}
+                                                        <td style="font-size: 120%; background-color: darkblue; opacity: 0.7">
+                                                            <b>{{ day }}</b>
+                                                        </td>
+                                                    {% else %}
+                                                        <td style="background-color: darkblue; opacity: 0.7 ">{{ day }}</td>
+                                                    {% endif %}
+                                                    {% set day = day + 1 %}
+                                                {% endif %}
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        {{ calendar.showCalendar }}
     </div>
 {% endblock %}
