@@ -191,7 +191,8 @@ class RegisterController extends Controller
             ));
 
         } else {
-            throw new ValidatorException("Podano niewłaściwy kod.");
+            return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
+            ));
         }
     }
 

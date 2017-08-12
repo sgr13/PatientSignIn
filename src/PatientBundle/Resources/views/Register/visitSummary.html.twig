@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
+            {% if appointment is defined %}
             <h3 style="text-align: center; margin-left: auto; margin-right: auto">Podsumowanie wizyty:</h3>
             <div class="row">
                 <div class="col-md-12" style="margin-left: auto; margin-right: auto; font-size: large">
@@ -38,6 +39,14 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="row">
+                <div class="col-md-12" style="margin-left: auto; margin-right: auto; font-size: large; text-align: center">
+                    <h1>Podano niewłaściwy kod!!!!</h1>
+                    <a><button type="button" class="btn btn-primary" onClick="history.back();" >Spróbuj ponownie</button></a>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
