@@ -187,12 +187,11 @@ class RegisterController extends Controller
             $em->flush();
 
             return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
-            'appointment' => $appointment
+                'appointment' => $appointment
             ));
 
         } else {
-            return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
-            ));
+            return $this->render('PatientBundle:Register:visitSummary.html.twig', array());
         }
     }
 
@@ -250,14 +249,14 @@ class RegisterController extends Controller
         $patient = $visit->getSurname() . ' ' . $visit->getName();
         $phone = $visit->getPhone();
         $visitType = $visit->getVisitType();
-        mail('s.g.jarzabek@gmail.com',
+        mail('mail@gmail.com',
             'Odwołana wizyta!!!',
             'Data:' . $date . ' | ' .
             'Godzina: ' . $hour . ' | ' .
             'Pacjent: ' . $patient . ' | ' .
             'Telefon: ' . $phone . ' | ' .
             'Wizyta: ' . $visitType
-            );
+        );
         $em->remove($visit);
         $em->flush();
 

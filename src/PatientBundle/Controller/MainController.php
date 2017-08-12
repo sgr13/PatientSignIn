@@ -13,7 +13,6 @@ class MainController extends Controller
     public function mainAction()
     {
         return $this->render('PatientBundle:Main:main.html.twig', array(
-            // ...
         ));
     }
 

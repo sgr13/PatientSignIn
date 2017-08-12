@@ -23,7 +23,7 @@ class AppExtension extends Twig_Extension
 
         $result = [];
         $j = 0;
-        for ($i = 0; $i != 5; $i ++) {
+        for ($i = 0; $i != 5; $i++) {
             if ($i == 2) {
                 $result[$i] = ':';
             } else {

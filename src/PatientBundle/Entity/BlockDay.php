@@ -46,7 +46,7 @@ class BlockDay
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,7 +69,7 @@ class BlockDay
     /**
      * Get year
      *
-     * @return integer 
+     * @return integer
      */
     public function getYear()
     {
@@ -92,7 +92,7 @@ class BlockDay
     /**
      * Get month
      *
-     * @return integer 
+     * @return integer
      */
     public function getMonth()
     {
@@ -115,7 +115,7 @@ class BlockDay
     /**
      * Get day
      *
-     * @return integer 
+     * @return integer
      */
     public function getDay()
     {

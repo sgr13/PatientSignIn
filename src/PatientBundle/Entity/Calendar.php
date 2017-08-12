@@ -121,7 +121,7 @@ class Calendar
 
     public function showCalendar()
     {
-        $firstDay = mktime(0,0,0,$this->month, 1, $this->year);
+        $firstDay = mktime(0, 0, 0, $this->month, 1, $this->year);
         $this->firstDayInMonth = date('N', $firstDay);
         $this->daysInMonth = cal_days_in_month(0, $this->month, $this->year);
         self::getNumberOfWeeks();

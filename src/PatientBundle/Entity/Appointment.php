@@ -88,7 +88,7 @@ class Appointment
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -111,7 +111,7 @@ class Appointment
     /**
      * Get year
      *
-     * @return integer 
+     * @return integer
      */
     public function getYear()
     {
@@ -134,7 +134,7 @@ class Appointment
     /**
      * Get month
      *
-     * @return integer 
+     * @return integer
      */
     public function getMonth()
     {
@@ -157,7 +157,7 @@ class Appointment
     /**
      * Get day
      *
-     * @return integer 
+     * @return integer
      */
     public function getDay()
     {
@@ -180,7 +180,7 @@ class Appointment
     /**
      * Get hour
      *
-     * @return string 
+     * @return string
      */
     public function getHour()
     {
@@ -203,7 +203,7 @@ class Appointment
     /**
      * Get phone
      *
-     * @return integer 
+     * @return integer
      */
     public function getPhone()
     {
@@ -226,7 +226,7 @@ class Appointment
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -249,7 +249,7 @@ class Appointment
     /**
      * Get surname
      *
-     * @return string 
+     * @return string
      */
     public function getSurname()
     {
