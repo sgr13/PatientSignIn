@@ -7,20 +7,12 @@
         {{ parent() }}
     {% endblock %}
     <div class="container-fluid" id="x">
+        {{ include ('upperBarAdmin.html.twig') }}
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col2">
-                <h1 style="text-align: center; font-size: 3em;">Panel Administracyjny</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-2">
-                        <a href="{{ asset('showAll') }}"><div class="box" style="margin-left: auto"><span>Pokaż wizyty</span></div></a>
-                        <a href="{{ asset('selectVisitType') }}"><div class="box"><span>Dodaj wizytę</span></div></a>
-                        <a href="{{ asset('blockVisit') }}"><div class="box"><span>Zablokuj wizyty</span></div></a>
-                    </div>
-                </div>
+            <div class="col-md-12 autoMargin" id="adminSelection">
+                <a href="{{ asset('showAll') }}"><div class="box"><span>Pokaż wizyty</span></div></a>
+                <a href="{{ asset('selectVisitType') }}"><div class="box"><span>Dodaj wizytę</span></div></a>
+                <a href="{{ asset('blockVisit') }}"><div class="box"><span>Zablokuj wizyty</span></div></a>
             </div>
         </div>
     </div>

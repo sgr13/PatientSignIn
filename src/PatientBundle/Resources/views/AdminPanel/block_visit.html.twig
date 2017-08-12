@@ -8,16 +8,12 @@
     {% endblock %}
     {{ calendar.showCalendar }}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col2">
-                <h1 style="text-align: center; font-size: 3em;">Panel Administracyjny</h1>
-            </div>
-        </div>
+        {{ include ('upperBarAdmin.html.twig') }}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h3 style="text-align: center">Krok 2: Wybierz dzień wizyty:</h3>
+                <h3 class="center">Krok 2: Wybierz dzień wizyty:</h3>
 
-                <div class="col-sm-12" style="text-align: center">
+                <div class="col-sm-12 center">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <form action="{{ asset('blockVisit') }}" method="post">
@@ -46,7 +42,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
-                            <table id="calendarTable" style="margin-left: auto; margin-right: auto">
+                            <table id="calendarTable" class="autoMargin">
                                 <tr>
                                     <th class="days">Pn</th>
                                     <th class="days">Wt</th>
@@ -65,7 +61,7 @@
                                             {% elseif day < calendar.getDaysInMonth + 1 %}
                                                 {% if ((calendar.getYear ==  "now"|date("Y") and calendar.getMonth == "now"|date("n") and day >= "now"|date("j")) or (calendar.getYear > "now"|date("Y")) or (calendar.getYear == "now"|date("Y") and calendar.getMonth > "now"|date("n"))) %}
                                                     {% if j == 2 or j == 4 %}
-                                                        <td style="font-size: 120%;">
+                                                        <td class="large">
                                                             <a href="{{ path('blockDay', {'year': calendar.getYear, 'month': calendar.getMonth, 'day': day, 'noDay': j}) }}"
                                                                style="text-decoration: none; color: red">
                                                                 <b>{{ day }}</b>

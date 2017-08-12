@@ -7,15 +7,11 @@
         {{ parent() }}
     {% endblock %}
     <div class="container-fluid">
+        {{ include ('upperBarAdmin.html.twig') }}
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col2">
-                <h1 style="text-align: center; font-size: 3em;">Panel Administracyjny</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="text-align: center">
+            <div class="col-md-12 center">
                 <h1>Odwołano wizytę:</h1>
-                <ul style="margin-left: auto; margin-right: auto">
+                <ul class="large">
                     <li>{{ visit.day }}/{{ visit.month }}/{{ visit.year }} r.</li>
                     <li>{{ visit.hour }}</li>
                     <li>{{ visit.surname }} , {{ visit.name }}</li>

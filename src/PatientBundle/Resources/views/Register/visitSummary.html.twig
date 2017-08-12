@@ -4,50 +4,60 @@
 
 {% block body %}
     {% block topMenu %}
-        <a href="{{ asset('main') }}"><button>Strona główna</button></a>
-        <a href="{{ path('selectVisitType') }}"><button>Umów kolejną wizytę</button></a>
+        <a href="{{ asset('main') }}">
+            <button>Strona główna</button>
+        </a>
+        <a href="{{ path('selectVisitType') }}">
+            <button>Umów kolejną wizytę</button>
+        </a>
     {% endblock %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
-                <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
-            </div>
-        </div>
+        {{ include('upperBar.html.twig') }}
         <div class="col-xs-12 col-sm-12 col-md-12">
             {% if appointment is defined %}
-            <h3 style="text-align: center; margin-left: auto; margin-right: auto">Podsumowanie wizyty:</h3>
-            <div class="row">
-                <div class="col-md-12" style="margin-left: auto; margin-right: auto; font-size: large">
-                    <div class="col-md-2 col-md-offset-4">
-                        <p>Imię:</p>
-                        <p>Nazwisko:</p>
-                        <p>Rodzaj wizyty:</p>
-                        <p>Data Wizyty:</p>
-                        <p>Godzina:</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>{{ appointment.getName }}</p>
-                        <p>{{ appointment.getSurname }}</p>
-                        <p>{% if appointment.getVisitType == 'diab' %}
-                                Diabetologiczna
-                            {% else %}
-                                Dietetyczna
-                            {% endif %}
-                        </p>
-                        <p> {{ appointment.getDay }}/{{ appointment.getMonth }}/{{ appointment.getYear }} r.</p>
-                        <p>{{ appointment.getHour }}</p>
+                <h3 class="center">Podsumowanie wizyty:</h3>
+                <div class="row" id="col1">
+                    <div class="col-md-12 autoMargin large">
+                        <div class="col-md-2 col-md-offset-4">
+                            <p>Imię:</p>
+
+                            <p>Nazwisko:</p>
+
+                            <p>Rodzaj wizyty:</p>
+
+                            <p>Data Wizyty:</p>
+
+                            <p>Godzina:</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>{{ appointment.getName }}</p>
+
+                            <p>{{ appointment.getSurname }}</p>
+
+                            <p>{% if appointment.getVisitType == 'diab' %}
+                                    Diabetologiczna
+                                {% else %}
+                                    Dietetyczna
+                                {% endif %}
+                            </p>
+
+                            <p> {{ appointment.getDay }}/{{ appointment.getMonth }}/{{ appointment.getYear }} r.</p>
+
+                            <p>{{ appointment.getHour }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% else %}
-            <div class="row">
-                <div class="col-md-12" style="margin-left: auto; margin-right: auto; font-size: large; text-align: center">
-                    <h1>Podano niewłaściwy kod!!!!</h1>
-                    <a><button type="button" class="btn btn-primary" onClick="history.back();" >Spróbuj ponownie</button></a>
+                <div class="row" id="col1">
+                    <div class="col-md-12 autoMargin large">
+                        <h1>Podano niewłaściwy kod!!!!</h1>
+                        <a>
+                            <button type="button" class="btn btn-primary" onClick="history.back();">Spróbuj ponownie
+                            </button>
+                        </a>
+                    </div>
                 </div>
-            </div>
             {% endif %}
         </div>
     </div>
 {% endblock %}
-

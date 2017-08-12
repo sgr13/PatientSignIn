@@ -7,22 +7,16 @@
         {{ parent() }}
     {% endblock %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
-                    <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
-                </div>
-            </div>
-        </div>
+        {{ include('upperBar.html.twig') }}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h3 style="text-align: center">Krok 3: Wybierz godzinę wizyty:</h3>
+                <h3 class="center">Krok 3: Wybierz godzinę wizyty:</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+        <div class="row" id="col1">
+            <div class="col-md-6 col-md-offset-3" >
                 {% if noDay == 2 %}
-                    <h4 style="text-align: center">Wtorek {{ day }}/{{ month }}/{{ year }} r.</h4>
+                    <h4 class="center">Wtorek {{ day }}/{{ month }}/{{ year }} r.</h4>
                     {% set k = 1400 %}
                     {% if visitType == 'diab' %}
                         {% for i in 1..9 %}
@@ -48,7 +42,7 @@
                     {% endif %}
                     {#---------------------------------------------------------------------------------------------#}
                 {% else %}
-                    <h4 style="text-align: center">Czwartek {{ day }}/{{ month }}/{{ year }}</h4>
+                    <h4 class="center">Czwartek {{ day }}/{{ month }}/{{ year }}</h4>
                     {% set k = 1400 %}
                     {% if visitType == 'diab' %}
                         {% for i in 1..9 %}

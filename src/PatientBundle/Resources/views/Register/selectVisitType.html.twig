@@ -7,21 +7,17 @@
         {{ parent() }}
     {% endblock %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
-                <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
-            </div>
-        </div>
+        {{ include('upperBar.html.twig') }}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h3 style="text-align: center">Krok 1: Wybierz rodzaj wizyty:</h3>
+                <h3 class="center">Krok 1: Wybierz rodzaj wizyty:</h3>
             </div>
         </div>
         <div class="row" id="selectVisitType">
             <div class="col col-xs-12 col-sm-12 col-md-12">
                 <form action="{{ asset('selectVisitType') }}" method="post">
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3" style="text-align: center; font-size: large">
+                        <div class="col-md-3 col-md-offset-3 center large">
                             <div class="radio-inline">
                                 <label>
                                     <input id="radioButtonDiab" type="radio" name="visitType" value="diab" checked>
@@ -29,7 +25,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-3" style="text-align: center; font-size: large">
+                        <div class="col-md-3 large center">
                             <div class="radio-inline">
                                 <label>
                                     <input id="radioButtonDiet" type="radio" name="visitType" value="diet">
@@ -39,13 +35,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2 visitTypeSelection" id="diab" style="font-size: 130%; text-align: center">
+                        <div class="col-md-8 col-md-offset-2 visitTypeSelection large center" id="diab">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
                                 Czas wizyty: <b>20 - 25 </b>minut <br>
                                 Koszt wizyty: <b>100 zł</b>.<br><br>
-                            <input type="submit" value="Zatwierdź" style="">
+                            <input type="submit" value="Zatwierdź">
                         </div>
-                        <div class="col-md-8 col-md-offset-2 visitTypeSelection" id="diet" style="font-size: 130%; text-align: center">
+                        <div class="col-md-8 col-md-offset-2 visitTypeSelection large center" id="diet">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
                                 Czas wizyty: <b>40 - 50 </b>minut<br>
                                 Koszt wizyty: <b>150 zł.</b><br><br>

@@ -7,27 +7,25 @@
         {{ parent() }}
     {% endblock %}
     <div class="container-fluid">
+        {{ include('upperBar.html.twig') }}
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
-                <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" style="text-align: center">
-        {% if randomNumber != null %}
-            <h3>Wpisz kod otrzymany w wiadomości SMS:</h3>
-            <form action="{{ asset('cancelVisitConfirm') }}" method="post">
-                <input type="number" name="code">
-                <input type="submit" value="Wyślij">
-            </form>
-        {%  else %}
-                <h2>Odwołaj wizytę: </h2>
-                <h3>W celu odwołania wizyty wpisz swój nr telefonu: </h3>
-            <form style="margin-left: 30%; margin-right: 30%" action="{{ asset('cancelVisit') }}" method="post">
-                nr tel:<br><input type="text" name="phone"><br>
-                <input type="submit" value="Wyslij">
-            </form>
-        {%  endif %}
+            <div class="col-xs-12 col-sm-12 col-md-12 center">
+                {% if randomNumber != null %}
+                    <h3>Wpisz kod otrzymany w wiadomości SMS:</h3>
+                    <form action="{{ asset('cancelVisitConfirm') }}" method="post">
+                        <input type="number" name="code">
+                        <input type="submit" value="Wyślij">
+                    </form>
+                {% else %}
+                    <h2>Odwołaj wizytę: </h2>
+                    <h3>W celu odwołania wizyty wpisz swój nr telefonu: </h3>
+                    <div class="row" id="col1">
+                        <form action="{{ asset('cancelVisit') }}" method="post">
+                            nr tel:<br><input type="text" name="phone"><br>
+                            <input type="submit" value="Wyslij">
+                        </form>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

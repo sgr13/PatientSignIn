@@ -12,8 +12,8 @@ body {
 }
 
 #calendarTable {
-    padding: 0;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     color: black;
     text-align: center;
 }
@@ -24,7 +24,7 @@ body {
     width: 20px;
     height: 20px;
     text-align: center;
-    background-color: #5eb5e0;
+    background-color: lightgreen;
     padding-bottom: 20px;
     padding-top: 20px;
 }
@@ -82,12 +82,16 @@ a {
 }
 
 #patientVisit, th, tr, td {
-    border: solid 1px black;
+    border: solid 3px black;
     font-size: large;
 }
 
 #patientVisit th, #patientVisit td {
     padding: 12px;
+}
+
+#patientVisit a {
+    text-decoration: none;
 }
 
 .box {
@@ -199,3 +203,27 @@ button {
 #selectVisitType {
     background-color: #5eb5e0;
 }
+
+.center {
+    text-align: center;
+}
+
+.large {
+    font-size: large;
+}
+
+.autoMargin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#availableDay {
+    text-decoration: none;
+    color: red;
+}
+
+#adminSelection {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+

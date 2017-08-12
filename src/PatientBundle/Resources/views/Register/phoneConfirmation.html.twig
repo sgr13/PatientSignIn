@@ -6,28 +6,17 @@
     {% block topMenu %}
         {{ parent() }}
     {% endblock %}
-    {#<div id="dataConfirm">#}
-        {#<h2>Krok 4: Wpisz kod otrzymany w wiadomości SMS:</h2>#}
-        {#<form action="{{ asset('saveVisit') }}" method="post">#}
-            {#<input type="number" name="code">#}
-            {#<input type="submit" value="Wyślij">#}
-        {#</form>#}
-    {#</div>#}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col1">
-                <h1 style="text-align: center; font-size: 3em;">System Rejestracji Pacjenta</h1>
-            </div>
-        </div>
+        {{ include('upperBar.html.twig') }}
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <h3 style="text-align: center">Krok 5: Wpisz kod otrzymany w wiadomości SMS:</h3>
+            <h3 class="center">Krok 5: Wpisz kod otrzymany w wiadomości SMS:</h3>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="col1">
         <div class="col-md-6 col-md-offset-3">
-            <form action="{{ asset('saveVisit') }}" method="post" style="text-align: center">
+            <form action="{{ asset('saveVisit') }}" method="post" class="center">
             <input type="number" name="code">
             <input type="submit" value="Wyślij">
             </form>

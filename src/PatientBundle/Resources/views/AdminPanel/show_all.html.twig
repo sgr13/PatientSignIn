@@ -7,20 +7,16 @@
         {{ parent() }}
     {% endblock %}
     <div class="container-fluid">
+        {{ include ('upperBarAdmin.html.twig') }}
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" id="col2">
-                <h1 style="text-align: center; font-size: 3em;">Panel Administracyjny</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="text-align: center">
-                <form method="post" action="{{ asset('showAll') }}" >
-                    <select style="font-size: 150%" name="selectYear" onchange="form.submit()" id="yearSelection"
+            <div class="col-md-12 center">
+                <form method="post" action="{{ asset('showAll') }}">
+                    <select class="large" name="selectYear" onchange="form.submit()" id="yearSelection"
                             year="{{ visitYear }}">
                         <option value="2017" id="2017">2017</option>
                         <option value="2018" id="2018">2018</option>
                     </select>
-                    <select style="font-size: 150%" name="selectMonth" onchange="form.submit()" id="monthSelection"
+                    <select class="large" name="selectMonth" onchange="form.submit()" id="monthSelection"
                             month="{{ visitMonth }}">
                         <option value="1" id="jan">Styczeń</option>
                         <option value="2" id="feb">Luty</option>
@@ -35,7 +31,7 @@
                         <option value="11" id="nov">Listopad</option>
                         <option value="12" id="dec">Grudzień</option>
                     </select>
-                    <select style="font-size: 150%" name="selectDay" id="daySelection" year="{{ visitYear }}">
+                    <select class="large" name="selectDay" id="daySelection" year="{{ visitYear }}">
                         {% for day in days %}
                             <option>{{ day }}</option>
                         {% endfor %}
@@ -44,7 +40,7 @@
 
                 </form>
                 {% if visit is defined %}
-                    <table id="patientVisit" style=" margin-right: auto; margin-left: auto">
+                    <table id="patientVisit" class="autoMargin">
                         <tr>
                             <th>Data Wizyty:</th>
                             <th>Godzina wizyty:</th>
@@ -60,7 +56,9 @@
                                 <td>{{ visit.visitType }}</td>
                                 <td>{{ visit.surname }} {{ visit.name }}</td>
                                 <td>{{ visit.phone }}</td>
-                                <td><a href="{{ path('cancelVisit', {'hour': visit.hour, 'day': visit.day, 'month': visit.month, 'year': visit.year}) }}">Odwołaj</a></td>
+                                <td>
+                                    <a href="{{ path('cancelVisit', {'hour': visit.hour, 'day': visit.day, 'month': visit.month, 'year': visit.year}) }}">Odwołaj</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </table>
