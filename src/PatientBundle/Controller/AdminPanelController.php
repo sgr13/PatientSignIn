@@ -23,34 +23,38 @@ class AdminPanelController extends Controller
         $visitYear = 2017;
         $visitMonth = date('n');
         $visitDay = date('j');
+
         $em = $this->getDoctrine()->getManager();
         $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
         $days = [];
+
         foreach ($visits as $visit) {
             if (!in_array($visit->getDay(), $days)) {
                 $days[] = $visit->getDay();
             }
         }
-        sort($days);
+
         if ($request->request->get('selectMonth') || $request->request->get('selectYear') || $request->request->get('selectDay')) {
             $visitMonth = $request->request->get('selectMonth');
             $visitYear = $request->request->get('selectYear');
             $visitDay = $request->request->get('selectDay');
-            $visita = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
+
+            $visitByMonth = $em->getRepository('PatientBundle:Appointment')->getVisitsByMonth($visitYear, $visitMonth, $visitDay);
+            var_dump($visitByMonth);
             $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
             $days = [];
+
             foreach ($visits as $visit) {
                 if (!in_array($visit->getDay(), $days)) {
                     $days[] = $visit->getDay();
                 }
             }
-            sort($days);
 
             return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
                 'visitMonth' => $visitMonth,
                 'visits' => $visits,
                 'days' => $days,
-                'visit' => $visita,
+                'visit' => $visitByMonth,
                 'visitYear' => $visitYear,
                 'visitDay' => $visitDay
             ));
@@ -70,11 +74,12 @@ class AdminPanelController extends Controller
     public function cancelVisitAction(Request $request, $hour, $day, $month, $year)
     {
         $em = $this->getDoctrine()->getManager();
-        $visit = $em->getRepository('PatientBundle:Appointment')->findVisitByHour($year, $month, $day, $hour);
-        $em->remove($visit[0]);
+        $visit = $em->getRepository('PatientBundle:Appointment')->getVisitByHour($year, $month, $day, $hour);
+        $em->remove($visit);
         $em->flush();
+
         return $this->render('PatientBundle:AdminPanel:cancel_visit.html.twig', array(
-            'visit' => $visit[0]
+            'visit' => $visit
         ));
     }
 
@@ -122,12 +127,12 @@ class AdminPanelController extends Controller
         }
         $month = implode('', $month);
 
-        if ($daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day)) {
+        if ($daySchedule = $em->getRepository('PatientBundle:Appointment')->getDay($year, $month, $day)) {
             return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array());
         }
 
-        if ($em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day)) {
-            $dayToUnblock = $em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day);
+        if ($em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day)) {
+            $dayToUnblock = $em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day);
             $em->remove($dayToUnblock[0]);
             $em->flush();
             return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array(

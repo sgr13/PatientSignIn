@@ -12,29 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlockDayRepository extends EntityRepository
 {
-    public function findDay($year, $month, $day)
+    public function getDay($year, $month, $day)
     {
-        $daySchedule = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:BlockDay p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day')
+        $q = $this->createQueryBuilder('v');
+
+        $q->select('v')
+            ->where('v.year = :year', 'v.month = :month', 'v.day = :day')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->setParameter('day', $day)
-            ->getResult();
+        ;
 
-        return $daySchedule;
+        return $q->getQuery()->getResult();
     }
-
-    public function unblockDay($year, $month, $day)
-    {
-        $daySchedule = $this->getEntityManager()->createQuery(
-            'Delete from PatientBundle:BlockDay p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day')
-            ->setParameter('year', $year)
-            ->setParameter('month', $month)
-            ->setParameter('day', $day)
-            ->getResult();
-
-        return $daySchedule;
-    }
-
-
 }

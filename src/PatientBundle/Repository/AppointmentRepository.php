@@ -12,16 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class AppointmentRepository extends EntityRepository
 {
-    public function findDay($year, $month, $day)
+    public function getDay($year, $month, $day)
     {
-        $daySchedule = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day')
+        $q = $this->createQueryBuilder('v');
+
+        $q->select('v')
+            ->where('v.year = :year', 'v.month = :month', 'v.day = :day')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->setParameter('day', $day)
-            ->getResult();
+        ;
 
-        return $daySchedule;
+        return $q->getQuery()->getResult();
     }
 
     public function findVisitsByMonth($year, $month, $day)
@@ -36,10 +38,25 @@ class AppointmentRepository extends EntityRepository
         return $visits;
     }
 
+    public function getVisitsByMonth($year, $month, $day)
+    {
+        $q = $this->createQueryBuilder('v');
+
+        $q->select('v')
+            ->where('v.year = :year', 'v.month = :month', 'v.day = :day')
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->setParameter('day', $day)
+            ->orderBy('v.hour', 'ASC');
+        ;
+
+        return $q->getQuery()->getResult();
+    }
+
     public function findVisits($year, $month)
     {
         $visits = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month')
+            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month ORDER BY p.day')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->getResult();
@@ -47,26 +64,18 @@ class AppointmentRepository extends EntityRepository
         return $visits;
     }
 
-    public function findVisitByHour($year, $month, $day, $hour)
+    public function getVisitByHour($year, $month, $day, $hour)
     {
-        $visit = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day AND p.hour LIKE :hour')
+        $q = $this->createQueryBuilder('m');
+
+        $q->select('m')
+            ->where('m.year = :year', 'm.month = :month', 'm.day = :day', 'm.hour = :hour')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->setParameter('day', $day)
             ->setParameter('hour', $hour)
-            ->getResult();
+        ;
 
-        return $visit;
-    }
-
-    public function findVisitByPhone($phone)
-    {
-        $visits = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:Appointment p WHERE p.phone LIKE :phone')
-            ->setParameter('phone', $phone)
-            ->getResult();
-
-        return $visits;
+        return $q->getQuery()->getSingleResult();
     }
 }
