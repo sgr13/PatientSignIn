@@ -26,18 +26,6 @@ class AppointmentRepository extends EntityRepository
         return $q->getQuery()->getResult();
     }
 
-    public function findVisitsByMonth($year, $month, $day)
-    {
-        $visits = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month AND p.day LIKE :day ORDER BY p.hour')
-            ->setParameter('year', $year)
-            ->setParameter('month', $month)
-            ->setParameter('day', $day)
-            ->getResult();
-
-        return $visits;
-    }
-
     public function getVisitsByMonth($year, $month, $day)
     {
         $q = $this->createQueryBuilder('v');
@@ -53,23 +41,26 @@ class AppointmentRepository extends EntityRepository
         return $q->getQuery()->getResult();
     }
 
-    public function findVisits($year, $month)
+    public function getVisits($year, $month)
     {
-        $visits = $this->getEntityManager()->createQuery(
-            'Select p from PatientBundle:Appointment p WHERE p.year LIKE :year AND p.month LIKE :month ORDER BY p.day')
+        $q = $this->createQueryBuilder('v');
+
+        $q->select('v')
+            ->where('v.year = :year', 'v.month = :month')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
-            ->getResult();
+            ->orderBy('v.day', 'ASC');
+        ;
 
-        return $visits;
+        return $q->getQuery()->getResult();
     }
 
     public function getVisitByHour($year, $month, $day, $hour)
     {
-        $q = $this->createQueryBuilder('m');
+        $q = $this->createQueryBuilder('v');
 
-        $q->select('m')
-            ->where('m.year = :year', 'm.month = :month', 'm.day = :day', 'm.hour = :hour')
+        $q->select('v')
+            ->where('v.year = :year', 'v.month = :month', 'v.day = :day', 'v.hour = :hour')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->setParameter('day', $day)

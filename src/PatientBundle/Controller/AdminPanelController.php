@@ -25,7 +25,7 @@ class AdminPanelController extends Controller
         $visitDay = date('j');
 
         $em = $this->getDoctrine()->getManager();
-        $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
+        $visits = $em->getRepository('PatientBundle:Appointment')->getVisits($visitYear, $visitMonth);
         $days = [];
 
         foreach ($visits as $visit) {
@@ -40,8 +40,7 @@ class AdminPanelController extends Controller
             $visitDay = $request->request->get('selectDay');
 
             $visitByMonth = $em->getRepository('PatientBundle:Appointment')->getVisitsByMonth($visitYear, $visitMonth, $visitDay);
-            var_dump($visitByMonth);
-            $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
+            $visits = $em->getRepository('PatientBundle:Appointment')->getVisits($visitYear, $visitMonth);
             $days = [];
 
             foreach ($visits as $visit) {

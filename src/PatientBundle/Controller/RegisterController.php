@@ -29,10 +29,10 @@ class RegisterController extends Controller
             $visitType = $request->request->get('visitType');
             $session = $request->getSession();
             $session->set('visitType', $visitType);
+
             return $this->redirect('selectDay');
         }
-        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array(// ...
-        ));
+        return $this->render('PatientBundle:Register:selectVisitType.html.twig', array());
     }
 
     //2. Pacjent wybiera dzień wizyty - z pomocą przychodzi klasa Calendar
@@ -55,8 +55,10 @@ class RegisterController extends Controller
         if ($request->request->get('selectYear')) {
             $selectedYear = $request->request->get('selectYear');
         }
+
         $calendar->setMonth($selectedMonth);
         $calendar->setYear($selectedYear);
+
         return $this->render('PatientBundle:Register:selectDay.html.twig', array(
             'calendar' => $calendar
         ));
@@ -82,8 +84,8 @@ class RegisterController extends Controller
         //3b. Jeżeli dany dzień został zablokowany przez administartora i znajduje się
         // w bazie danych BlockDay, pacjent zostaje poinformowany o braku możliwości rejestracji.
         if ($em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day)) {
-            return $this->render('PatientBundle:Register:changeVisitDay.html.twig', array(// ...
-            ));
+
+            return $this->render('PatientBundle:Register:changeVisitDay.html.twig', array());
         }
 
         // 3c. Zapisujemy otrzymane dane do sesji
@@ -109,7 +111,7 @@ class RegisterController extends Controller
 
         $visitType = $session->get('visitType');
 
-        return $this->render('PatientBundle:Register:selectHour.html.twig', array(
+        $array = [
             'daySchedule' => $daySchedule,
             'noDay' => $noDay,
             'visitType' => $visitType,
@@ -118,7 +120,9 @@ class RegisterController extends Controller
             'day' => $day,
             'month' => $month,
             'year' => $year
-        ));
+        ];
+
+        return $this->render('PatientBundle:Register:selectHour.html.twig', $array);
     }
 
     //4. Zapisujemy w sesji wybraną przez pacjenta godzinę.
@@ -144,6 +148,7 @@ class RegisterController extends Controller
         if (!$request->request->get('name') || !$request->request->get('surname') || !$request->request->get('phone')) {
             throw new InvalidArgumentException("Nie podano wszystkich danych lub podane dane są niewłaściwe!");
         }
+
         $session = $request->getSession();
         $session->set('name', $request->request->get('name'));
         $session->set('surname', $request->request->get('surname'));
@@ -177,6 +182,7 @@ class RegisterController extends Controller
 
         if ($code == $session->get('code')) {
             $appointment = new Appointment();
+
             $appointment->setPhone($session->get('phone'));
             $appointment->setYear($session->get('year'));
             $appointment->setMonth($session->get('month'));
