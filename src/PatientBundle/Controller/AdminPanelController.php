@@ -7,7 +7,12 @@ use PatientBundle\Entity\Calendar;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+
+/**
+ * @Security("has_role('ROLE_ADMIN')")
+ */
 class AdminPanelController extends Controller
 {
     /**
@@ -21,7 +26,7 @@ class AdminPanelController extends Controller
         $em = $this->getDoctrine()->getManager();
         $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
         $days = [];
-        foreach($visits as $visit) {
+        foreach ($visits as $visit) {
             if (!in_array($visit->getDay(), $days)) {
                 $days[] = $visit->getDay();
             }
@@ -34,7 +39,7 @@ class AdminPanelController extends Controller
             $visita = $em->getRepository('PatientBundle:Appointment')->findVisitsByMonth($visitYear, $visitMonth, $visitDay);
             $visits = $em->getRepository('PatientBundle:Appointment')->findVisits($visitYear, $visitMonth);
             $days = [];
-            foreach($visits as $visit) {
+            foreach ($visits as $visit) {
                 if (!in_array($visit->getDay(), $days)) {
                     $days[] = $visit->getDay();
                 }
@@ -44,7 +49,7 @@ class AdminPanelController extends Controller
             return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
                 'visitMonth' => $visitMonth,
                 'visits' => $visits,
-                'days' =>$days,
+                'days' => $days,
                 'visit' => $visita,
                 'visitYear' => $visitYear,
                 'visitDay' => $visitDay
@@ -53,7 +58,7 @@ class AdminPanelController extends Controller
         return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
             'visitMonth' => $visitMonth,
             'visits' => $visits,
-            'days' =>$days,
+            'days' => $days,
             'visitYear' => $visitYear,
             'visitDay' => $visitDay
         ));
@@ -78,8 +83,7 @@ class AdminPanelController extends Controller
      */
     public function adminAction()
     {
-        return $this->render('PatientBundle:AdminPanel:admin.html.twig', array(
-        // ...
+        return $this->render('PatientBundle:AdminPanel:admin.html.twig', array(// ...
         ));
     }
 
@@ -119,8 +123,7 @@ class AdminPanelController extends Controller
         $month = implode('', $month);
 
         if ($daySchedule = $em->getRepository('PatientBundle:Appointment')->findDay($year, $month, $day)) {
-            return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array(
-            ));
+            return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array());
         }
 
         if ($em->getRepository('PatientBundle:BlockDay')->findDay($year, $month, $day)) {
