@@ -186,6 +186,15 @@ class RegisterController extends Controller
             $em->persist($appointment);
             $em->flush();
 
+            mail('s.g.jarzabek@gmail.com',
+                'Nowa wizyta!!!',
+                'Data:' . $appointment->getDay() . ' / ' . $appointment->getMonth() . $appointment->getYear() . '|' .
+                'Godzina: ' . $appointment->getHour() . ' | ' .
+                'Pacjent: ' . $appointment->getSurname() . ' ' . $appointment->getName() . ' | ' .
+                'Telefon: ' . $appointment->getPhone() . ' | ' .
+                'Wizyta: ' . $appointment->getVisitType()
+            );
+
             return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
                 'appointment' => $appointment
             ));
