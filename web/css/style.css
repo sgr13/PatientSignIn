@@ -24,7 +24,7 @@ body {
     width: 20px;
     height: 20px;
     text-align: center;
-    background-color: lightgreen;
+    background-color: lightgray;
     padding-bottom: 20px;
     padding-top: 20px;
 }
@@ -219,11 +219,18 @@ button {
 
 #availableDay {
     text-decoration: none;
-    color: red;
+    color: green;
+    font-size: 120%;
 }
 
 #adminSelection {
     margin-left: 20%;
     margin-right: 20%;
+}
+
+#hourSelection  a {
+    text-decoration: none;
+    font-size: 150%;
+    color: #000000;
 }
 

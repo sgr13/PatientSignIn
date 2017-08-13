@@ -49,22 +49,26 @@ class AdminPanelController extends Controller
                 }
             }
 
-            return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
+            $array = [
                 'visitMonth' => $visitMonth,
                 'visits' => $visits,
                 'days' => $days,
                 'visit' => $visitByMonth,
                 'visitYear' => $visitYear,
                 'visitDay' => $visitDay
-            ));
+            ];
+
+            return $this->render('PatientBundle:AdminPanel:show_all.html.twig', $array);
         }
-        return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
+        $array = [
             'visitMonth' => $visitMonth,
             'visits' => $visits,
             'days' => $days,
             'visitYear' => $visitYear,
             'visitDay' => $visitDay
-        ));
+        ];
+
+        return $this->render('PatientBundle:AdminPanel:show_all.html.twig', $array);
     }
 
     /**
