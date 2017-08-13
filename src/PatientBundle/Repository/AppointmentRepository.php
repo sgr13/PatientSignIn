@@ -20,8 +20,7 @@ class AppointmentRepository extends EntityRepository
             ->where('v.year = :year', 'v.month = :month', 'v.day = :day')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
-            ->setParameter('day', $day)
-        ;
+            ->setParameter('day', $day);
 
         return $q->getQuery()->getResult();
     }
@@ -36,12 +35,11 @@ class AppointmentRepository extends EntityRepository
             ->setParameter('month', $month)
             ->setParameter('day', $day)
             ->orderBy('v.hour', 'ASC');
-        ;
 
         return $q->getQuery()->getResult();
     }
 
-    public function getVisits($year, $month)
+    public function getVisits($year, $month, $days)
     {
         $q = $this->createQueryBuilder('v');
 
@@ -50,9 +48,16 @@ class AppointmentRepository extends EntityRepository
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->orderBy('v.day', 'ASC');
-        ;
 
-        return $q->getQuery()->getResult();
+        $visits = $q->getQuery()->getResult();
+
+        foreach ($visits as $visit) {
+            if (!in_array($visit->getDay(), $days)) {
+                $days[] = $visit->getDay();
+            }
+        }
+
+        return $days;
     }
 
     public function getVisitByHour($year, $month, $day, $hour)
@@ -64,9 +69,19 @@ class AppointmentRepository extends EntityRepository
             ->setParameter('year', $year)
             ->setParameter('month', $month)
             ->setParameter('day', $day)
-            ->setParameter('hour', $hour)
-        ;
+            ->setParameter('hour', $hour);
 
-        return $q->getQuery()->getSingleResult();
+        return $q->getQuery()->getOneOrNullResult();
+    }
+
+    public function getChangedDigit($number)
+    {
+        $number = str_split($number);
+        if ($number[0] == 0) {
+            $number[0] = '';
+        }
+        $number = implode('', $number);
+
+        return $number;
     }
 }

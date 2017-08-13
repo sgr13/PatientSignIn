@@ -20,19 +20,13 @@ class AdminPanelController extends Controller
      */
     public function showAllAction(Request $request)
     {
-        $visitYear = 2017;
+        $visitYear = date('Y');
         $visitMonth = date('n');
         $visitDay = date('j');
 
         $em = $this->getDoctrine()->getManager();
-        $visits = $em->getRepository('PatientBundle:Appointment')->getVisits($visitYear, $visitMonth);
         $days = [];
-
-        foreach ($visits as $visit) {
-            if (!in_array($visit->getDay(), $days)) {
-                $days[] = $visit->getDay();
-            }
-        }
+        $visits = $em->getRepository('PatientBundle:Appointment')->getVisits($visitYear, $visitMonth, $days);
 
         if ($request->request->get('selectMonth') || $request->request->get('selectYear') || $request->request->get('selectDay')) {
             $visitMonth = $request->request->get('selectMonth');
@@ -40,35 +34,23 @@ class AdminPanelController extends Controller
             $visitDay = $request->request->get('selectDay');
 
             $visitByMonth = $em->getRepository('PatientBundle:Appointment')->getVisitsByMonth($visitYear, $visitMonth, $visitDay);
-            $visits = $em->getRepository('PatientBundle:Appointment')->getVisits($visitYear, $visitMonth);
             $days = [];
+            $visits = $em->getRepository('PatientBundle:Appointment')->getVisits($visitYear, $visitMonth, $days);
 
-            foreach ($visits as $visit) {
-                if (!in_array($visit->getDay(), $days)) {
-                    $days[] = $visit->getDay();
-                }
-            }
-
-            $array = [
+            return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
                 'visitMonth' => $visitMonth,
-                'visits' => $visits,
-                'days' => $days,
+                'days' => $visits,
                 'visit' => $visitByMonth,
                 'visitYear' => $visitYear,
                 'visitDay' => $visitDay
-            ];
-
-            return $this->render('PatientBundle:AdminPanel:show_all.html.twig', $array);
+            ));
         }
-        $array = [
+        return $this->render('PatientBundle:AdminPanel:show_all.html.twig', array(
             'visitMonth' => $visitMonth,
-            'visits' => $visits,
-            'days' => $days,
+            'days' => $visits,
             'visitYear' => $visitYear,
             'visitDay' => $visitDay
-        ];
-
-        return $this->render('PatientBundle:AdminPanel:show_all.html.twig', $array);
+        ));
     }
 
     /**
@@ -78,6 +60,10 @@ class AdminPanelController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $visit = $em->getRepository('PatientBundle:Appointment')->getVisitByHour($year, $month, $day, $hour);
+
+        if (!$visit) {
+            return $this->render('PatientBundle:AdminPanel:cancel_visit.html.twig', array());
+        }
         $em->remove($visit);
         $em->flush();
 
@@ -91,8 +77,7 @@ class AdminPanelController extends Controller
      */
     public function adminAction()
     {
-        return $this->render('PatientBundle:AdminPanel:admin.html.twig', array(// ...
-        ));
+        return $this->render('PatientBundle:AdminPanel:admin.html.twig', array());
     }
 
     /**
@@ -124,22 +109,21 @@ class AdminPanelController extends Controller
     public function blockDayAction(Request $request, $year, $month, $day)
     {
         $em = $this->getDoctrine()->getManager();
-        $month = str_split($month);
-        if ($month[0] == 0) {
-            $month[0] = '';
-        }
-        $month = implode('', $month);
+        $month = $em->getRepository('PatientBundle:Appointment')->getChangedDigit($month);
+        $daySchedule = $em->getRepository('PatientBundle:Appointment')->getDay($year, $month, $day);
 
-        if ($daySchedule = $em->getRepository('PatientBundle:Appointment')->getDay($year, $month, $day)) {
+        if ($daySchedule) {
             return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array());
         }
 
-        if ($em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day)) {
-            $dayToUnblock = $em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day);
-            $em->remove($dayToUnblock[0]);
+        $dayToUnblock = $em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day);
+
+        if ($dayToUnblock) {
+            $em->remove($dayToUnblock);
             $em->flush();
+            
             return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array(
-                'dayToUnblock' => $dayToUnblock[0]
+                'dayToUnblock' => $dayToUnblock
             ));
         }
 

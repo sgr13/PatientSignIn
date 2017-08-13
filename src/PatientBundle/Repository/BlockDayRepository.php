@@ -20,9 +20,8 @@ class BlockDayRepository extends EntityRepository
             ->where('v.year = :year', 'v.month = :month', 'v.day = :day')
             ->setParameter('year', $year)
             ->setParameter('month', $month)
-            ->setParameter('day', $day)
-        ;
+            ->setParameter('day', $day);
 
-        return $q->getQuery()->getResult();
+        return $q->getQuery()->getOneOrNullResult();
     }
 }
