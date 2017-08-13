@@ -1,6 +1,5 @@
 $(document).ready(function () {
     var child = $('#monthSelection').attr('month');
-    console.log(child);
     if (child == 1) {
         $('#jan').attr('selected', 'selected');
     } else if (child == 2) {
@@ -63,7 +62,7 @@ $(document).ready(function () {
     })
 
     $('#sideMenu').mouseleave(function() {
-        //ponowne przypianie pozycji dozmiennej i po opuszczeniu kursora ukrycie sideMenu
+        //ponowne przypianie pozycji do zmiennej i po opuszczeniu kursora ukrycie sideMenu
         var p1 = $("#sideMenu");
         var offset3 = p1.offset();
         $("#sideMenu").offset({ top: offset3.top, left: offset1.left});

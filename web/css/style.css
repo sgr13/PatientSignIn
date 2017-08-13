@@ -234,3 +234,11 @@ button {
     color: #000000;
 }
 
+a {
+    outline: 0;
+}
+
+a:hover, a:active, a:focus {
+    outline: 0;
+}
+
