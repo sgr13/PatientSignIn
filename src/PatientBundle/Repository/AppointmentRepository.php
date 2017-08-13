@@ -102,4 +102,16 @@ class AppointmentRepository extends EntityRepository
         $visits = [$diabArray, $dietArray];
         return $visits;
     }
+
+    public function sendMail($day, $month, $year, $hour, $surname, $name, $phone, $visitType, $messageType)
+    {
+        mail('s.g.jarzabek@gmail.com',
+            $messageType,
+            'Data:' . $day . '/' . $month . '/' . $year . '|' .
+            'Godzina: ' . $hour . ' | ' .
+            'Pacjent: ' . $surname . ' ' . $name . ' | ' .
+            'Telefon: ' . $phone . ' | ' .
+            'Wizyta: ' . $visitType
+        );
+    }
 }

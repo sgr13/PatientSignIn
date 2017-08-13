@@ -161,14 +161,7 @@ class RegisterController extends Controller
             $em->persist($appointment);
             $em->flush();
 
-            mail('s.g.jarzabek@gmail.com',
-                'Nowa wizyta!!!',
-                'Data:' . $appointment->getDay() . ' / ' . $appointment->getMonth() . $appointment->getYear() . '|' .
-                'Godzina: ' . $appointment->getHour() . ' | ' .
-                'Pacjent: ' . $appointment->getSurname() . ' ' . $appointment->getName() . ' | ' .
-                'Telefon: ' . $appointment->getPhone() . ' | ' .
-                'Wizyta: ' . $appointment->getVisitType()
-            );
+            $em->getRepository('PatientBundle:Appointment')->sendMail($appointment->getDay(), $appointment->getMonth(), $appointment->getYear(), $appointment->getHour(), $appointment->getSurname(), $appointment->getName(), $appointment->getPhone(), $appointment->getVisitType(), 'Nowa Wizyta');
 
             return $this->render('PatientBundle:Register:visitSummary.html.twig', array(
                 'appointment' => $appointment
@@ -237,20 +230,8 @@ class RegisterController extends Controller
             return $this->render('PatientBundle:Register:cancelVisitFinal.html.twig', array());
         }
 
-        $date = $visit->getDay() . '/' . $visit->getMonth() . '/' . $visit->getYear();
-        $hour = $visit->getHour();
-        $patient = $visit->getSurname() . ' ' . $visit->getName();
-        $phone = $visit->getPhone();
-        $visitType = $visit->getVisitType();
+        $em->getRepository('PatientBundle:Appointment')->sendMail($visit->getDay(), $visit->getMonth(), $visit->getYear(), $visit->getHour(), $visit->getSurname(), $visit->getName(), $visit->getPhone(), $visit->getVisitType(), 'Odwołana Wizyta');
 
-        mail('mail@gmail.com',
-            'Odwołana wizyta!!!',
-            'Data:' . $date . ' | ' .
-            'Godzina: ' . $hour . ' | ' .
-            'Pacjent: ' . $patient . ' | ' .
-            'Telefon: ' . $phone . ' | ' .
-            'Wizyta: ' . $visitType
-        );
 
         $em->remove($visit);
         $em->flush();
