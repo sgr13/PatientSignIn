@@ -10,17 +10,22 @@
         {{ include('upperBar.html.twig') }}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 large center">
+                {% if visits is defined %}
                 <h3>Wybierz wizytę, którą chcesz odwołać: </h3>
-                <ul>
-                    {% for visit in visits %}
-                        <li>
-                            {{ visit.day }}/{{ visit.month }}/{{ visit.year }}r. godz. {{ visit.hour }}
-                            <a href="{{ path('cancelVisitFinal', {'id': visit.id}) }}">
-                                <button>Odwołaj</button>
-                            </a><br>
-                        </li>
-                    {% endfor %}
-                </ul>
+                    <ul>
+                        {% for visit in visits %}
+                            <li>
+                                {{ visit.day }}/{{ visit.month }}/{{ visit.year }}r. godz. {{ visit.hour }}
+                                <a href="{{ path('cancelVisitFinal', {'id': visit.id}) }}">
+                                    <button>Odwołaj</button>
+                                </a><br>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h2>Brak umówionych wizyt dla podanego pacjenta.</h2>
+                    <a href="{{ path('main') }}"><button>Ok</button></a>
+                {% endif %}
             </div>
         </div>
     </div>

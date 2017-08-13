@@ -17,8 +17,6 @@ use Symfony\Component\Validator\Exception\ValidatorException;
 
 class RegisterController extends Controller
 {
-    //1. Pacjent wybiera rodzaj wizyty, jeżeli wybór został poprawnie dokonany
-    // zostaje przekierowany do wyboru dnia wizyty.
     /**
      * @Route("/selectVisitType", name="selectVisitType")
      */
@@ -35,8 +33,6 @@ class RegisterController extends Controller
         return $this->render('PatientBundle:Register:selectVisitType.html.twig', array());
     }
 
-    //2. Pacjent wybiera dzień wizyty - z pomocą przychodzi klasa Calendar
-    // tworząca graficzną prezentację.
     /**
      * @Route("/selectDay")
      */
@@ -46,12 +42,10 @@ class RegisterController extends Controller
         $selectedMonth = $calendar->getMonth();
         $selectedYear = $calendar->getYear();
 
-        // 2a. Jeżeli dokonano zmiany miesiąca, dane zostają zaktualizowane
         if ($request->request->get('selectMonth')) {
             $selectedMonth = $request->request->get('selectMonth');
         }
 
-        // 2b. Jeżeli dokonano zmiany roku, dane zostają zaktualizowane
         if ($request->request->get('selectYear')) {
             $selectedYear = $request->request->get('selectYear');
         }
@@ -64,59 +58,34 @@ class RegisterController extends Controller
         ));
     }
 
-    // 3.Pacjent wybiera godzinę wizyty. Należy wziąć pod uwagę fakt, iż wizyta dietetyczna trwa 60 minut
-    // natomiast diabetologiczna 30 minut.
     /**
      * @Route("/selectHour/{year}/{month}/{day}/{noDay}", name="selectHour")
      */
     public function selectHourAction(Request $request, $year, $month, $day, $noDay)
     {
         $em = $this->getDoctrine()->getManager();
-        // 3a. Zamieniamy zapis miesiąca z postaci np. 07 na 7
-        $month = str_split($month);
+        $month = $em->getRepository('PatientBundle:Appointment')->getChangedDigit($month);
 
-        if ($month[0] == 0) {
-            $month[0] = '';
-        }
-
-        $month = implode('', $month);
-
-        //3b. Jeżeli dany dzień został zablokowany przez administartora i znajduje się
-        // w bazie danych BlockDay, pacjent zostaje poinformowany o braku możliwości rejestracji.
         if ($em->getRepository('PatientBundle:BlockDay')->getDay($year, $month, $day)) {
 
             return $this->render('PatientBundle:Register:changeVisitDay.html.twig', array());
         }
 
-        // 3c. Zapisujemy otrzymane dane do sesji
         $session = $request->getSession();
         $session->set('year', $year);
         $session->set('month', $month);
         $session->set('day', $day);
         $session->set('noDay', $noDay);
 
-        //3d. Odnajdujemy wszystkie wizyty w danym dniu a anstępnie tworzymy dwie tablice,
-        // odpowiednio dla wizyt diabetologicznych i dietetycznych.
-        $daySchedule = $em->getRepository('PatientBundle:Appointment')->getDay($year, $month, $day);
-        $diabArray = [];
-        $dietArray = [];
-
-        foreach ($daySchedule as $value) {
-            if ($value->getVisitType() == 'diab') {
-                $diabArray[] = $value->getHour();
-            } else {
-                $dietArray[] = $value->getHour();
-            }
-        }
-
+        $daySchedule = $em->getRepository('PatientBundle:Appointment')->getVisitTypes($year, $month, $day);
         $visitType = $session->get('visitType');
 
         $array = [
             'daySchedule' => $daySchedule,
             'noDay' => $noDay,
             'visitType' => $visitType,
-            'diabArray' => $diabArray,
-            'dietArray' => $dietArray,
+            'diabArray' => $daySchedule[0],
+            'dietArray' => $daySchedule[1],
             'day' => $day,
             'month' => $month,
             'year' => $year
@@ -125,7 +94,6 @@ class RegisterController extends Controller
         return $this->render('PatientBundle:Register:selectHour.html.twig', $array);
     }
 
-    //4. Zapisujemy w sesji wybraną przez pacjenta godzinę.
     /**
      * @Route("patientData/{hour}", name="patientData")
      */
@@ -138,8 +106,6 @@ class RegisterController extends Controller
         ));
     }
 
-    //5. Potwierdzamy dane pacjenta wysyłając sms-a na podany numer telefonu(tylko PLUS w tej formie).
-    // W tresci sms-a przekazujemy losowo wybraną liczbę.
     /**
      * @Route("/patientDataConfirmation")
      */
@@ -157,7 +123,7 @@ class RegisterController extends Controller
         $phone = $request->request->get('phone');
         $randomNumber = mt_rand(100000, 999999);
         $session->set('code', $randomNumber);
-        var_dump($randomNumber);
+        echo "Kod: " . $randomNumber;
 
 //        mail(
 //            '+48' . $phone . '@text.plusgsm.pl',
@@ -170,8 +136,6 @@ class RegisterController extends Controller
         ));
     }
 
-    //6. Zapisujemy wszystkie dane do bazy danych jeżeli wprowadzony kod zgadza się z kodem wysłanym
-    // w sms-ie.
     /**
      * @Route("/saveVisit")
      */
@@ -215,8 +179,6 @@ class RegisterController extends Controller
         }
     }
 
-    //7. W przypadku odowłania wizyty tworzymy formularz w którym wpisujemy nr telefonu a nastepnie
-    // na wskazany nr wysyłany jest kod losowo wygenerowany
     /**
      * @Route("cancelVisit")
      */
@@ -229,7 +191,7 @@ class RegisterController extends Controller
             $session->set('phone', $request->request->get('phone'));
             $randomNumber = mt_rand(100000, 999999);
             $session->set('code', $randomNumber);
-            var_dump($randomNumber);
+            echo "Kod: " . $randomNumber;
         }
 
         return $this->render('PatientBundle:Register:cancelVisit.html.twig', array(
@@ -237,7 +199,6 @@ class RegisterController extends Controller
         ));
     }
 
-    //8. Po wprowadzeniu kodu i jego weryfikacji wyświetlamy listę wizyt, które pacjent umówił
     /**
      * @Route("cancelVisitConfirm")
      */
@@ -254,12 +215,16 @@ class RegisterController extends Controller
         $em = $this->getDoctrine()->getManager();
         $visits = $em->getRepository('PatientBundle:Appointment')->findByPhone($phone);
 
+        if (!$visits) {
+            return $this->render('PatientBundle:Register:cancelVisitConfirm.html.twig', array(
+            ));
+        }
+
         return $this->render('PatientBundle:Register:cancelVisitConfirm.html.twig', array(
             'visits' => $visits
         ));
     }
 
-    //9. Po wybraniu jednej z wizyt, usuwamy ją z bazy danych
     /**
      * @Route("/cancelVisitFinal/{id}", name="cancelVisitFinal")
      */
@@ -267,6 +232,11 @@ class RegisterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $visit = $em->getRepository('PatientBundle:Appointment')->find($id);
+
+        if (!$visit) {
+            return $this->render('PatientBundle:Register:cancelVisitFinal.html.twig', array());
+        }
+
         $date = $visit->getDay() . '/' . $visit->getMonth() . '/' . $visit->getYear();
         $hour = $visit->getHour();
         $patient = $visit->getSurname() . ' ' . $visit->getName();

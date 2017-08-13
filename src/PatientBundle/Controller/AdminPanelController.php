@@ -121,7 +121,7 @@ class AdminPanelController extends Controller
         if ($dayToUnblock) {
             $em->remove($dayToUnblock);
             $em->flush();
-            
+
             return $this->render('PatientBundle:AdminPanel:blockedDay.html.twig', array(
                 'dayToUnblock' => $dayToUnblock
             ));

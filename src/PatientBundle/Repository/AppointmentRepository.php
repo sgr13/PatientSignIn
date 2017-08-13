@@ -84,4 +84,22 @@ class AppointmentRepository extends EntityRepository
 
         return $number;
     }
+
+    public function getVisitTypes($year, $month, $day)
+    {
+        $daySchedule = self::getDay($year, $month, $day);
+
+        $diabArray = [];
+        $dietArray = [];
+
+        foreach ($daySchedule as $value) {
+            if ($value->getVisitType() == 'diab') {
+                $diabArray[] = $value->getHour();
+            } else {
+                $dietArray[] = $value->getHour();
+            }
+        }
+        $visits = [$diabArray, $dietArray];
+        return $visits;
+    }
 }

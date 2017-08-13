@@ -11,7 +11,7 @@ class Calendar
     private $daysInMonth;
     private $numberOfWeeksInMonth;
 
-    function __construct()
+    public function __construct()
     {
         $date = strtotime(date("Y-m-d"));
         $this->day = date('d', $date);
